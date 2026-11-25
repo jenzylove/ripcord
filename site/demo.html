@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripcord demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Rip<span>cord</span></a>
+  <nav aria-label="Main">
+    <a href="proof.html">Proof</a>
+    <a href="demo.html" aria-current="page">Demo</a>
+    <a href="https://github.com/jenzylove/ripcord">GitHub</a>
+    <button class="tog" id="theme-toggle" type="button">Dark</button>
+  </nav>
+</div></header>
+
+<main class="wrap page">
+  <span class="tag">Recorded run</span>
+  <h1>Demo</h1>
+  <p class="lead">One real Compose app, one real Claude Code session, Kane as the user.</p>
+  <div style="margin-top:28px">
+    <video id="v" controls preload="metadata" playsinline>
+      <source src="media/demo.mp4" type="video/mp4">
+    </video>
+    <div class="novid" id="novid">Video coming</div>
+  </div>
+
+  <h2 style="margin-top:48px">What happens in it</h2>
+  <ol class="steps">
+    <li><h3>Set up</h3><p>Run <code>ripcord init</code> in a Compose project. It lists the databases and volumes and writes <code>ripcord.yml</code> with the app URL, login variable names and plain English checks.</p></li>
+    <li><h3>Prove</h3><p>Run <code>ripcord prove</code>. Ripcord backs up, restores a throwaway copy on a free port, and Kane logs into the live app and the copy, one run at a time.</p></li>
+    <li><h3>Read the verdict</h3><p>The report shows PROVEN or LOSS with each check's live and copy values side by side, the screenshots, and the row count comparison next to Kane's answer.</p></li>
+    <li><h3>Install the hooks</h3><p>Run <code>ripcord hook install</code> to add the Claude Code hooks.</p></li>
+    <li><h3>The agent tries something destructive</h3><p>The gate blocks the command and tells the agent to run <code>ripcord prove</code> first. Once a fresh PROVEN exists, the command is allowed and recorded.</p></li>
+    <li><h3>Verify and roll back</h3><p>After a risky command, <code>ripcord verify</code> has Kane reread the checks on the live app. If data is missing, <code>ripcord rollback</code> restores the proven backup and Kane proves the fingerprint matches again.</p></li>
+  </ol>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="https://github.com/jenzylove/ripcord">github.com/jenzylove/ripcord</a></p>
+  <p class="mute">Built for the TestMu AI KaneCLI hackathon. Built with Claude Code and Kane CLI.</p>
+</div></footer>
+
+<script>
+(function () {
+  var v = document.getElementById('v'), n = document.getElementById('novid');
+  function fail() { v.style.display = 'none'; n.style.display = 'block'; }
+  var s = v.querySelector('source');
+  s.addEventListener('error', fail);
+  v.addEventListener('error', fail);
+})();
+</script>
+</body>
+</html>

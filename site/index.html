@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripcord</title>
+<meta name="description" content="Ripcord keeps a backup your AI coding agent cannot reach, restores it into a throwaway copy, and has Kane log in as your user to prove the data is really there.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Rip<span>cord</span></a>
+  <nav aria-label="Main">
+    <a href="proof.html">Proof</a>
+    <a href="demo.html">Demo</a>
+    <a href="https://github.com/jenzylove/ripcord">GitHub</a>
+    <button class="tog" id="theme-toggle" type="button">Dark</button>
+  </nav>
+</div></header>
+
+<main class="cord">
+  <section class="hero first">
+    <span class="tag">Emergency equipment for your database</span>
+    <h1>Your AI coding agent can wipe your database, backups included, in seconds.</h1>
+    <p class="lead">Ripcord keeps a backup the agent cannot reach, restores it into a throwaway copy, and has Kane log in as your user to prove the data is really there. Until that proof exists, risky agent commands are held.</p>
+    <p class="sub">The agent can wipe your database in nine seconds. Ripcord makes sure you can get it back, and proves it the way your users would see it.</p>
+  </section>
+
+  <section id="incident">
+    <span class="tag">The incident</span>
+    <h2>It already happened</h2>
+    <ul class="incidents">
+      <li><b>PocketOS, April 2026</b>A Cursor agent on Claude Opus 4.6 deleted the production database and its volume backups with one Railway API call in about nine seconds. The newest off site backup was three months old.
+        <span class="src">Sources: <a href="https://www.techspot.com/news/112207-ai-coding-agent-running-claude-wiped-startup-database.html">TechSpot</a>, <a href="https://www.techradar.com/pro/it-took-9-seconds-tech-founder-outlines-how-rogue-claude-powered-ai-tool-wiped-entire-company-database-and-backups-but-says-theres-no-such-thing-as-bad-publicity">TechRadar</a>, <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/claude-powered-ai-coding-agent-deletes-entire-company-database-in-9-seconds-backups-zapped-after-cursor-tool-powered-by-anthropics-claude-goes-rogue">Tom's Hardware</a></span></li>
+      <li><b>DataTalks.Club</b>Claude Code deleted the production database.</li>
+      <li><b>SaaStr, July 2025</b>Replit's agent deleted the production database.</li>
+    </ul>
+  </section>
+
+  <section id="how">
+    <span class="tag">How it works</span>
+    <h2>Six steps on one line</h2>
+    <ol class="steps">
+      <li><h3>Back up out of reach</h3><p>A native dump of each database and a tar of each named volume, with a sha256 for every file. It is stored in a vault outside your repo.</p></li>
+      <li><h3>Restore into a copy</h3><p>Ripcord rewrites your Compose file to a new project name with fresh volumes and different ports, loads the backup, starts the stack, and waits until the app answers.</p></li>
+      <li><h3>Kane logs in as your user</h3><p>You write plain English checks, such as "open recipe Jollof Rice and say whether its photo is a real picture or a broken placeholder". Kane runs each check on the live app and on the copy, one run at a time.</p></li>
+      <li><h3>Compare, then say PROVEN or LOSS</h3><p>Same values on both sides means PROVEN. Differences mean LOSS, with the exact list. If a Kane run fails or reads nothing, the answer is INCONCLUSIVE. A row count comparison is shown next to it.</p></li>
+      <li><h3>Fix the backup config</h3><p>On LOSS, Claude Code gets the report and may edit only <code>ripcord.yml</code>, for example to add a volume. Ripcord reruns the proof, up to three rounds, and logs every round.</p></li>
+      <li><h3>Hold risky commands, and undo them</h3><p>A Claude Code hook blocks destructive commands until a fresh proof exists. After a risky command, Kane rereads the checks on the live app. If data is missing, <code>ripcord rollback</code> restores the proven backup and Kane proves it matches again.</p></li>
+    </ol>
+  </section>
+
+  <section id="rows">
+    <span class="tag">Rows are not the app</span>
+    <h2>Every row came back. The photos did not.</h2>
+    <div class="prose">
+      <p>We restored Mealie v3.31.0 with Postgres from a database only backup. Every row was there. Kane opened a recipe the way a user would and read "missing or broken image placeholder" where the photo should be.</p>
+    </div>
+    <div class="two">
+      <div><b>Row count says</b><span class="big">Match</span></div>
+      <div><b>Kane says</b><span class="big bad">Photo missing</span></div>
+    </div>
+    <div class="prose">
+      <p>A full restore fixed it. Kane read "6 servings, 3 ingredients, plain orange image", the same as the live app. Existing restore testers count rows. Photos, attachments, saved logins and search indexes live outside the rows, and users report losing exactly those after restores. The full study is on the <a href="proof.html">proof page</a>.</p>
+    </div>
+  </section>
+
+  <section id="gate">
+    <span class="tag">The gate</span>
+    <h2>No proof, no destructive command</h2>
+    <div class="prose"><p>This is the real text the hook returns to the agent when it tries something destructive without a fresh proof.</p></div>
+    <pre aria-label="Hook output"><span class="d">$ claude (agent runs)  psql -c "DELETE FROM users"</span>
+
+<span class="o">Ripcord blocked this destructive command (DELETE FROM without WHERE). Your backup has never been proven restorable. Run `ripcord prove`, then retry this command.</span></pre>
+  </section>
+
+  <section id="start" class="end">
+    <span class="tag">Get started</span>
+    <h2>Four commands</h2>
+    <div class="cmds">
+      <pre>npm i -g ripcord-cli</pre>
+      <pre>ripcord init</pre>
+      <pre>ripcord prove</pre>
+      <pre>ripcord hook install</pre>
+    </div>
+    <p class="prose mute">init reads your Compose file and writes <code>ripcord.yml</code>. prove backs up, restores a copy, and has Kane compare. hook install adds the Claude Code hooks.</p>
+    <div class="handle" aria-hidden="true"></div>
+  </section>
+</main>
+
+<div class="wrap faqwrap" id="faq">
+  <span class="tag">FAQ</span>
+  <h2>Questions</h2>
+  <details class="faq"><summary>Does it work with Supabase or Neon?</summary>
+    <p>No, not in this version. Managed databases such as Supabase, Neon and RDS are out of scope for restore proofs, because their auth, storage and secrets do not come along in a dump. Ripcord targets apps that run in a Docker Compose stack.</p></details>
+  <details class="faq"><summary>Where are backups kept?</summary>
+    <p>In a vault outside your repo. The default is <code>~/.ripcord-vault/&lt;project&gt;/&lt;timestamp&gt;</code> on your machine.</p></details>
+  <details class="faq"><summary>What does Kane do that a script cannot?</summary>
+    <p>A script counts rows. Kane logs into the app as a user and reads what is on screen: whether the photo loads, whether the saved login still works, whether search returns results. That is where restores quietly lose data.</p></details>
+  <details class="faq"><summary>How many credits does a proof cost?</summary>
+    <p>About 20 to 50 Kane credits per check per side. A proof runs each check on the live app and on the copy, so keep the checks few and meaningful.</p></details>
+  <details class="faq"><summary>Can the agent delete the vault?</summary>
+    <p>The hook blocks every agent command that touches the vault path. The limit: the vault is on the same machine, so a person or a determined process with the same user rights can still delete it. Off machine copies are not part of this version.</p></details>
+  <details class="faq"><summary>What happens on INCONCLUSIVE?</summary>
+    <p>It means a Kane run failed or did not read a value. Ripcord never reports PROVEN unless every check returned its values on both sides, so INCONCLUSIVE does not unlock the gate. Fix the check or the app and run <code>ripcord prove</code> again.</p></details>
+</div>
+
+<footer><div class="wrap">
+  <p><a href="https://github.com/jenzylove/ripcord">github.com/jenzylove/ripcord</a></p>
+  <p class="mute">Built for the TestMu AI KaneCLI hackathon. Built with Claude Code and Kane CLI.</p>
+</div></footer>
+</body>
+</html>

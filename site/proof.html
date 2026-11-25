@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ripcord proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Rip<span>cord</span></a>
+  <nav aria-label="Main">
+    <a href="proof.html" aria-current="page">Proof</a>
+    <a href="demo.html">Demo</a>
+    <a href="https://github.com/jenzylove/ripcord">GitHub</a>
+    <button class="tog" id="theme-toggle" type="button">Dark</button>
+  </nav>
+</div></header>
+
+<main class="wrap page">
+  <span class="tag">The study</span>
+  <h1>Proof</h1>
+  <div id="out" aria-live="polite"></div>
+</main>
+
+<footer><div class="wrap">
+  <p><a href="https://github.com/jenzylove/ripcord">github.com/jenzylove/ripcord</a></p>
+  <p class="mute">Built for the TestMu AI KaneCLI hackathon. Built with Claude Code and Kane CLI.</p>
+</div></footer>
+
+<script>
+(function () {
+  var out = document.getElementById('out');
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function safeUrl(u) { return typeof u === 'string' && /^https?:\/\//i.test(u) ? u : null; }
+  function link(href, text) {
+    var u = safeUrl(href);
+    if (!u) return el('span', null, text);
+    var a = el('a', null, text);
+    a.href = u; a.rel = 'noopener';
+    return a;
+  }
+  function verdict(v) { return el('span', 'v ' + String(v).replace(/[^A-Za-z]/g, ''), v); }
+  function show(v) { return v === null || v === undefined ? 'nothing' : String(v); }
+  function methodLabel(m) {
+    return { official: 'Official method', community: 'Community method', claude: 'Claude Code script', ripcord: 'Ripcord' }[m] || String(m);
+  }
+  function rowSays(v) {
+    if (v === 'MATCH') return 'Rows match, looks fine';
+    if (v === 'MISMATCH') return 'Row counts differ';
+    return 'No row count available';
+  }
+  function lossText(c) {
+    var d = c.differences || [];
+    if (c.kaneVerdict === 'INCONCLUSIVE') return 'Not decided, a Kane run failed or read nothing';
+    if (!d.length) return c.kaneVerdict === 'PROVEN' ? 'Nothing lost' : 'No differences listed';
+    return d.map(function (x) {
+      return x.check + (x.key ? ' (' + x.key + ')' : '') + ': live shows ' + show(x.live) + ', copy shows ' + show(x.copy);
+    });
+  }
+  function td(content) {
+    var t = el('td');
+    if (Array.isArray(content)) {
+      content.forEach(function (s) { var p = el('div', null, s); p.style.marginBottom = '4px'; t.appendChild(p); });
+    } else if (content && content.nodeType) t.appendChild(content);
+    else t.textContent = content;
+    return t;
+  }
+  function runLinks(c) {
+    var box = el('div');
+    var n = 0;
+    (c.checks || []).forEach(function (k) {
+      [['live', k.liveShare], ['copy', k.copyShare]].forEach(function (p) {
+        if (safeUrl(p[1])) {
+          n++;
+          var d = el('div'); d.style.marginBottom = '4px';
+          d.appendChild(link(p[1], k.id + ' ' + p[0]));
+          box.appendChild(d);
+        }
+      });
+    });
+    if (!n) box.textContent = 'No share links';
+    return box;
+  }
+  function pre(obj) { return el('pre', null, JSON.stringify(obj, null, 2)); }
+
+  function render(data) {
+    var cases = data && Array.isArray(data.cases) ? data.cases : [];
+    out.textContent = '';
+    if (!cases.length) { out.appendChild(el('div', 'pending', 'Study runs in progress')); return; }
+
+    if (data.generatedAt) out.appendChild(el('p', 'mute mono', 'Generated ' + data.generatedAt));
+
+    var wrap = el('div', 'tbl');
+    var tb = el('table');
+    var head = el('tr');
+    ['App', 'Method', 'A row count says', 'Kane says', 'What a user would lose', 'Kane runs'].forEach(function (h) { head.appendChild(el('th', null, h)); });
+    tb.appendChild(el('thead')).appendChild(head);
+    var body = el('tbody');
+    cases.forEach(function (c) {
+      var r = el('tr');
+      r.appendChild(td(c.app + (c.appVersion ? ' ' + c.appVersion : '')));
+      var m = el('div');
+      m.appendChild(link(c.methodSource, methodLabel(c.method)));
+      r.appendChild(td(m));
+      var rs = el('div'); rs.appendChild(verdict(c.rowCountVerdict)); rs.appendChild(el('div', 'mute', rowSays(c.rowCountVerdict)));
+      r.appendChild(td(rs));
+      r.appendChild(td(verdict(c.kaneVerdict)));
+      r.appendChild(td(lossText(c)));
+      r.appendChild(td(runLinks(c)));
+      body.appendChild(r);
+    });
+    tb.appendChild(body);
+    wrap.appendChild(tb);
+    out.appendChild(wrap);
+
+    cases.forEach(function (c) {
+      var d = el('details', 'case');
+      d.appendChild(el('summary', null, c.app + ' ' + (c.appVersion || '') + ', ' + methodLabel(c.method) + ', ' + c.kaneVerdict));
+      if (c.note) d.appendChild(el('p', null, c.note));
+      (c.checks || []).forEach(function (k) {
+        d.appendChild(el('p', 'chk', k.id));
+        var g = el('div', 'sbs');
+        var a = el('div'); a.appendChild(el('h4', null, 'Live app')); a.appendChild(pre(k.live));
+        var b = el('div'); b.appendChild(el('h4', null, 'Restored copy')); b.appendChild(pre(k.copy));
+        g.appendChild(a); g.appendChild(b);
+        d.appendChild(g);
+      });
+      out.appendChild(d);
+    });
+  }
+
+  fetch('data/results.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
+    .then(render)
+    .catch(function () { out.textContent = ''; out.appendChild(el('div', 'pending', 'Study runs in progress')); });
+})();
+</script>
+</body>
+</html>
