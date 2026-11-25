@@ -1,0 +1,440 @@
+{
+  "id": "proof-20261125T190032Z",
+  "project": "rclive",
+  "backupId": "20261125T184755Z",
+  "createdAt": "2026-11-25T19:00:32.914Z",
+  "verdict": "PROVEN",
+  "differences": [],
+  "checks": [
+    {
+      "id": "recipe_photo",
+      "live": {
+        "photo_status": "photo of food"
+      },
+      "copy": {
+        "photo_status": "photo of food"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the recipe named Jollof Rice and viewed its large recipe image.\nThe large recipe image displayed a photo of food, not a missing or broken image placeholder.",
+        "values": {
+          "photo_status": "photo of food"
+        },
+        "credits": 21.56262,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8A0M8MFDXPV083RWQGCPMZS/dashboard/share/US_4G6KJK8N0LE77ZR8PF6EM7MJGCXCSJ4WNP8OR6CGU2L25DFT2CMOL9KMDYDOIB2H?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\b9de1de6-5a7c-4ce5-9f95-2555dcc228f7",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\b9de1de6-5a7c-4ce5-9f95-2555dcc228f7\\evidence\\7ff4fd0f-7b2a-4f3a-9f99-5fbbed133d8f.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the recipe named Jollof Rice and inspected its large recipe image.\nThe large recipe image showed a photo of food, not a missing or broken-image placeholder.",
+        "values": {
+          "photo_status": "photo of food"
+        },
+        "credits": 21.4394525,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8A0TS1W8J1H13EB6SV4KAVE/dashboard/share/US_RJR6WYARKEI0HTNEF1ZHR1FM5XCZYEQA19LUAVOO0ZAK7VBZ88043Z0Z1UURDJUC?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\397ecb47-b347-43bb-86bb-b14cf98cc0c8",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\397ecb47-b347-43bb-86bb-b14cf98cc0c8\\evidence\\7f63e660-0cd6-4fc2-a908-84c74b2e310f.evidence"
+      }
+    },
+    {
+      "id": "recipe_servings",
+      "live": {
+        "servings": "6 servings",
+        "ingredient_count": "3"
+      },
+      "copy": {
+        "servings": "6 servings",
+        "ingredient_count": "3"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the recipe named Efo Riro.\nThe recipe shows a yield of 6 servings and lists 3 ingredients.",
+        "values": {
+          "servings": "6 servings",
+          "ingredient_count": "3"
+        },
+        "credits": 25.56868,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8A0ZMK5B0AG1QYRFX8V18SR/dashboard/share/US_KGA2K3VSBB9SULZWLQNOGSN2RECS6YSTQ2EYOHA8NG89S4XSPW377MBRJERMAZQJ?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\0b0ba186-6a4d-4ba3-8b25-aa808d160ca6",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\0b0ba186-6a4d-4ba3-8b25-aa808d160ca6\\evidence\\c690566c-991f-41fe-b662-0dcdac7d7cb0.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the recipe named Efo Riro.\nThe recipe shows a yield of 6 servings and lists 3 ingredients.",
+        "values": {
+          "servings": "6 servings",
+          "ingredient_count": "3",
+          "servings_2": "6 servings",
+          "ingredient_count_2": "3"
+        },
+        "credits": 21.551488,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8A14P0DP0BRGT1Z958Y9TF8/dashboard/share/US_3ZDOULWV0FDGF7QG0N97WQZDB9OM6RACZPYY6ZUBAALRNVI5J7T1H4DZFQ7WFRJC?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\9d5bebb7-bd03-4da3-98a1-0a174a8a74f9",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\9d5bebb7-bd03-4da3-98a1-0a174a8a74f9\\evidence\\54de9633-6e86-4355-915b-fe342d4b74e8.evidence"
+      }
+    }
+  ],
+  "rowCounts": [
+    {
+      "table": "ai_prompt_overrides",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ai_provider_headers",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ai_provider_params",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ai_provider_settings",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "ai_providers",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "alembic_version",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "api_extras",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "categories",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "cookbooks",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "cookbooks_to_categories",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "cookbooks_to_tags",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "cookbooks_to_tools",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_data_exports",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_events_notifier_options",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_events_notifiers",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_meal_plan_rules",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_meal_plans",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_preferences",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "group_reports",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "group_to_categories",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "groups",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "household_preferences",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "households",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "households_to_ingredient_foods",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "households_to_recipes",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "households_to_tools",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ingredient_food_extras",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ingredient_foods",
+      "live": 4,
+      "copy": 4
+    },
+    {
+      "table": "ingredient_foods_aliases",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ingredient_foods_substitutions",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "ingredient_units",
+      "live": 2,
+      "copy": 2
+    },
+    {
+      "table": "ingredient_units_aliases",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "invite_tokens",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "long_live_tokens",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "multi_purpose_labels",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "notes",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "password_reset_tokens",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "plan_rules_to_categories",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "plan_rules_to_households",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "plan_rules_to_tags",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_actions",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_assets",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_comments",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_ingredient_ref_link",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_instructions",
+      "live": 4,
+      "copy": 4
+    },
+    {
+      "table": "recipe_note_ref_link",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_nutrition",
+      "live": 3,
+      "copy": 3
+    },
+    {
+      "table": "recipe_settings",
+      "live": 3,
+      "copy": 3
+    },
+    {
+      "table": "recipe_share_tokens",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipe_timeline_events",
+      "live": 3,
+      "copy": 3
+    },
+    {
+      "table": "recipes",
+      "live": 3,
+      "copy": 3
+    },
+    {
+      "table": "recipes_ingredients",
+      "live": 10,
+      "copy": 10
+    },
+    {
+      "table": "recipes_ingredients_substitutions",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipes_to_categories",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipes_to_tags",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "recipes_to_tools",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "report_entries",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "server_tasks",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "shopping_list_extras",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "shopping_list_item_extras",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "shopping_list_item_recipe_reference",
+      "live": 4,
+      "copy": 4
+    },
+    {
+      "table": "shopping_list_items",
+      "live": 4,
+      "copy": 4
+    },
+    {
+      "table": "shopping_list_recipe_reference",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "shopping_lists",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "shopping_lists_multi_purpose_labels",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "tags",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "tools",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "users",
+      "live": 1,
+      "copy": 1
+    },
+    {
+      "table": "users_to_recipes",
+      "live": 0,
+      "copy": 0
+    },
+    {
+      "table": "webhook_urls",
+      "live": 0,
+      "copy": 0
+    }
+  ],
+  "rowCountVerdict": "MATCH",
+  "creditsUsed": 90.1222405
+}

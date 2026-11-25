@@ -9,9 +9,9 @@
     "allowed": false
   },
   "lastProof": {
-    "id": "proof-20261125T184442Z",
-    "verdict": "LOSS",
-    "at": "2026-11-25T18:44:42.853Z",
-    "backupId": "20261125T183317Z"
+    "id": "proof-20261125T190032Z",
+    "verdict": "PROVEN",
+    "at": "2026-11-25T19:00:32.914Z",
+    "backupId": "20261125T184755Z"
   }
 }
