@@ -1,0 +1,33 @@
+{
+  "name": "ripcord-cli",
+  "version": "0.1.0",
+  "description": "Prove your app's data comes back before your AI agent can destroy it. Backups restored into a throwaway copy and checked by Kane CLI as a real user.",
+  "type": "module",
+  "bin": {
+    "ripcord": "dist/cli.js"
+  },
+  "main": "dist/cli.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9"
+  }
+}
