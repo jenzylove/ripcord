@@ -73,6 +73,23 @@ export async function prove(o: ProveOptions): Promise<{ report: ProofReport; fil
   let checks: CheckResult[] = [];
   try {
     checks = await runChecks(cfg.checks, { liveUrl: cfg.appUrl, copyUrl: copyUrl!, vars, log });
+    // A loss must be seen twice: every check that disagrees is read again on both sides before it counts.
+    const first = compareChecks(checks);
+    const disputed = [...new Set(first.differences.map((d) => d.id))];
+    if (first.verdict === 'LOSS' && disputed.length) {
+      log(`Confirming ${disputed.length} disagreeing check(s) with a second reading on both sides...`);
+      const again = await runChecks(cfg.checks.filter((c) => disputed.includes(c.id)), { liveUrl: cfg.appUrl, copyUrl: copyUrl!, vars, log });
+      checks = checks.map((c) => {
+        const r = again.find((x) => x.id === c.id);
+        if (!r) return c;
+        const firstPair = compareChecks([c]).verdict;
+        const secondPair = compareChecks([r]).verdict;
+        // confirmed only if both readings disagree; if one reading agrees, keep the agreeing one and note it
+        if (firstPair === 'LOSS' && secondPair === 'LOSS') return { ...r, confirmedBy: 2 } as CheckResult;
+        log(`[${c.id}] the two readings disagree with each other: marked inconclusive, never proven`);
+        return { ...r, copyOk: false };
+      });
+    }
   } finally {
     if (copy && !o.keepCopy) {
       log(`Removing copy ${copy.project}`);

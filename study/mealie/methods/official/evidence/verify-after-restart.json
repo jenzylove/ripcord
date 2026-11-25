@@ -1,0 +1,38 @@
+{
+ "base": "http://localhost:9964",
+ "http_about": 200,
+ "login_status": 200,
+ "recipe_count": 3,
+ "recipes": [
+  {
+   "slug": "party-jollof-rice",
+   "status": 200,
+   "servings": 6,
+   "ingredients": 4,
+   "image_field": "FuKQ",
+   "image_status": 200,
+   "image_type": "image/webp",
+   "image_bytes": 9566
+  },
+  {
+   "slug": "egusi-soup",
+   "status": 200,
+   "servings": 4,
+   "ingredients": 3,
+   "image_field": "KfUD",
+   "image_status": 200,
+   "image_type": "image/webp",
+   "image_bytes": 9762
+  },
+  {
+   "slug": "suya-skewers",
+   "status": 200,
+   "servings": 8,
+   "ingredients": 3,
+   "image_field": "F90r",
+   "image_status": 200,
+   "image_type": "image/webp",
+   "image_bytes": 10788
+  }
+ ]
+}

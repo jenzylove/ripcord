@@ -108,7 +108,7 @@ cfgOpt(program.command('guard').description('Claude Code hook: hold destructive 
   const c = classifyCommand(cmd, cfg.vault);
   if (o.post) {
     if (c.destructive) {
-      console.error(`Ripcord: "${cmd.slice(0, 120)}" (${c.reason}) just ran. Run \`npx ripcord verify\` now so Kane checks the live app still shows your users' data.`);
+      console.error(`Ripcord: "${cmd.slice(0, 120)}" (${c.reason}) just ran. Run \`ripcord verify\` now so Kane checks the live app still shows your users' data.`);
       process.exit(2);
     }
     process.exit(0);
@@ -133,7 +133,7 @@ program
     mkdirSync('.claude', { recursive: true });
     const s = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
     s.hooks = s.hooks ?? {};
-    const entry = (post: boolean) => ({ matcher: 'Bash|mcp__.*', hooks: [{ type: 'command', command: `npx ripcord guard${post ? ' --post' : ''}` }] });
+    const entry = (post: boolean) => ({ matcher: 'Bash|mcp__.*', hooks: [{ type: 'command', command: `ripcord guard${post ? ' --post' : ''}` }] });
     s.hooks.PreToolUse = [...(s.hooks.PreToolUse ?? []).filter((h: any) => !JSON.stringify(h).includes('ripcord guard')), entry(false)];
     s.hooks.PostToolUse = [...(s.hooks.PostToolUse ?? []).filter((h: any) => !JSON.stringify(h).includes('ripcord guard')), entry(true)];
     writeFileSync(file, JSON.stringify(s, null, 2));

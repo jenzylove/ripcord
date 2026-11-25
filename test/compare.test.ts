@@ -93,3 +93,18 @@ describe('compareChecks', () => {
     );
   });
 });
+
+import { sameValue } from '../src/compare.js';
+describe('sameValue', () => {
+  it('treats a bare number and the same number with a unit as equal', () => {
+    expect(sameValue('6', '6 servings')).toBe(true);
+    expect(sameValue('3', '3 ingredients')).toBe(true);
+  });
+  it('keeps different numbers different', () => {
+    expect(sameValue('6', '12 servings')).toBe(false);
+    expect(sameValue('2 results', '0 results')).toBe(false);
+  });
+  it('keeps different words different', () => {
+    expect(sameValue('real picture', 'missing')).toBe(false);
+  });
+});

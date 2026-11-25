@@ -1,0 +1,17 @@
+{
+  "lastBackup": {
+    "id": "20261125T183317Z",
+    "at": "2026-11-25T18:33:19.509Z"
+  },
+  "lastRiskyCommand": {
+    "command": "rm -rf C:/Users/LENOVO/ripcord/vault/mealie",
+    "at": "2026-11-25T18:43:34.839Z",
+    "allowed": false
+  },
+  "lastProof": {
+    "id": "proof-20261125T184442Z",
+    "verdict": "LOSS",
+    "at": "2026-11-25T18:44:42.853Z",
+    "backupId": "20261125T183317Z"
+  }
+}

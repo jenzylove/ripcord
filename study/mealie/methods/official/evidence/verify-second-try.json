@@ -1,0 +1,19 @@
+{
+ "base": "http://localhost:9964",
+ "http_about": 200,
+ "login_status": 200,
+ "recipes": [
+  {
+   "slug": "party-jollof-rice",
+   "status": 401
+  },
+  {
+   "slug": "egusi-soup",
+   "status": 401
+  },
+  {
+   "slug": "suya-skewers",
+   "status": 401
+  }
+ ]
+}

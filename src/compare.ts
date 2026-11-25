@@ -64,6 +64,20 @@ export function normalise(v: string): string {
   return s;
 }
 
+/** Two readings of the same value agree when they normalise equal, or when one is just the
+ * number of the other ("6" vs "6 servings"): same numbers, and the shorter text is contained in the longer. */
+export function sameValue(a: string, b: string): boolean {
+  const x = normalise(a);
+  const y = normalise(b);
+  if (x === y) return true;
+  const nums = (s: string) => (s.match(/\d+(?:\.\d+)?/g) ?? []).join(' ');
+  if (nums(x) !== '' && nums(x) === nums(y)) {
+    const [short, long] = x.length <= y.length ? [x, y] : [y, x];
+    if (long.includes(short)) return true;
+  }
+  return false;
+}
+
 /**
  * Rules:
  * - a check with liveOk=false or copyOk=false, a key missing/null on either side, or no keys at all
@@ -90,7 +104,7 @@ export function compareChecks(results: CheckResult[]): { verdict: Verdict; diffe
         gaps.push({ id: r.id, key, live: l, copy: c });
         continue;
       }
-      if (sideOk && normalise(l) !== normalise(c)) diffs.push({ id: r.id, key, live: l, copy: c });
+      if (sideOk && !sameValue(l, c)) diffs.push({ id: r.id, key, live: l, copy: c });
     }
   }
 

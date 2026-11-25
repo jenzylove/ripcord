@@ -1,0 +1,22 @@
+project: rclive
+composeFile: docker-compose.yml
+appUrl: http://localhost:9925
+appService: mealie
+loginVars:
+  email: RIPCORD_EMAIL
+  password: RIPCORD_PASSWORD
+databases:
+  - service: postgres
+    engine: postgres
+    user: mealie
+    db: mealie
+volumes:
+  - mealie-data
+vault: C:/Users/LENOVO/ripcord/vault/mealie
+checks:
+  - id: recipe_photo
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Jollof Rice and report whether the recipe photo shows a real picture (a plain orange image) or a missing or broken image placeholder."
+    read: [photo_status]
+  - id: recipe_servings
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Efo Riro and report the servings or yield shown and how many ingredients are listed."
+    read: [servings, ingredient_count]

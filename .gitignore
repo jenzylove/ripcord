@@ -16,3 +16,7 @@ Thumbs.db
 .vscode/
 .idea/
 dist-engine/
+study/**/backups/
+study/**/*.dump
+study/**/*.tar
+study/**/*.zip
