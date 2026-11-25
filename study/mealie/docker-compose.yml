@@ -1,0 +1,49 @@
+# Mealie with Postgres, from the official docs:
+# https://docs.mealie.io/documentation/getting-started/installation/postgres/
+services:
+  postgres:
+    image: postgres:17
+    restart: always
+    volumes:
+      - mealie-pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: mealie
+      POSTGRES_USER: mealie
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "mealie"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  mealie:
+    image: ghcr.io/mealie-recipes/mealie:v3.31.0
+    restart: always
+    ports:
+      - "9961:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - mealie-data:/app/data/
+    environment:
+      ALLOW_SIGNUP: "false"
+      PUID: 1000
+      PGID: 1000
+      TZ: Africa/Lagos
+      BASE_URL: http://localhost:9961
+      DB_ENGINE: postgres
+      POSTGRES_USER: mealie
+      POSTGRES_PASSWORD: mealie
+      POSTGRES_SERVER: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: mealie
+
+volumes:
+  mealie-data:
+    driver: local
+  mealie-pgdata:
+    driver: local

@@ -1,0 +1,5 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "outDir": "../dist-engine", "rootDir": "../src" },
+  "include": ["../src/types.ts", "../src/docker.ts", "../src/backup.ts", "../src/restore.ts", "../src/rowcount.ts"]
+}

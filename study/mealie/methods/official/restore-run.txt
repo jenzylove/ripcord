@@ -1,0 +1,24 @@
+ Network study-mealie-official_default Creating 
+ Volume study-mealie-official_mealie-pgdata Creating 
+ Volume study-mealie-official_mealie-data Creating 
+ Volume study-mealie-official_mealie-data Creating 
+ Network study-mealie-official_default Creating 
+ Volume study-mealie-official_mealie-pgdata Creating 
+ Volume study-mealie-official_mealie-data Created 
+ Volume study-mealie-official_mealie-data Created 
+ Volume study-mealie-official_mealie-pgdata Created 
+ Volume study-mealie-official_mealie-pgdata Created 
+ Network study-mealie-official_default Created 
+ Network study-mealie-official_default Created 
+ Container study-mealie-official-postgres-1 Creating 
+ Container study-mealie-official-postgres-1 Created 
+ Container study-mealie-official-mealie-1 Creating 
+ Container study-mealie-official-mealie-1 Created 
+ Container study-mealie-official-postgres-1 Starting 
+ Container study-mealie-official-postgres-1 Started 
+ Container study-mealie-official-postgres-1 Waiting 
+ Container study-mealie-official-postgres-1 Healthy 
+ Container study-mealie-official-mealie-1 Starting 
+ Container study-mealie-official-mealie-1 Started 
+{"message":"Restore successful","error":false}
+restored into study-mealie-official on http://localhost:9964

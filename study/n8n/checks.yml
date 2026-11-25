@@ -1,0 +1,17 @@
+- id: credential-opens
+  ask: >-
+    Log in with email {{email}} and password {{password}}. Open the Credentials page, open the credential named
+    "Acme Billing API key" and look at the form. Report credential_state: "opens normally" if the form shows its fields,
+    or "error" if an error message or red banner appears; and credential_error: the exact error text, or "none".
+  read: [credential_state, credential_error]
+- id: workflow-list
+  ask: >-
+    Log in with email {{email}} and password {{password}}. Open the Workflows page. Report workflow_count: the number of
+    workflows listed, and workflow_names: the exact names, comma separated.
+  read: [workflow_count, workflow_names]
+- id: workflow-credential-link
+  ask: >-
+    Log in with email {{email}} and password {{password}}. Open the workflow named "Invoice reminder" and double click the
+    node named "Fetch invoices". Report credential_selected: the credential name shown in the node's Credential field, or
+    "none" if it is empty or shows an error.
+  read: [credential_selected]
