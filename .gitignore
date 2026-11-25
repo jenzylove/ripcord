@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+coverage/
+/work/
+/vault/
+/runs/
+.testmuai/
+*.evidence
+*.pem
+*.key
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
