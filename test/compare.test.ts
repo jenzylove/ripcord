@@ -120,8 +120,11 @@ describe('polarity of presence answers', () => {
     expect(polarity('Weekly report digest')).toBe(null);
   });
   it('makes different wordings of the same answer agree', () => {
-    expect(sameValue('present', 'photo of food')).toBe(true);
-    expect(sameValue('food', 'loaded')).toBe(true);
-    expect(sameValue('present', 'No')).toBe(false);
+    expect(sameValue('present', 'photo of food', 'photo_state')).toBe(true);
+    expect(sameValue('food', 'loaded', 'assert')).toBe(true);
+    expect(sameValue('present', 'No', 'photo_status')).toBe(false);
+    // never for titles or names
+    expect(sameValue('Empty Bowl Soup', 'Broken Heart Pie', 'title')).toBe(false);
+    expect(sameValue('Food Truck Tacos', 'Photo Booth Pasta', 'recipe_name')).toBe(false);
   });
 });

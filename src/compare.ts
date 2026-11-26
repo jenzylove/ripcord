@@ -75,13 +75,14 @@ export function polarity(v: string): 'absent' | 'present' | null {
   return null;
 }
 
-export function sameValue(a: string, b: string): boolean {
+export function sameValue(a: string, b: string, key = ''): boolean {
   const x = normalise(a);
   const y = normalise(b);
   if (x === y) return true;
   const px = polarity(a);
   const py = polarity(b);
-  if (px && py) return px === py;
+  // only for state style answers (assertions and *_state / *_status keys), never for titles or names
+  if (px && py && /(^assert$|state|status)/.test(key)) return px === py;
   const nums = (s: string) => (s.match(/\d+(?:\.\d+)?/g) ?? []).join(' ');
   if (nums(x) !== '' && nums(x) === nums(y)) {
     const [short, long] = x.length <= y.length ? [x, y] : [y, x];
@@ -116,7 +117,7 @@ export function compareChecks(results: CheckResult[]): { verdict: Verdict; diffe
         gaps.push({ id: r.id, key, live: l, copy: c });
         continue;
       }
-      if (sideOk && !sameValue(l, c)) diffs.push({ id: r.id, key, live: l, copy: c });
+      if (sideOk && !sameValue(l, c, key)) diffs.push({ id: r.id, key, live: l, copy: c });
     }
   }
 

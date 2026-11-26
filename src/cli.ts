@@ -97,14 +97,36 @@ cfgOpt(program.command('rollback').description('restore the last proven backup i
 // Claude Code hook entry. Reads the hook JSON on stdin. Exit 2 blocks (PreToolUse) or tells the agent what to do next (PostToolUse).
 cfgOpt(program.command('guard').description('Claude Code hook: hold destructive commands until a proof exists')).option('--post', 'PostToolUse mode').action((o) => {
   let input: any = {};
-  try { input = JSON.parse(readFileSync(0, 'utf8') || '{}'); } catch { /* not JSON: allow */ }
+  try { input = JSON.parse(readFileSync(0, 'utf8') || '{}'); } catch { /* not JSON: nothing to judge */ }
   const tool = String(input.tool_name ?? '');
   const ti = input.tool_input ?? {};
-  const cmd = String(ti.command ?? ti.query ?? ti.sql ?? '');
+  // file tools: Ripcord's own state, config, hooks and the vault are off limits to the agent
+  const filePath = String(ti.file_path ?? ti.notebook_path ?? '').replace(/\\/g, '/').toLowerCase();
+  if (filePath && !o.post) {
+    if (/(\/|^)\.ripcord\/|ripcord\.ya?ml$|\.claude\/settings|ripcord-vault/.test(filePath)) {
+      console.error(`Ripcord blocked this edit: ${filePath} is Ripcord's own state, config, hooks or vault, which the agent may not change. (tool: ${tool})`);
+      process.exit(2);
+    }
+    process.exit(0);
+  }
+  const cmd = String(ti.command ?? ti.query ?? ti.sql ?? ti.statement ?? ti.script ?? '');
   if (!cmd) process.exit(0);
-  if (!existsSync(o.config)) process.exit(0);
-  const cfg = loadConfig(o.config);
-  const dir = dirname(resolve(o.config));
+  // find ripcord.yml from the hook's working directory upwards, so `cd sub` does not switch the guard off
+  let cfgPath = resolve(String(input.cwd ?? process.cwd()), o.config);
+  for (let d = dirname(cfgPath); !existsSync(cfgPath); ) {
+    const up = dirname(d);
+    if (up === d) break;
+    d = up;
+    cfgPath = join(d, 'ripcord.yml');
+  }
+  if (!existsSync(cfgPath)) process.exit(0);
+  let cfg: RipcordConfig;
+  try { cfg = loadConfig(cfgPath); } catch (e) {
+    // fail closed: if the config cannot be read, destructive commands are held
+    if (classifyCommand(cmd, '').destructive) { console.error(`Ripcord blocked this destructive command: ripcord.yml could not be read (${(e as Error).message}).`); process.exit(2); }
+    process.exit(0);
+  }
+  const dir = dirname(cfgPath);
   const c = classifyCommand(cmd, cfg.vault);
   if (o.post) {
     if (c.destructive) {
@@ -117,7 +139,9 @@ cfgOpt(program.command('guard').description('Claude Code hook: hold destructive 
     updateState(dir, { lastRiskyCommand: { command: cmd, at: new Date().toISOString(), allowed: true } });
     process.exit(0);
   }
-  const d = guardDecision(c, readState(dir), new Date());
+  let st;
+  try { st = readState(dir); } catch { st = {}; }
+  const d = guardDecision(c, st, new Date());
   if (c.destructive || c.touchesVault) updateState(dir, { lastRiskyCommand: { command: cmd, at: new Date().toISOString(), allowed: d.allow } });
   if (!d.allow) { console.error(`${d.message} (tool: ${tool})`); process.exit(2); }
   process.exit(0);
@@ -133,7 +157,7 @@ program
     mkdirSync('.claude', { recursive: true });
     const s = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : {};
     s.hooks = s.hooks ?? {};
-    const entry = (post: boolean) => ({ matcher: 'Bash|mcp__.*', hooks: [{ type: 'command', command: `ripcord guard${post ? ' --post' : ''}` }] });
+    const entry = (post: boolean) => ({ matcher: 'Bash|PowerShell|Edit|Write|MultiEdit|NotebookEdit|mcp__.*', hooks: [{ type: 'command', command: `ripcord guard${post ? ' --post' : ''}` }] });
     s.hooks.PreToolUse = [...(s.hooks.PreToolUse ?? []).filter((h: any) => !JSON.stringify(h).includes('ripcord guard')), entry(false)];
     s.hooks.PostToolUse = [...(s.hooks.PostToolUse ?? []).filter((h: any) => !JSON.stringify(h).includes('ripcord guard')), entry(true)];
     writeFileSync(file, JSON.stringify(s, null, 2));
@@ -141,9 +165,11 @@ program
   });
 
 cfgOpt(program.command('fix').description('on LOSS, let Claude Code fix ripcord.yml and prove again (max 3 rounds)')).action(async (o) => {
-  for (let round = 1; round <= 3; round++) {
+  const checksBefore = JSON.stringify(loadConfig(o.config).checks);
+  for (let round = 1; round <= 4; round++) {
     const { report, files } = await prove({ configPath: o.config });
     if (report.verdict === 'PROVEN') { console.log(`PROVEN after ${round - 1} fix round(s).`); process.exit(0); }
+    if (round === 4) break;
     if (report.verdict !== 'LOSS') { console.log('INCONCLUSIVE: not handing this to the agent; check Kane runs first.'); process.exit(3); }
     const prompt = [
       `Ripcord restored a backup of this app into a throwaway copy and Kane (a browser testing agent) found that a user would lose data.`,
@@ -155,6 +181,10 @@ cfgOpt(program.command('fix').description('on LOSS, let Claude Code fix ripcord.
     console.log(`Fix round ${round}: asking Claude Code to fix ${o.config}...`);
     const r = spawnSync('claude', ['-p', '--permission-mode', 'acceptEdits', '--allowedTools', 'Read,Edit,Glob', '--output-format', 'text'], { input: prompt, stdio: ['pipe', 'pipe', 'inherit'], encoding: 'utf8', shell: process.platform === 'win32' });
     console.log(r.stdout?.trim());
+    // the agent may change what is backed up, never what is checked
+    let after = '';
+    try { after = JSON.stringify(loadConfig(o.config).checks); } catch (e) { console.log(`ripcord.yml is invalid after the fix: ${(e as Error).message}`); process.exit(1); }
+    if (after !== checksBefore) { console.log('The agent changed the checks in ripcord.yml. That is not allowed; stopping.'); process.exit(1); }
   }
   console.log('Still not PROVEN after 3 rounds.');
   process.exit(1);

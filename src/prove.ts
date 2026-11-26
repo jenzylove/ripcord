@@ -97,7 +97,11 @@ export async function prove(o: ProveOptions): Promise<{ report: ProofReport; fil
     }
   }
 
-  const { verdict, differences } = compareChecks(checks);
+  const cmp = compareChecks(checks);
+  // rows that did not come back are a loss too, whatever Kane saw
+  const lostRows = rowCounts.filter((r) => r.copy < r.live);
+  const verdict = lostRows.length ? 'LOSS' : cmp.verdict;
+  const differences = [...cmp.differences, ...lostRows.map((r) => ({ id: 'row_count', key: r.table, live: String(r.live), copy: String(r.copy) }))];
   const credits = checks.reduce((s, c) => s + (c.liveRun?.credits ?? 0) + (c.copyRun?.credits ?? 0), 0);
   const report: ProofReport = {
     id: `proof-${stamp()}`,

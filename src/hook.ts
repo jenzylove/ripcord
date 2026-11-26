@@ -32,7 +32,7 @@ function segments(cmd: string): string[] {
   return out.map((s) => s.trim()).filter(Boolean);
 }
 
-const DATA_MARKERS = ['data', 'volumes', 'uploads', 'pgdata'];
+const DATA_MARKERS = ['data', 'volumes', 'uploads', 'pgdata', 'storage', 'media', 'postgresql', 'mysql', 'mongo', 'redis', 'ripcord-vault'];
 
 function rmTargetsData(seg: string, vault: string): string | null {
   const m = /(^|\s)rm\s+(.*)$/.exec(seg);
@@ -62,8 +62,20 @@ function deleteWithoutWhere(s: string): boolean {
 }
 
 function classifySegment(seg: string, vault: string): string | null {
-  // git and npm are never destructive for our purposes (commit messages may mention SQL)
-  if (/^(git|npm)\b/.test(seg)) return null;
+  // package scripts that reset or drop databases
+  if (/^(npm|pnpm|yarn|bun)\b/.test(seg) && /\b(db:(reset|drop|wipe|fresh)|migrate:(reset|fresh|refresh)|reset-db|drop-db)\b/.test(seg)) return 'package script that resets the database';
+  // git and other npm commands are not destructive for our purposes (commit messages may mention SQL)
+  if (/^(git|npm|pnpm|yarn|bun)\b/.test(seg)) return null;
+
+  if (/\bwhere\s+(1\s*=\s*1|true)\b/.test(seg) && /\bdelete\s+from\b/.test(seg)) return 'DELETE with an always true WHERE';
+  if (/\bupdate\s+\S+\s+set\b/.test(seg) && !/\bwhere\b/.test(seg)) return 'UPDATE without WHERE';
+  if (/\bdropdatabase\s*\(|\.drop\s*\(\s*\)|\bdeletemany\s*\(\s*\{\s*\}\s*\)/.test(seg)) return 'MongoDB drop or delete all';
+  if (/\bredis-cli\b/.test(seg) && /\bflush(all|db)\b/.test(seg)) return 'redis flush';
+  if (/\bdocker\s+(container\s+)?rm\b/.test(seg) && /(\s-[a-z]*v[a-z]*\b|\s--volumes\b)/.test(seg)) return 'docker rm with volumes';
+  if (/\bdocker([ -])compose\b/.test(seg) && /\brm\b/.test(seg) && /(\s-[a-z]*v[a-z]*\b|\s--volumes\b)/.test(seg)) return 'docker compose rm with volumes';
+  if (/\bfind\b/.test(seg) && /(\s-delete\b|-exec\s+rm\b)/.test(seg)) return 'find that deletes files';
+  if (/\b(remove-item|ri)\b/.test(seg) && /-recurse\b/.test(seg)) return 'Remove-Item -Recurse';
+  if (/(^|\s)(rd|rmdir)\s+\/s\b/.test(seg)) return 'rd /s';
 
   if (/\bdrop\s+(table|database|schema)\b/.test(seg)) return 'SQL DROP statement';
   if (/\btruncate\b/.test(seg)) return 'TRUNCATE';
@@ -92,7 +104,12 @@ export function classifyCommand(cmd: string, vaultPath: string): Classified {
   const lower = cmd.toLowerCase();
   const slash = (s: string) => s.toLowerCase().replace(/\\/g, '/');
   const vault = vaultPath ? slash(vaultPath).replace(/\/+$/, '') : '';
-  const touchesVault = vault !== '' && slash(cmd).includes(vault);
+  const s = slash(cmd);
+  // the vault, by its configured path or by its default folder name; and Ripcord's own state, config and hooks
+  // Ripcord's own state, config and hooks may be read but never written by the agent
+  const writes = /(>|\btee\b|\bsed\s+-i|\brm\b|\bmv\b|\bcp\b|\bdel\b|\berase\b|remove-item|set-content|add-content|out-file|\btruncate\b|\bchmod\b|\bln\b)/.test(s);
+  const ownFiles = /(^|[\s/'"])\.ripcord\//.test(s) || /ripcord\.ya?ml/.test(s) || /\.claude\/settings/.test(s);
+  const touchesVault = (vault !== '' && s.includes(vault)) || s.includes('ripcord-vault') || (ownFiles && writes);
 
   let reason = '';
   for (const seg of segments(lower)) {
@@ -105,7 +122,7 @@ export function classifyCommand(cmd: string, vaultPath: string): Classified {
   return {
     destructive: reason !== '',
     touchesVault,
-    reason: reason || (touchesVault ? 'command touches the Ripcord backup vault' : ''),
+    reason: reason || (touchesVault ? 'command touches the Ripcord vault, state, config or hooks' : ''),
   };
 }
 

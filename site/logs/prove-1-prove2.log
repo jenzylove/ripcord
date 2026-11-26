@@ -1,0 +1,18 @@
+Backing up the live stack...
+Backup 20261125T184755Z: 2 files in C:/Users/LENOVO/ripcord/vault/mealie
+Restoring a throwaway copy...
+Copy rc-copy-20261125t184755z answering at http://localhost:9930
+Kane reads 2 checks on the live app and on the copy (one run at a time)...
+[recipe_photo] live  http://localhost:9925
+[recipe_photo] live  passed {"photo_status":"photo of food"}
+[recipe_photo] copy  http://localhost:9930
+[recipe_photo] copy  passed {"photo_status":"photo of food"}
+[recipe_servings] live  http://localhost:9925
+[recipe_servings] live  passed {"servings":"6 servings","ingredient_count":"3"}
+[recipe_servings] copy  http://localhost:9930
+[recipe_servings] copy  passed {"servings":"6 servings","ingredient_count":"3","servings_2":"6 servings","ingredient_count_2":"3"}
+Removing copy rc-copy-20261125t184755z
+
+PROVEN
+Row counts: MATCH
+Report: C:\Users\LENOVO\ripcord\demo\mealie\.ripcord\reports\proof-20261125T190032Z.html

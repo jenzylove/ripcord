@@ -1,0 +1,79 @@
+{
+  "title": "ripcord prove on Mealie",
+  "recordedAt": "Nov 25 2026, 18:47 UTC",
+  "fullLog": "logs/prove-1-prove2.log",
+  "lines": [
+    {
+      "text": "$ ripcord prove",
+      "wait": 700
+    },
+    {
+      "text": "Backing up the live stack...",
+      "wait": 350
+    },
+    {
+      "text": "Backup 20261125T184755Z: 2 files in vault/mealie",
+      "wait": 350
+    },
+    {
+      "text": "Restoring a throwaway copy...",
+      "wait": 350
+    },
+    {
+      "text": "Copy rc-copy-20261125t184755z answering at http://localhost:9930",
+      "wait": 350
+    },
+    {
+      "text": "Kane reads 2 checks on the live app and on the copy (one run at a time)...",
+      "wait": 350
+    },
+    {
+      "text": "[recipe_photo] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] live  passed {\"photo_status\":\"photo of food\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_photo] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] copy  passed {\"photo_status\":\"photo of food\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_servings] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_servings] live  passed {\"servings\":\"6 servings\",\"ingredient_count\":\"3\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_servings] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_servings] copy  passed {\"servings\":\"6 servings\",\"ingredient_count\":\"3\",\"servings_2\":\"6 servings\",\"ingredient_count_2\":\"3\"}",
+      "wait": 500
+    },
+    {
+      "text": "Removing copy rc-copy-20261125t184755z",
+      "wait": 350
+    },
+    {
+      "text": "PROVEN",
+      "wait": 900
+    },
+    {
+      "text": "Row counts: MATCH",
+      "wait": 350
+    },
+    {
+      "text": "Report: demo\\mealie\\.ripcord\\reports\\proof-20261125T190032Z.html",
+      "wait": 350
+    }
+  ]
+}
