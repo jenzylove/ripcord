@@ -683,7 +683,7 @@ function renderGL(t){
   const g=d.go?clamp((t-11.8)/0.5):0;
   stripMat.color.setHex(d.go?0x3df29a:0x2a2e2c);
   glow.intensity=g*2.2;
-  const sh=(t>2.5&&t<2.95)?0.05*(1-seg(t,2.5,2.95))*Math.sin(t*95):0;
+  const sh=0;
   camera.position.set(camBase.x+sh,camBase.y+sh*0.6,camBase.z);
   camera.lookAt(lookAt);
   renderer.render(scene,camera);
