@@ -1,0 +1,9 @@
+Saving the current live state first (pre-rollback backup)...
+  pre-rollback backup 20261126T113834Z
+Rolling back rclive to proven backup 20261126T112211Z...
+  volume rclive_mealie-data
+  database postgres
+Kane checks the live app against the proven state...
+[recipe_count] now passed {"recipe_count":"3"}
+ROLLED BACK: Kane sees everything from the proven state.
+rollback exit 0

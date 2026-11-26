@@ -1,0 +1,283 @@
+{
+  "title": "Claude Code meets the Ripcord gate",
+  "recordedAt": "Nov 26 2026, 11:21 UTC",
+  "fullLog": "logs/gate-session.jsonl",
+  "lines": [
+    {
+      "text": "$ claude -p \"Clear out all recipes from the Mealie database using psql. A safety tool called Ripcord guards destructive commands here; if it blocks you, follow its instructions.\"",
+      "wait": 900
+    },
+    {
+      "text": "Claude: ls -a && docker compose -p rclive exec -T postgres psql -U mealie -d mealie -c \"DELETE FROM recipes;\"",
+      "wait": 900
+    },
+    {
+      "text": "  HOOK: Ripcord blocked this destructive command (DELETE FROM without WHERE). No backup exists yet. Run `ripcord backup` and then `ripcord prove`. (tool: Bash)",
+      "wait": 300
+    },
+    {
+      "text": "Claude: ripcord backup",
+      "wait": 900
+    },
+    {
+      "text": "  Backup 20261126T112204Z: db-postgres.dump (236919 bytes), vol-mealie-data.tar (3405824 bytes)",
+      "wait": 300
+    },
+    {
+      "text": "Claude: ripcord prove",
+      "wait": 900
+    },
+    {
+      "text": "  Backing up the live stack...",
+      "wait": 300
+    },
+    {
+      "text": "  Backup 20261126T112211Z: 2 files in vault/mealie-gate",
+      "wait": 300
+    },
+    {
+      "text": "  Restoring a throwaway copy...",
+      "wait": 300
+    },
+    {
+      "text": "  Copy rc-copy-20261126t112211z answering at http://localhost:9930",
+      "wait": 300
+    },
+    {
+      "text": "  Kane reads 1 checks on the live app and on the copy (one run at a time)...",
+      "wait": 300
+    },
+    {
+      "text": "  [recipe_count] live  http://localhost:9925",
+      "wait": 300
+    },
+    {
+      "text": "  [recipe_count] live  passed {\"recipe_count\":\"3\"}",
+      "wait": 300
+    },
+    {
+      "text": "  [recipe_count] copy  http://localhost:9930",
+      "wait": 300
+    },
+    {
+      "text": "  [recipe_count] copy  passed {\"recipe_count\":\"3\"}",
+      "wait": 300
+    },
+    {
+      "text": "  Removing copy rc-copy-20261126t112211z",
+      "wait": 300
+    },
+    {
+      "text": "  PROVEN",
+      "wait": 1400
+    },
+    {
+      "text": "  Row counts: MATCH",
+      "wait": 300
+    },
+    {
+      "text": "  Report: demo\\gate\\.ripcord\\reports\\proof-20261126T113448Z.html",
+      "wait": 300
+    },
+    {
+      "text": "Claude: Backup is proven, so I'm retrying the recipe delete now.",
+      "wait": 900
+    },
+    {
+      "text": "Claude: docker compose -p rclive exec -T postgres psql -U mealie -d mealie -c \"DELETE FROM recipes;\" && docker compose -p rclive exec -T postgres psql -U mealie -d meal",
+      "wait": 900
+    },
+    {
+      "text": "  Exit code 1",
+      "wait": 300
+    },
+    {
+      "text": "  ERROR:  update or delete on table \"recipes\" violates foreign key constraint \"recipe_nutrition_recipe_id_fkey\" on table \"recipe_nutrition\"",
+      "wait": 300
+    },
+    {
+      "text": "  DETAIL:  Key (id)=(7bbe54c3-ef5a-4d31-b316-bfa7348c5428) is still referenced from table \"recipe_nutrition\".",
+      "wait": 300
+    },
+    {
+      "text": "Claude: docker compose -p rclive exec -T postgres psql -U mealie -d mealie -c \"SELECT conrelid::regclass t, a.attname col, confdeltype FROM pg_constraint c JOIN pg_attr",
+      "wait": 900
+    },
+    {
+      "text": "   recipe_share_tokens                 | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipes_to_categories               | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipes_to_tags                     | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipes_to_tools                    | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   shopping_list_recipe_reference      | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   users                               | owned_recipes_id     | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipe_comments                     | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipes_ingredients                 | referenced_recipe_id | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipes_ingredients                 | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   shopping_list_item_recipe_reference | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   recipe_timeline_events              | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   users_to_recipes                    | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "   households_to_recipes               | recipe_id            | a",
+      "wait": 300
+    },
+    {
+      "text": "  (20 rows)",
+      "wait": 300
+    },
+    {
+      "text": "Claude: docker compose -p rclive exec -T postgres psql -U mealie -d mealie -v ON_ERROR_STOP=1 <<'EOF' ...",
+      "wait": 900
+    },
+    {
+      "text": "  DELETE 4",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 0",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 10",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 3",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 0",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 0",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 0",
+      "wait": 300
+    },
+    {
+      "text": "  UPDATE 0",
+      "wait": 300
+    },
+    {
+      "text": "  DELETE 3",
+      "wait": 300
+    },
+    {
+      "text": "  COMMIT",
+      "wait": 300
+    },
+    {
+      "text": "   count ",
+      "wait": 300
+    },
+    {
+      "text": "  -------",
+      "wait": 300
+    },
+    {
+      "text": "       0",
+      "wait": 300
+    },
+    {
+      "text": "  (1 row)",
+      "wait": 300
+    },
+    {
+      "text": "Claude: All recipes are gone from the Mealie database: `SELECT count(*) FROM recipes` now returns 0. There were 3 recipes.",
+      "wait": 900
+    },
+    {
+      "text": "$ ripcord verify",
+      "wait": 1200
+    },
+    {
+      "text": "[recipe_count] now passed {\"recipe_count\":\"0\"}",
+      "wait": 900
+    },
+    {
+      "text": "DATA CHANGED OR MISSING since proof proof-20261126T113448Z:",
+      "wait": 1400
+    },
+    {
+      "text": "  recipe_count.recipe_count: proven \"3\" now \"0\"",
+      "wait": 350
+    },
+    {
+      "text": "If this was not intended, run: ripcord rollback (restores backup 20261126T112211Z).",
+      "wait": 350
+    },
+    {
+      "text": "$ ripcord rollback --yes",
+      "wait": 1200
+    },
+    {
+      "text": "Saving the current live state first (pre-rollback backup)...",
+      "wait": 350
+    },
+    {
+      "text": "  pre-rollback backup 20261126T113834Z",
+      "wait": 350
+    },
+    {
+      "text": "Rolling back rclive to proven backup 20261126T112211Z...",
+      "wait": 350
+    },
+    {
+      "text": "  volume rclive_mealie-data",
+      "wait": 350
+    },
+    {
+      "text": "  database postgres",
+      "wait": 350
+    },
+    {
+      "text": "Kane checks the live app against the proven state...",
+      "wait": 350
+    },
+    {
+      "text": "[recipe_count] now passed {\"recipe_count\":\"3\"}",
+      "wait": 900
+    },
+    {
+      "text": "ROLLED BACK: Kane sees everything from the proven state.",
+      "wait": 1400
+    }
+  ]
+}

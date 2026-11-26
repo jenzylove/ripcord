@@ -1,0 +1,5 @@
+[recipe_count] now passed {"recipe_count":"0"}
+DATA CHANGED OR MISSING since proof proof-20261126T113448Z:
+  recipe_count.recipe_count: proven "3" now "0"
+If this was not intended, run: ripcord rollback (restores backup 20261126T112211Z).
+verify exit 1
