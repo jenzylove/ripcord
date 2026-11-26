@@ -7,7 +7,7 @@ Ripcord restores your backup into a throwaway copy, has <a href="https://www.tes
 
 <p align="center">
 <a href="https://ripcord-eight.vercel.app"><img src="https://img.shields.io/badge/live-ripcord--eight.vercel.app-0c9a53?style=flat-square" alt="Live site"></a>
-<a href="https://ripcord-eight.vercel.app/demo.html"><img src="https://img.shields.io/badge/demo-3%20min%20video-111312?style=flat-square" alt="Demo video"></a>
+<a href="https://youtu.be/NRiflN1UKdc"><img src="https://img.shields.io/badge/demo-3%20min%20video-111312?style=flat-square" alt="Demo video"></a>
 <a href="https://ripcord-eight.vercel.app/proof.html"><img src="https://img.shields.io/badge/proof-real%20Kane%20runs-111312?style=flat-square" alt="Proof"></a>
 <img src="https://img.shields.io/badge/tests-134%20passing-0c9a53?style=flat-square" alt="134 tests">
 <img src="https://img.shields.io/badge/built%20for-TestMu%20AI%20KaneCLI%20Hackathon-5b625e?style=flat-square" alt="Built for the TestMu AI KaneCLI Hackathon">
@@ -22,7 +22,7 @@ No sign in, no install. Every link below is a real run, replayed from its log.
 
 | # | Open | What you see | Time |
 |---|---|---|---|
-| 1 | [Demo video](https://ripcord-eight.vercel.app/demo.html) | The incident, then three real proofs, then how it plugs in | 3 min |
+| 1 | [Demo video](https://youtu.be/NRiflN1UKdc) | The incident, then three real proofs, then how it plugs in | 3 min |
 | 2 | [Gate replay](https://ripcord-eight.vercel.app/replay.html?run=gate) | A real Claude Code session: delete blocked, backup proven by Kane, delete runs, Kane sees 3 recipes become 0, rollback brings 3 back | 1 min |
 | 3 | [Fix loop replay](https://ripcord-eight.vercel.app/replay.html?run=fix) | Kane catches a missing photo in the restored copy, Claude Code fixes only `ripcord.yml`, Kane proves it | 1 min |
 | 4 | [Evidence](https://ripcord-eight.vercel.app/evidence.html) | Kane's own screenshots: every table restored, photo and attachment still gone (Mealie, Vikunja) | 1 min |
