@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ripcord evidence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f1ea;--ink:#17171a;--mute:#6b6b70;--org:#ff5a1f;--line:#d8d5cb}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--ink:#ecebe6;--mute:#9a9aa2;--line:#2b2b2b}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif}
+main{max-width:1240px;margin:0 auto;padding:28px 16px 60px}
+.tag{font:600 12px 'IBM Plex Mono',monospace;color:var(--org);text-transform:uppercase;letter-spacing:1px}
+h1{font:800 44px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:6px 0 8px}
+h2{font:800 30px/1.05 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:40px 0 6px}
+p{max-width:820px;margin:0 0 14px}.mute{color:var(--mute);font-size:14px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+figure{margin:0}figure img{width:100%;display:block;border:2px solid var(--ink)}
+figcaption{font:600 13px 'IBM Plex Mono',monospace;margin-top:6px}
+.bad{color:var(--org)}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div class="tag">Kane's own screenshots, from its evidence packs</div>
+<h1>Every row came back. This did not.</h1>
+<p>Each pair is the same check, run by Kane CLI on the live app and on a copy restored from a common "dump the database" backup. Row counts matched on every table in both cases. Screenshots are the assertion step of each Kane run, copied unedited from the evidence pack.</p>
+
+<h2>Mealie: the recipe photo</h2>
+<p class="mute">Mealie 3.31 with Postgres. Same recipe, same servings, same ingredients. All 70 tables matched.</p>
+<div class="pair">
+  <figure><img src="evidence/mealie-guide-live.jpg" alt="Live Mealie recipe page with its photo"><figcaption>Live app: assertion passed, the photo is there</figcaption></figure>
+  <figure><img src="evidence/mealie-guide-copy.jpg" alt="Restored Mealie recipe page without a photo"><figcaption class="bad">Restored copy: assertion failed, no photo</figcaption></figure>
+</div>
+
+<h2>Vikunja: the task attachment</h2>
+<p class="mute">Vikunja 2.8 with Postgres. The attachment row came back, so the file is still listed. All 43 tables matched.</p>
+<div class="pair">
+  <figure><img src="evidence/vikunja-guide-live.jpg" alt="Live Vikunja task with its attachment"><figcaption>Live app: assertion passed, the attachment opens</figcaption></figure>
+  <figure><img src="evidence/vikunja-guide-copy.jpg" alt="Restored Vikunja task showing The file does not exist"><figcaption class="bad">Restored copy: assertion failed, "The file does not exist."</figcaption></figure>
+</div>
+<p class="mute" style="margin-top:24px">All cases and runs: <a href="proof.html">proof page</a>.</p>
+</main>
+</body>
+</html>
