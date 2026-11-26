@@ -3,7 +3,8 @@
 export interface Check {
   id: string;
   ask: string;     // plain English objective for Kane, ends with the values to report
-  read: string[];  // value names Kane must return (snake_case)
+  read: string[];  // value names Kane must return (snake_case); may be empty when assert is set
+  assert?: string; // optional: a condition Kane must verify; its pass/fail becomes the value 'assert' (PASS or FAIL)
 }
 
 export interface DatabaseSpec {

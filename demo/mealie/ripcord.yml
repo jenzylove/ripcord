@@ -15,8 +15,8 @@ volumes:
 vault: C:/Users/LENOVO/ripcord/vault/mealie
 checks:
   - id: recipe_photo
-    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Jollof Rice and look at the large recipe photo and report whether it shows a photo of food or a missing or broken image placeholder."
-    read: [photo_status]
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Jollof Rice and look at the large recipe photo."
+    assert: "the large recipe photo shows a photo of food, not a missing, blank or broken image placeholder"
   - id: recipe_servings
-    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Efo Riro and report the servings or yield shown and how many ingredients are listed."
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Efo Riro and Report the servings number shown (digits only) and the number of ingredients listed (digits only)."
     read: [servings, ingredient_count]

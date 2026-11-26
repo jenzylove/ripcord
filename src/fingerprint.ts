@@ -12,22 +12,39 @@ export interface FingerprintOptions {
 
 // Kane is told the exact names to report so the values come back as memory entries we can read.
 export function objectiveFor(check: Check): string {
-  const names = check.read.map((k) => `{{${k}}}`).join(', ');
-  return `${check.ask.trim()} Save the answers into these variables: ${names}.`;
+  const parts = [check.ask.trim()];
+  if (check.read.length) parts.push(`Save the answers into these variables: ${check.read.map((k) => `{{${k}}}`).join(', ')}.`);
+  if (check.assert) parts.push(`Finally verify this and fail the test if it is not true: ${check.assert}`);
+  return parts.join(' ');
 }
 
-function pick(run: KaneRun, keys: string[]): Record<string, string | null> {
+/** Keys compared for a check: its read values, plus 'assert' when the check has an assertion. */
+export function keysFor(check: Check): string[] {
+  return check.assert ? [...check.read, 'assert'] : check.read;
+}
+
+/** The assertion outcome as a value: PASS, FAIL (Kane's check failed), or null (the run failed for another reason, so nothing is known). */
+export function assertValue(run: KaneRun): string | null {
+  if (run.status === 'passed') return 'PASS';
+  if (run.reasonCode.startsWith('assertion_error.') && run.reasonCode !== 'assertion_error.step_not_achievable') return 'FAIL';
+  return null;
+}
+
+export function pick(check: Check, run: KaneRun): Record<string, string | null> {
   const out: Record<string, string | null> = {};
-  for (const k of keys) {
+  for (const k of check.read) {
     const v = run.values[k];
     out[k] = v === undefined || v === null || v === '' ? null : v;
   }
+  if (check.assert) out.assert = assertValue(run);
   return out;
 }
 
-function ok(run: KaneRun, keys: string[]): boolean {
+export function ok(check: Check, run: KaneRun): boolean {
+  const v = pick(check, run);
+  if (check.assert) return v.assert !== null && check.read.every((k) => v[k] !== null);
   if (run.status !== 'passed') return false;
-  return keys.every((k) => typeof run.values[k] === 'string' && run.values[k].length > 0);
+  return check.read.every((k) => v[k] !== null);
 }
 
 export async function runChecks(checks: Check[], o: FingerprintOptions): Promise<CheckResult[]> {
@@ -43,10 +60,10 @@ export async function runChecks(checks: Check[], o: FingerprintOptions): Promise
     log(`[${check.id}] copy  ${copyRun.status} ${JSON.stringify(copyRun.values)}`);
     results.push({
       id: check.id,
-      live: pick(liveRun, check.read),
-      copy: pick(copyRun, check.read),
-      liveOk: ok(liveRun, check.read),
-      copyOk: ok(copyRun, check.read),
+      live: pick(check, liveRun),
+      copy: pick(check, copyRun),
+      liveOk: ok(check, liveRun),
+      copyOk: ok(check, copyRun),
       liveRun,
       copyRun,
     });

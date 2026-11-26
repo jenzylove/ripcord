@@ -122,14 +122,15 @@ export function loadConfig(file: string): RipcordConfig {
     if (seen.has(id)) fail(`${p}id`, `"${id}" is used twice`);
     seen.add(id);
     const ask = str(c, 'ask', p);
-    const read = strList(c.read, `${p}read`);
-    if (read.length === 0) fail(`${p}read`, 'must list at least one value name');
+    const read = c.read === undefined ? [] : strList(c.read, `${p}read`);
+    const assertText = typeof c.assert === 'string' && c.assert.trim() ? c.assert.trim() : undefined;
+    if (read.length === 0 && !assertText) fail(`${p}read`, 'must list at least one value name (or set assert)');
     read.forEach((r, j) => {
       if (!/^[a-z][a-z0-9_]*$/.test(r)) {
         fail(`${p}read[${j}]`, `"${r}" must be snake_case (lower case letters, digits, underscores)`);
       }
     });
-    return { id, ask, read };
+    return assertText ? { id, ask, read, assert: assertText } : { id, ask, read };
   });
 
   return { project, composeFile, appUrl, appService, loginVars, databases, volumes, vault, checks };

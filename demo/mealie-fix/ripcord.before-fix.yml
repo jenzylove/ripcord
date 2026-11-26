@@ -1,0 +1,21 @@
+project: rclive
+composeFile: docker-compose.yml
+appUrl: http://localhost:9925
+appService: mealie
+loginVars:
+  email: RIPCORD_EMAIL
+  password: RIPCORD_PASSWORD
+databases:
+  - service: postgres
+    engine: postgres
+    user: mealie
+    db: mealie
+volumes: []
+vault: C:/Users/LENOVO/ripcord/vault/mealie-fix
+checks:
+  - id: recipe_photo
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Jollof Rice and look at the large recipe photo."
+    assert: "the large recipe photo shows a photo of food, not a missing, blank or broken image placeholder"
+  - id: recipe_servings
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named Efo Riro and Report the servings number shown (digits only) and the number of ingredients listed (digits only)."
+    read: [servings, ingredient_count]

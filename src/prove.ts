@@ -5,7 +5,7 @@ import { loadConfig } from './config.js';
 import { createBackup } from './backup.js';
 import { restoreCopy, destroyCopy } from './restore.js';
 import { countRows, compareRowCounts } from './rowcount.js';
-import { runChecks, objectiveFor } from './fingerprint.js';
+import { runChecks, objectiveFor, pick, ok } from './fingerprint.js';
 import { runKane } from './kane.js';
 import { compareChecks } from './compare.js';
 import { writeReport } from './report.js';
@@ -131,9 +131,8 @@ export async function verify(configPath: string, lastReport: ProofReport, log = 
     const before = lastReport.checks.find((x) => x.id === check.id);
     const run = await runKane({ objective: objectiveFor(check), url: cfg.appUrl, vars });
     log(`[${check.id}] now ${run.status} ${JSON.stringify(run.values)}`);
-    const now: Record<string, string | null> = {};
-    for (const k of check.read) now[k] = run.values[k] || null;
-    const nowOk = run.status === 'passed' && check.read.every((k) => !!run.values[k]);
+    const now = pick(check, run);
+    const nowOk = ok(check, run);
     results.push({ id: check.id, live: before?.live ?? {}, copy: now, liveOk: !!before?.liveOk, copyOk: nowOk, copyRun: run });
   }
   return compareChecks(results);
