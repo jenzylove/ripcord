@@ -99,3 +99,32 @@ video{width:100%;max-width:960px;background:#000;border:3px solid var(--rule);di
  .sbs{grid-template-columns:1fr}
  details.faq summary,.case summary{font-size:22px}
 }
+
+/* hero: copy beside a real result */
+.hero{padding:40px 0 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,4.6vw,60px);line-height:.98}
+.hero h1 em{display:block;margin-top:8px}
+.hero .lead{font-size:18px;max-width:520px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-block;background:var(--orange);color:#fff;font:700 15px/1 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.04em;padding:14px 18px;border:2px solid var(--orange);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.proofcard{margin:0;background:#141414;color:#e8e6df;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--orange)}
+.pc-head{font:600 12px 'IBM Plex Mono',monospace;padding:10px 14px;border-bottom:1px solid #2b2b2b;display:flex;align-items:center;gap:8px}
+.pc-dot{width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.pc-shots{display:grid;grid-template-columns:1fr;gap:2px;background:#2b2b2b}
+.pc-shots div{position:relative;background:#141414}
+.pc-shots img{display:block;width:100%;height:auto}
+.pc-label{position:absolute;left:8px;bottom:8px;background:#141414;color:#e8e6df;font:600 11px 'IBM Plex Mono',monospace;padding:3px 7px;text-transform:uppercase}
+.pc-label.bad{background:var(--orange);color:#fff}
+.pc-rows{padding:12px 14px;display:grid;gap:8px}
+.pc-rows div{display:grid;grid-template-columns:130px 1fr auto;gap:10px;align-items:center;font:13px 'IBM Plex Mono',monospace}
+.pc-rows .k{color:#9a9890}
+.chip{border:1.5px solid #e8e6df;padding:2px 8px;font-weight:600;font-size:12px}
+.chip.hot{background:var(--orange);border-color:var(--orange);color:#fff}
+.proofcard figcaption{font:12px 'IBM Plex Mono',monospace;color:#9a9890;padding:0 14px 12px}
+.proofcard figcaption a{color:#e8e6df}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.pc-rows div{grid-template-columns:1fr auto}.pc-rows .k{grid-column:1/-1}}
+
+.pc-rows .v,.pc-rows .k{border:0 !important;background:none !important;padding:0 !important;color:inherit}
+.pc-rows .k{color:#9a9890 !important}
