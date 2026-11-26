@@ -62,11 +62,15 @@
   }
   function lossText(c) {
     var d = c.differences || [];
-    if (c.kaneVerdict === 'INCONCLUSIVE') return 'Not decided, a Kane run failed or read nothing';
-    if (!d.length) return c.kaneVerdict === 'PROVEN' ? 'Nothing lost' : 'No differences listed';
-    return d.map(function (x) {
-      return x.check + (x.key ? ' (' + x.key + ')' : '') + ': live shows ' + show(x.live) + ', copy shows ' + show(x.copy);
+    var lines;
+    if (c.kaneVerdict === 'INCONCLUSIVE') lines = ['Kane: not decided, nothing claimed'];
+    else if (!d.length) lines = [c.kaneVerdict === 'PROVEN' ? 'Kane: nothing lost' : 'No differences listed'];
+    else lines = d.map(function (x) {
+      var what = x.key === 'assert' ? (x.check.replace(/_/g, ' ') + ': true on the live app, false in the restored copy') : (x.check + ' ' + x.key + ': live ' + show(x.live) + ', copy ' + show(x.copy));
+      return 'Kane: ' + what;
     });
+    if (c.note) lines.push(c.note);
+    return lines;
   }
   function td(content) {
     var t = el('td');
