@@ -4,38 +4,133 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ripcord proof</title>
+<meta name="description" content="Every backup case in the Ripcord study: what a row count said, and what Kane saw as the user.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M7.5 28V4h9.5a8 8 0 0 1 0 16H7.5' stroke='%23111312' stroke-width='4.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cpath d='M15.5 20l5.2 5.2' stroke='%23111312' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='27.6' r='2.9' stroke='%230c9a53' stroke-width='2.8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&family=Fragment+Mono&family=Doto:wght@700..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="theme.js"></script>
+<style>
+.intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:end}
+.intro p{font-size:17px;line-height:1.5;color:var(--ink-2);max-width:480px}
+.legend{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13.5px;color:var(--ink-3);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend .plate{font-size:11px;padding:5px 8px 4px}
+
+/* summary strip */
+.sum{margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--rule-2);border-bottom:1px solid var(--rule)}
+.sum > div{padding:24px 24px 26px 0}
+.sum > div + div{padding-left:24px;border-left:1px solid var(--rule)}
+.sum .big{font:900 clamp(48px,5vw,76px)/.9 var(--dot);color:var(--ink)}
+.sum .big.go{color:var(--go)}
+.sum .what{margin-top:10px;font-size:14.5px;color:var(--ink-2);line-height:1.35}
+
+/* app groups */
+.app{margin-top:72px}
+.apphead{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--rule-2)}
+.apphead h2{font-weight:640;font-size:clamp(28px,2.8vw,40px);letter-spacing:-.03em}
+.apphead .ver{font:500 13px var(--mono);color:var(--ink-3)}
+.colh{display:grid;grid-template-columns:minmax(0,1.25fr) 150px 170px minmax(0,1.6fr);gap:28px;padding:14px 0 10px;font:500 11.5px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);border-bottom:1px solid var(--rule)}
+.case{border-bottom:1px solid var(--rule)}
+.case .main{display:grid;grid-template-columns:minmax(0,1.25fr) 150px 170px minmax(0,1.6fr);gap:28px;padding:26px 0;align-items:start}
+.case .m a{font-weight:600;font-size:17px;line-height:1.35;text-decoration:none;border-bottom:1px solid var(--rule-2)}
+.case .m a:hover{border-color:var(--ink)}
+.case .m .src{margin-top:6px;font:500 12px var(--mono);color:var(--ink-3);word-break:break-all}
+.cell .k{display:none;font:500 11.5px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);margin-bottom:8px}
+.cell .says{margin-top:9px;font-size:13.5px;color:var(--ink-3);line-height:1.35}
+.case .say{font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.case .say .diff{color:var(--ink);font-weight:600;margin-bottom:6px}
+.case .flag{display:inline-flex;align-items:center;gap:8px;margin-bottom:10px;font:600 12.5px var(--sans);color:var(--ink);background:rgba(17,19,18,.07);border-radius:6px;padding:4px 9px}
+.case .flag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink)}
+.case.miss .main{background:linear-gradient(90deg,rgba(17,19,18,.045),rgba(17,19,18,0) 70%)}
+.case.proven .main{background:linear-gradient(90deg,rgba(12,154,83,.07),rgba(12,154,83,0) 70%)}
+.case details{padding:0 0 22px}
+.case summary{cursor:pointer;list-style:none;font-size:13.5px;font-weight:600;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center}
+.case summary::-webkit-details-marker{display:none}
+.case summary::before{content:"+";font-family:var(--mono);width:18px;height:18px;display:inline-grid;place-items:center;border-radius:5px;background:rgba(17,19,18,.08)}
+.case details[open] summary::before{content:"\2212"}
+.raw{margin-top:16px;display:grid;gap:18px}
+.chk .id{font:500 13px var(--mono);color:var(--ink);margin-bottom:8px}
+.sbs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sbs .term{font-size:12.5px;line-height:1.6;padding:12px 14px;min-width:0}
+.sbs pre{white-space:pre-wrap;word-break:break-word;font:inherit}
+.runs{margin-top:8px;font-size:13px;color:var(--ink-3);display:flex;gap:16px;flex-wrap:wrap}
+.runs a{color:var(--ink-2)}
+.pending{margin-top:48px;padding:40px 0;border-top:1px solid var(--rule-2);color:var(--ink-2);font-size:18px}
+.gen{margin-top:14px;font:500 12.5px var(--mono);color:var(--ink-3)}
+
+@media (max-width:980px){
+  .intro{grid-template-columns:1fr;gap:18px}
+  .colh{display:none}
+  .case .main{grid-template-columns:1fr 1fr;gap:18px 20px}
+  .case .m,.case .say{grid-column:1/-1}
+  .cell .k{display:block}
+  .sum{grid-template-columns:1fr 1fr}
+  .sum > div:nth-child(3){padding-left:0;border-left:0}
+  .sum > div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .sbs{grid-template-columns:1fr}
+}
+
+.runs{margin-top:28px;border-top:1px solid var(--rule-2)}
+.run{width:100%;box-sizing:border-box;display:grid;grid-template-columns:120px 1fr auto;gap:20px;align-items:center;padding:22px 0;border-bottom:1px solid var(--rule-2);color:inherit;text-decoration:none}
+.run .rt{font-size:17px;line-height:1.5;color:var(--ink-2)}
+.run .rt b{display:block;color:var(--ink);font-weight:650;font-size:19px;margin-bottom:2px}
+.run .arr{font:500 14px var(--mono);color:var(--ink)}
+.run:hover .arr{text-decoration:underline}
+.study-intro{margin-top:96px;max-width:820px}
+.study-intro h2{font-weight:640;font-size:clamp(28px,2.8vw,40px);letter-spacing:-.03em;margin-top:10px}
+.study-intro p{margin-top:12px;font-size:17px;line-height:1.55;color:var(--ink-2)}
+.notclaimed{margin-top:64px;border-top:1px solid var(--rule-2);padding-top:18px}
+.notclaimed summary{cursor:pointer;font:600 17px var(--sans);color:var(--ink-2)}
+.ncwhy{margin:12px 0 8px;max-width:820px;font-size:16px;line-height:1.5;color:var(--ink-3)}
+.ncapp{margin-top:22px;font:500 13px var(--mono);color:var(--ink-3)}
+@media (max-width:860px){.run{grid-template-columns:1fr}.run .arr{justify-self:start}}
+</style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <a class="brand" href="index.html">Rip<span>cord</span></a>
-  <nav aria-label="Main">
-    <a href="proof.html" aria-current="page">Proof</a>
-    <a href="demo.html">Demo</a>
-    <a href="https://github.com/jenzylove/ripcord">GitHub</a>
-    <button class="tog" id="theme-toggle" type="button">Dark</button>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html" aria-label="Ripcord home"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7.5 28V4h9.5a8 8 0 0 1 0 16H7.5" stroke="#111312" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M15.5 20l5.2 5.2" stroke="#111312" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="27.6" r="2.9" stroke="#0c9a53" stroke-width="2.8"/></svg>Ripcord</a>
+    <div class="links"><a href="proof.html" aria-current="page">Proof</a><a href="demo.html">Demo</a><a href="evidence.html">Evidence</a><a href="https://github.com/jenzylove/ripcord">GitHub</a></div>
   </nav>
-</div></header>
+</div>
 
 <main class="wrap page">
-  <span class="tag">The study</span>
-  <h1>Proof</h1>
+  <div class="intro">
+    <div>
+      <div class="kicker">Proof</div>
+      <h1>What Ripcord proved, with every run.</h1>
+    </div>
+    <div>
+      <p>Everything here ran on real apps with Kane CLI using them as a person would. Replays show each run line by line, from the logs.</p>
+    </div>
+  </div>
+  <div class="runs">
+    <a class="run" href="replay.html?run=gate"><span class="plate go">PROVEN</span><span class="rt"><b>The gate held a real Claude Code session.</b> Asked to delete every recipe, it was blocked, proved the backup, deleted, and Ripcord rolled all 3 recipes back. Kane checked each step.</span><span class="arr">Replay &rarr;</span></a>
+    <a class="run" href="replay.html?run=fix"><span class="plate go">PROVEN</span><span class="rt"><b>Kane found a loss and Claude fixed the backup.</b> The photo was missing from the restored copy; Claude added the volume; Kane proved it.</span><span class="arr">Replay &rarr;</span></a>
+    <a class="run" href="evidence.html"><span class="plate">CAUGHT</span><span class="rt"><b>Two hidden losses on two real apps.</b> Mealie and Vikunja restored with every table matching, and users still lost photos and attachments. Only Kane saw it.</span><span class="arr">Evidence &rarr;</span></a>
+  </div>
+  <div class="study-intro">
+    <div class="kicker">The study</div>
+    <h2>Real backup methods, restored and checked two ways.</h2>
+    <p>Mealie, n8n and Vikunja, each backed up the way its official docs say, the way a popular guide says, and with a script Claude Code wrote. Each copy was checked by counting rows in every table, and by Kane logging in as the user.</p>
+  </div>
   <div id="out" aria-live="polite"></div>
 </main>
 
-<footer><div class="wrap">
-  <p><a href="https://github.com/jenzylove/ripcord">github.com/jenzylove/ripcord</a></p>
-  <p class="mute">Built for the TestMu AI KaneCLI hackathon. Built with Claude Code and Kane CLI.</p>
-</div></footer>
+<footer class="foot">
+  <div class="wrap">
+    <div class="row1">
+      <a class="brand" href="index.html" aria-label="Ripcord home"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7.5 28V4h9.5a8 8 0 0 1 0 16H7.5" stroke="#111312" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M15.5 20l5.2 5.2" stroke="#111312" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="27.6" r="2.9" stroke="#0c9a53" stroke-width="2.8"/></svg>Ripcord</a>
+      <div class="fl"><a href="https://github.com/jenzylove/ripcord">GitHub</a><a href="proof.html">Proof</a><a href="demo.html">Demo</a><a href="evidence.html">Evidence</a></div>
+    </div>
+    <p class="made">Built for the TestMu AI KaneCLI hackathon with Claude Code and Kane CLI.</p>
+  </div>
+</footer>
 
 <script>
 (function () {
   var out = document.getElementById('out');
-
   function el(tag, cls, text) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -46,108 +141,140 @@
   function link(href, text) {
     var u = safeUrl(href);
     if (!u) return el('span', null, text);
-    var a = el('a', null, text);
-    a.href = u; a.rel = 'noopener';
-    return a;
+    var a = el('a', null, text); a.href = u; a.rel = 'noopener'; return a;
   }
-  function verdict(v) { return el('span', 'v ' + String(v).replace(/[^A-Za-z]/g, ''), v); }
   function show(v) { return v === null || v === undefined ? 'nothing' : String(v); }
-  function methodLabel(m) {
-    return { official: 'Official method', community: 'Community method', claude: 'Claude Code script', ripcord: 'Ripcord' }[m] || String(m);
+  function plate(v, kind) {
+    var cls = 'plate';
+    if (kind === 'kane') { if (v === 'PROVEN') cls += ' go'; else if (v === 'INCONCLUSIVE') cls += ' dim'; }
+    else cls += ' soft';
+    return el('span', cls, v || 'UNAVAILABLE');
   }
-  function rowSays(v) {
-    if (v === 'MATCH') return 'Rows match, looks fine';
-    if (v === 'MISMATCH') return 'Row counts differ';
-    return 'No row count available';
+  function rowSays(c) {
+    var n = c.rowTables ? c.rowTables + ' tables' : 'the tables';
+    if (c.rowCountVerdict === 'MATCH') return 'All ' + n + ' match. Looks fine.';
+    if (c.rowCountVerdict === 'MISMATCH') return 'Row counts differ.';
+    return 'No row count available.';
   }
-  function lossText(c) {
-    var d = c.differences || [];
-    var lines;
-    if (c.kaneVerdict === 'INCONCLUSIVE') lines = ['Kane: not decided, nothing claimed'];
-    else if (!d.length) lines = [c.kaneVerdict === 'PROVEN' ? 'Kane: nothing lost' : 'No differences listed'];
-    else lines = d.map(function (x) {
-      var what = x.key === 'assert' ? (x.check.replace(/_/g, ' ') + ': true on the live app, false in the restored copy') : (x.check + ' ' + x.key + ': live ' + show(x.live) + ', copy ' + show(x.copy));
-      return 'Kane: ' + what;
-    });
-    if (c.note) lines.push(c.note);
-    return lines;
+  function kaneSays(v) {
+    if (v === 'PROVEN') return 'Same as the live app.';
+    if (v === 'LOSS') return 'Something is missing for the user.';
+    if (v === 'INCONCLUSIVE') return 'Could not decide. Nothing claimed.';
+    return '';
   }
-  function td(content) {
-    var t = el('td');
-    if (Array.isArray(content)) {
-      content.forEach(function (s) { var p = el('div', null, s); p.style.marginBottom = '4px'; t.appendChild(p); });
-    } else if (content && content.nodeType) t.appendChild(content);
-    else t.textContent = content;
-    return t;
+  function diffText(x) {
+    if (x.key === 'assert') return String(x.check).replace(/_/g, ' ') + (x.copy === 'FAIL' ? ': true on the live app, false in the restored copy' : x.copy == null ? ': true on the live app, could not be read on the restored copy' : ': ' + x.live + ' on live, ' + x.copy + ' on the copy');
+    return String(x.check).replace(/_/g, ' ') + ' ' + x.key + ': live ' + show(x.live) + ', copy ' + show(x.copy);
   }
-  function runLinks(c) {
-    var box = el('div');
-    var n = 0;
-    (c.checks || []).forEach(function (k) {
-      [['live', k.liveShare], ['copy', k.copyShare]].forEach(function (p) {
-        if (safeUrl(p[1])) {
-          n++;
-          var d = el('div'); d.style.marginBottom = '4px';
-          d.appendChild(link(p[1], k.id + ' ' + p[0]));
-          box.appendChild(d);
-        }
+  function host(u) { try { return new URL(u).host + new URL(u).pathname.replace(/\/$/, ''); } catch (e) { return ''; } }
+
+  function caseRow(c) {
+    var miss = c.kaneVerdict === 'LOSS' && c.rowCountVerdict === 'MATCH';
+    var row = el('div', 'case' + (miss ? ' miss' : '') + (c.kaneVerdict === 'PROVEN' ? ' proven' : ''));
+    var main = el('div', 'main');
+
+    var m = el('div', 'm');
+    m.appendChild(link(c.methodSource, c.method));
+    main.appendChild(m);
+
+    var rc = el('div', 'cell');
+    rc.appendChild(el('div', 'k', 'Row count'));
+    rc.appendChild(plate(c.rowCountVerdict, 'row'));
+    rc.appendChild(el('div', 'says', rowSays(c)));
+    main.appendChild(rc);
+
+    var kc = el('div', 'cell');
+    kc.appendChild(el('div', 'k', 'Kane'));
+    var broken = c.kaneVerdict === 'INCONCLUSIVE' && c.rowCountVerdict === 'MISMATCH';
+    if (broken) { kc.appendChild(plate('BROKEN')); kc.appendChild(el('div', 'says', 'Kane could not log in to the copy.')); }
+    else { kc.appendChild(plate(c.kaneVerdict, 'kane')); kc.appendChild(el('div', 'says', kaneSays(c.kaneVerdict))); }
+    main.appendChild(kc);
+
+    var s = el('div', 'say');
+    if (miss) s.appendChild(el('div', 'flag', 'The row count missed this'));
+    if (!(c.kaneVerdict === 'INCONCLUSIVE' && c.rowCountVerdict === 'MISMATCH')) (c.differences || []).forEach(function (x) { s.appendChild(el('div', 'diff', 'Kane: ' + diffText(x))); });
+    if (c.note) s.appendChild(el('div', null, c.note));
+    main.appendChild(s);
+    row.appendChild(main);
+
+    var checks = c.checks || [];
+    if (checks.length) {
+      var d = el('details');
+      d.appendChild(el('summary', null, 'What Kane read on each side (' + checks.length + (checks.length === 1 ? ' check)' : ' checks)')));
+      var raw = el('div', 'raw');
+      checks.forEach(function (k) {
+        var ck = el('div', 'chk');
+        ck.appendChild(el('div', 'id', k.id));
+        var g = el('div', 'sbs');
+        [['Live app', k.live], ['Restored copy', k.copy]].forEach(function (p) {
+          var t = el('div', 'term');
+          var b = el('div', 'bar'); b.appendChild(el('span', null, p[0])); t.appendChild(b);
+          t.appendChild(el('pre', null, JSON.stringify(p[1], null, 2)));
+          g.appendChild(t);
+        });
+        ck.appendChild(g);
+        var runs = el('div', 'runs'), n = 0;
+        [['live', k.liveShare], ['copy', k.copyShare]].forEach(function (p) {
+          if (safeUrl(p[1])) { n++; runs.appendChild(link(p[1], 'Kane run on the ' + p[0] + ' side (TestMu login)')); }
+        });
+        if (n) ck.appendChild(runs);
+        raw.appendChild(ck);
       });
-    });
-    if (!n) box.textContent = 'No share links';
-    return box;
+      d.appendChild(raw);
+      row.appendChild(d);
+    }
+    return row;
   }
-  function pre(obj) { return el('pre', null, JSON.stringify(obj, null, 2)); }
+
+  function stat(n, what, go) {
+    var d = el('div'); d.appendChild(el('div', 'big' + (go ? ' go' : ''), String(n))); d.appendChild(el('div', 'what', what)); return d;
+  }
 
   function render(data) {
     var cases = data && Array.isArray(data.cases) ? data.cases : [];
     out.textContent = '';
-    if (!cases.length) { out.appendChild(el('div', 'pending', 'Study runs in progress')); return; }
+    if (!cases.length) { out.appendChild(el('div', 'pending', 'No study results yet.')); return; }
 
-    if (data.generatedAt) out.appendChild(el('p', 'mute mono', 'Generated ' + data.generatedAt));
+    var sum = el('div', 'sum');
+    sum.appendChild(stat(cases.filter(function (c) { return c.kaneVerdict === 'LOSS' && c.rowCountVerdict === 'MATCH'; }).length, 'losses only Kane caught: every row matched'));
+    sum.appendChild(stat(cases.filter(function (c) { return c.kaneVerdict === 'PROVEN'; }).length, 'backups proven complete', true));
+    sum.appendChild(stat(cases.filter(function (c) { return c.rowCountVerdict === 'MISMATCH'; }).length, 'official restore that failed outright'));
+    out.appendChild(sum);
+    if (data.generatedAt) out.appendChild(el('div', 'gen', 'Results generated ' + data.generatedAt));
 
-    var wrap = el('div', 'tbl');
-    var tb = el('table');
-    var head = el('tr');
-    ['App', 'Method', 'A row count says', 'Kane says', 'What a user would lose', 'Kane runs'].forEach(function (h) { head.appendChild(el('th', null, h)); });
-    tb.appendChild(el('thead')).appendChild(head);
-    var body = el('tbody');
-    cases.forEach(function (c) {
-      var r = el('tr');
-      r.appendChild(td(c.app + (c.appVersion ? ' ' + c.appVersion : '')));
-      var m = el('div');
-      m.appendChild(link(c.methodSource, methodLabel(c.method)));
-      r.appendChild(td(m));
-      var rs = el('div'); rs.appendChild(verdict(c.rowCountVerdict)); rs.appendChild(el('div', 'mute', rowSays(c.rowCountVerdict)));
-      r.appendChild(td(rs));
-      r.appendChild(td(verdict(c.kaneVerdict)));
-      r.appendChild(td(lossText(c)));
-      r.appendChild(td(runLinks(c)));
-      body.appendChild(r);
+    var undecided = cases.filter(function (c) { return c.kaneVerdict === 'INCONCLUSIVE' && c.rowCountVerdict !== 'MISMATCH'; });
+    var decided = cases.filter(function (c) { return undecided.indexOf(c) < 0; });
+    var order = [], groups = {};
+    decided.forEach(function (c) {
+      var k = c.app + '|' + (c.appVersion || '');
+      if (!groups[k]) { groups[k] = []; order.push(k); }
+      groups[k].push(c);
     });
-    tb.appendChild(body);
-    wrap.appendChild(tb);
-    out.appendChild(wrap);
-
-    cases.forEach(function (c) {
-      var d = el('details', 'case');
-      d.appendChild(el('summary', null, c.app + ' ' + (c.appVersion || '') + ', ' + methodLabel(c.method) + ', ' + c.kaneVerdict));
-      if (c.note) d.appendChild(el('p', null, c.note));
-      (c.checks || []).forEach(function (k) {
-        d.appendChild(el('p', 'chk', k.id));
-        var g = el('div', 'sbs');
-        var a = el('div'); a.appendChild(el('h4', null, 'Live app')); a.appendChild(pre(k.live));
-        var b = el('div'); b.appendChild(el('h4', null, 'Restored copy')); b.appendChild(pre(k.copy));
-        g.appendChild(a); g.appendChild(b);
-        d.appendChild(g);
-      });
-      out.appendChild(d);
+    order.forEach(function (k) {
+      var g = groups[k], sec = el('section', 'app');
+      var h = el('div', 'apphead');
+      h.appendChild(el('h2', null, g[0].app));
+      if (g[0].appVersion) h.appendChild(el('span', 'ver', g[0].appVersion));
+      sec.appendChild(h);
+      var ch = el('div', 'colh');
+      ['Backup method', 'Row count says', 'Kane, as the user', 'What happened'].forEach(function (t) { ch.appendChild(el('span', null, t)); });
+      sec.appendChild(ch);
+      g.forEach(function (c) { sec.appendChild(caseRow(c)); });
+      out.appendChild(sec);
     });
+    if (undecided.length) {
+      var nd = el('details', 'notclaimed');
+      nd.appendChild(el('summary', null, 'Not claimed: ' + undecided.length + ' cases where Kane disagreed with itself'));
+      nd.appendChild(el('p', 'ncwhy', 'In these cases Kane gave different answers about the live app between runs, so Ripcord refuses to call the copy good or bad. It never turns a doubtful reading into PROVEN. The API notes say what really happened.'));
+      undecided.forEach(function (c) { var r = caseRow(c); var a = el('div', 'ncapp', c.app + ' ' + (c.appVersion || '')); nd.appendChild(a); nd.appendChild(r); });
+      out.appendChild(nd);
+    }
   }
 
   fetch('data/results.json', { cache: 'no-store' })
     .then(function (r) { if (!r.ok) throw new Error('bad'); return r.json(); })
     .then(render)
-    .catch(function () { out.textContent = ''; out.appendChild(el('div', 'pending', 'Study runs in progress')); });
+    .catch(function () { out.textContent = ''; out.appendChild(el('div', 'pending', 'The study results could not load. Try again in a moment.')); });
 })();
 </script>
 </body>

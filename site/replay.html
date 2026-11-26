@@ -3,57 +3,107 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ripcord run replay</title>
+<title>Ripcord replay</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M7.5 28V4h9.5a8 8 0 0 1 0 16H7.5' stroke='%23111312' stroke-width='4.6' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cpath d='M15.5 20l5.2 5.2' stroke='%23111312' stroke-width='2.4' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='27.6' r='2.9' stroke='%230c9a53' stroke-width='2.8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..700&family=Fragment+Mono&family=Doto:wght@700..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-:root{--bg:#f3f1ea;--ink:#17171a;--mute:#6b6b70;--org:#ff5a1f;--term:#141414;--termink:#e8e6df;--good:#7ee2a8;--bad:#ff8a6a}
-@media (prefers-color-scheme:dark){:root{--bg:#121212;--ink:#ecebe6;--mute:#9a9aa2}}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif}
-main{max-width:1040px;margin:0 auto;padding:28px 16px}
-h1{font:800 40px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:0 0 6px;letter-spacing:.5px}
-.sub{color:var(--mute);font-size:14px;margin-bottom:16px}.sub a{color:inherit}
-.tag{display:inline-block;border:2px solid var(--org);color:var(--org);font:600 12px 'IBM Plex Mono',monospace;padding:2px 8px;margin-bottom:12px;text-transform:uppercase}
-#term{background:var(--term);color:var(--termink);font:15px/1.55 'IBM Plex Mono',monospace;padding:20px 22px;min-height:520px;white-space:pre-wrap;word-break:break-word;border-left:6px solid var(--org)}
-.cmd{color:#fff;font-weight:600}.cmd::before{content:'$ ';color:var(--org)}
-.ok{color:var(--good);font-weight:600}.bad{color:var(--bad);font-weight:600}.dim{color:#8d8b85}.agent{color:#b9d4ff}
-.big{font-size:22px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.head h1{font-size:clamp(28px,3vw,44px)}
+.sub{margin-top:14px;font-size:15px;color:var(--ink-2);line-height:1.5;max-width:720px}
+.sub a{color:var(--ink)}
+.honest{display:inline-flex;align-items:center;gap:10px;font:500 12.5px var(--mono);color:var(--ink-2);text-transform:uppercase;letter-spacing:.04em}
+.honest::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink)}
+#term{margin-top:32px;font-size:14.5px;line-height:1.7;padding:16px 26px 30px;min-height:62vh}
+#term .bar{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.07)}
+#log > div{white-space:pre-wrap;word-break:break-word;padding:1px 0}
+#log .cmd{color:#fff}
+#log .cmd::before{content:"$ ";color:var(--term-dim)}
+#log .agent{color:#c9d2cc}
+#log .agent b{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--term-dim);margin-right:10px}
+#log .dim{color:var(--term-dim)}
+#log .hook{margin:12px 0;padding:12px 14px;border-left:2px solid #f1f3f1;background:rgba(255,255,255,.04);border-radius:0 8px 8px 0;color:#f1f3f1}
+#log .hook .plate{margin-right:12px;font-size:14px;vertical-align:1px}
+#log .ok,#log .bad{margin:10px 0}
+#log .ok .plate,#log .bad .plate{font-size:20px;padding:9px 14px 8px;margin-right:12px;vertical-align:-2px}
+#log .ok{color:#38d585}
+#log .bad{color:#f1f3f1}
+.caret{margin-top:6px}
+.after{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;opacity:0;transition:opacity .5s}
+.after.on{opacity:1}
+@media (max-width:860px){
+  #term{font-size:12.5px;padding:12px 14px 22px;min-height:60vh}
+  #log .ok .plate,#log .bad .plate{font-size:16px}
+}
 </style>
 </head>
 <body>
-<main>
-<span class="tag">Replay of a real logged run</span>
-<h1 id="title">Loading</h1>
-<div class="sub" id="sub"></div>
-<div id="term"></div>
+<div class="wrap narrow">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html" aria-label="Ripcord home"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7.5 28V4h9.5a8 8 0 0 1 0 16H7.5" stroke="#111312" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M15.5 20l5.2 5.2" stroke="#111312" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="27.6" r="2.9" stroke="#0c9a53" stroke-width="2.8"/></svg>Ripcord</a>
+    <div class="links"><a href="proof.html">Proof</a><a href="demo.html">Demo</a><a href="evidence.html">Evidence</a><a href="https://github.com/jenzylove/ripcord">GitHub</a></div>
+  </nav>
+</div>
+<main class="wrap narrow page">
+  <div class="head">
+    <div>
+      <span class="honest">Replay of a real logged run</span>
+      <h1 id="title">Loading</h1>
+    </div>
+  </div>
+  <p class="sub" id="sub"></p>
+  <div class="term" id="term">
+    <div class="bar"><span><i></i><span id="bart">Terminal</span></span><span id="state">playing</span></div>
+    <div id="log"></div><span class="caret" id="caret"></span>
+  </div>
+  <div class="after" id="after"><a class="key dark sm" href="" id="again">Play again</a><a class="key light sm" href="proof.html">See the proof <span class="arr">&rarr;</span></a></div>
 </main>
 <script>
 const q = new URLSearchParams(location.search);
 const name = (q.get('run') || 'fix').replace(/[^a-z0-9-]/gi, '');
-const speed = Number(q.get('speed') || 1);
-const term = document.getElementById('term');
-function cls(line){
-  if (line.startsWith('$ ')) return 'cmd';
-  if (/^(PROVEN|ROLLED BACK)/.test(line) || /: PASS\b|allowed/.test(line)) return 'ok big';
-  if (/^(LOSS|DATA CHANGED|INCONCLUSIVE)|blocked/i.test(line)) return 'bad big';
-  if (line.startsWith('Claude:') || line.startsWith('Claude Code:')) return 'agent';
-  if (/^\[|^ +/.test(line)) return 'dim';
-  return '';
+const speed = Number(q.get('speed') || 1) || 1;
+const log = document.getElementById('log');
+document.getElementById('again').href = location.href;
+function mk(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+function line(raw){
+  const t = raw.trim();
+  if (raw.startsWith('$ ')) return mk('div','cmd',raw.slice(2));
+  if (raw.startsWith('  HOOK: ')) {
+    const d = mk('div','hook'); d.appendChild(mk('span','plate','BLOCKED')); d.appendChild(document.createTextNode(raw.slice(8))); return d;
+  }
+  if (/^(PROVEN|ROLLED BACK)/.test(t)) {
+    const m = t.match(/^(PROVEN|ROLLED BACK)(.*)$/);
+    const d = mk('div','ok'); d.appendChild(mk('span','plate go',m[1])); if (m[2]) d.appendChild(document.createTextNode(m[2].replace(/^:\s*/,''))); return d;
+  }
+  if (/^(LOSS|DATA CHANGED|INCONCLUSIVE)/.test(t)) {
+    const m = t.match(/^(LOSS|DATA CHANGED OR MISSING|DATA CHANGED|INCONCLUSIVE)(.*)$/);
+    const d = mk('div','bad'); d.appendChild(mk('span','plate' + (m[1]==='INCONCLUSIVE'?' dim':''),m[1])); if (m[2]) d.appendChild(document.createTextNode(m[2].replace(/^:\s*/,''))); return d;
+  }
+  if (raw.startsWith('Claude: ') || raw.startsWith('Claude Code: ')) {
+    const d = mk('div','agent'); d.appendChild(mk('b',null,'Claude')); d.appendChild(document.createTextNode(raw.replace(/^Claude( Code)?: /,''))); return d;
+  }
+  if (/^\[|^ +/.test(raw)) return mk('div','dim',raw);
+  return mk('div',null,raw);
 }
-fetch(`runs/${name}.json`).then(r => r.json()).then(async run => {
+fetch(`runs/${name}.json`).then(r => { if(!r.ok) throw 0; return r.json(); }).then(async run => {
   document.title = `Ripcord replay: ${run.title}`;
   document.getElementById('title').textContent = run.title;
-  document.getElementById('sub').innerHTML = `Recorded ${run.recordedAt}. Lines shown at replay speed; waits for Kane runs and restores are shortened. <a href="${run.fullLog}">Full log</a>`;
+  document.getElementById('bart').textContent = 'Recorded ' + run.recordedAt;
+  const sub = document.getElementById('sub');
+  sub.textContent = `Recorded ${run.recordedAt}. Lines appear at replay speed; waits for Kane runs and restores are shortened. `;
+  const a = mk('a', null, 'Full log'); a.href = run.fullLog; sub.appendChild(a);
   for (const l of run.lines) {
     await new Promise(res => setTimeout(res, (l.wait ?? 450) / speed));
-    const div = document.createElement('div');
-    const c = cls(l.text); if (c) div.className = c;
-    div.textContent = l.text.startsWith('$ ') ? l.text.slice(2) : l.text;
-    term.appendChild(div);
-    window.scrollTo(0, document.body.scrollHeight);
+    log.appendChild(line(l.text));
+    const r = document.getElementById('caret').getBoundingClientRect();
+    if (r.bottom > innerHeight - 40) window.scrollBy(0, r.bottom - innerHeight + 80);
   }
+  document.getElementById('state').textContent = 'finished';
+  document.getElementById('after').classList.add('on');
   window.__replayDone = true;
-}).catch(() => { document.getElementById('title').textContent = 'Replay not found'; window.__replayDone = true; });
+}).catch(() => { document.getElementById('title').textContent = 'Replay not found'; document.getElementById('state').textContent = ''; window.__replayDone = true; });
 </script>
 </body>
 </html>
