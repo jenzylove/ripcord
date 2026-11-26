@@ -66,10 +66,22 @@ export function normalise(v: string): string {
 
 /** Two readings of the same value agree when they normalise equal, or when one is just the
  * number of the other ("6" vs "6 servings"): same numbers, and the shorter text is contained in the longer. */
+/** Presence answers mean one of two things whatever words Kane picks. Returns 'absent', 'present' or null. */
+export function polarity(v: string): 'absent' | 'present' | null {
+  const s = normalise(v);
+  if (/\d/.test(s)) return null;
+  if (/(placeholder|missing|broken|blank|empty|error|not (shown|found|displayed|loaded|visible)|^no|^none$|rejected|refused|denied|fail|404)/.test(s)) return 'absent';
+  if (/(photo|picture|image|present|shown|displayed|visible|loaded|^yes|food|opens|^in$|logged in|preview|^ok$|works)/.test(s)) return 'present';
+  return null;
+}
+
 export function sameValue(a: string, b: string): boolean {
   const x = normalise(a);
   const y = normalise(b);
   if (x === y) return true;
+  const px = polarity(a);
+  const py = polarity(b);
+  if (px && py) return px === py;
   const nums = (s: string) => (s.match(/\d+(?:\.\d+)?/g) ?? []).join(' ');
   if (nums(x) !== '' && nums(x) === nums(y)) {
     const [short, long] = x.length <= y.length ? [x, y] : [y, x];

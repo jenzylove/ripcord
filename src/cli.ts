@@ -50,7 +50,7 @@ program
       volumes: parsed.namedVolumes,
       vault: defaultVault(project),
       checks: [
-        { id: 'latest_item', ask: 'Log in with email {{email}} and password {{password}}. Open the most recently created item and report its title exactly as displayed.', read: ['latest_item_title'] },
+        { id: 'latest_item', ask: 'Log in with email {{email}} and password {{password}}. Open the most recently created item and report its title exactly as displayed. (Tip: give Kane fixed answers, e.g. Answer YES or NO, or digits only, so live and copy readings compare cleanly.)', read: ['latest_item_title'] },
       ],
     };
     writeConfig('ripcord.yml', cfg);

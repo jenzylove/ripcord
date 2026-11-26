@@ -108,3 +108,20 @@ describe('sameValue', () => {
     expect(sameValue('real picture', 'missing')).toBe(false);
   });
 });
+
+import { polarity } from '../src/compare.js';
+describe('polarity of presence answers', () => {
+  it('reads Kane wordings as present or absent', () => {
+    for (const v of ['photo of food', 'present', 'PHOTO', 'loaded', 'food', 'real picture', 'OPENS', 'IN', 'PREVIEW']) expect(polarity(v)).toBe('present');
+    for (const v of ['No', 'missing', 'PLACEHOLDER', 'missing or broken image placeholder', 'ERROR', 'REJECTED', 'none']) expect(polarity(v)).toBe('absent');
+  });
+  it('leaves numbers and other text alone', () => {
+    expect(polarity('6 servings')).toBe(null);
+    expect(polarity('Weekly report digest')).toBe(null);
+  });
+  it('makes different wordings of the same answer agree', () => {
+    expect(sameValue('present', 'photo of food')).toBe(true);
+    expect(sameValue('food', 'loaded')).toBe(true);
+    expect(sameValue('present', 'No')).toBe(false);
+  });
+});
