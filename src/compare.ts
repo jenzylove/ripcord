@@ -70,8 +70,8 @@ export function normalise(v: string): string {
 export function polarity(v: string): 'absent' | 'present' | null {
   const s = normalise(v);
   if (/\d/.test(s)) return null;
-  if (/(placeholder|missing|broken|blank|empty|error|not (shown|found|displayed|loaded|visible)|^nob|^none$|rejected|refused|denied|fail|404)/.test(s)) return 'absent';
-  if (/(photo|picture|image|present|shown|displayed|visible|loaded|^yesb|food|opens|^in$|logged in|preview|^ok$|works)/.test(s)) return 'present';
+  if (/(placeholder|missing|broken|blank|empty|error|not (shown|found|displayed|loaded|visible)|^no|^none$|rejected|refused|denied|fail|404)/.test(s)) return 'absent';
+  if (/(photo|picture|image|present|shown|displayed|visible|loaded|^yes|food|opens|^in$|logged in|preview|^ok$|works)/.test(s)) return 'present';
   return null;
 }
 
