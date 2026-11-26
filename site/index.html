@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ripcord</title>
-<meta name="description" content="Ripcord keeps a backup your AI coding agent cannot reach, restores it into a throwaway copy, and has Kane log in as your user to prove the data is really there.">
+<meta name="description" content="Ripcord keeps a backup outside your AI coding agent's reach, restores it into a throwaway copy, and has Kane log in as your user to prove the data is really there.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
   <section class="hero first">
     <span class="tag">Emergency equipment for your database</span>
     <h1>Your AI coding agent can wipe your database, backups included, in seconds.</h1>
-    <p class="lead">Ripcord keeps a backup the agent cannot reach, restores it into a throwaway copy, and has Kane log in as your user to prove the data is really there. Until that proof exists, risky agent commands are held.</p>
+    <p class="lead">Ripcord keeps a backup in a vault the agent is blocked from touching, restores it into a throwaway copy, and has Kane log in as your user to prove the data is really there. Until that proof exists, risky agent commands are held.</p>
     <p class="sub">The agent can wipe your database in nine seconds. Ripcord makes sure you can get it back, and proves it the way your users would see it.</p>
   </section>
 
@@ -49,7 +49,7 @@
       <li><h3>Restore into a copy</h3><p>Ripcord rewrites your Compose file to a new project name with fresh volumes and different ports, loads the backup, starts the stack, and waits until the app answers.</p></li>
       <li><h3>Kane logs in as your user</h3><p>You write plain English checks, such as "open recipe Jollof Rice and say whether its photo is a real picture or a broken placeholder". Kane runs each check on the live app and on the copy, one run at a time.</p></li>
       <li><h3>Compare, then say PROVEN or LOSS</h3><p>Same values on both sides means PROVEN. Differences mean LOSS, with the exact list. If a Kane run fails or reads nothing, the answer is INCONCLUSIVE. A row count comparison is shown next to it.</p></li>
-      <li><h3>Fix the backup config</h3><p>On LOSS, Claude Code gets the report and may edit only <code>ripcord.yml</code>, for example to add a volume. Ripcord reruns the proof, up to three rounds, and logs every round.</p></li>
+      <li><h3>Fix the backup config</h3><p>On LOSS, Claude Code gets the report and may edit only <code>ripcord.yml</code>, for example to add a volume. Ripcord reruns the proof, up to three rounds, and prints every round.</p></li>
       <li><h3>Hold risky commands, and undo them</h3><p>A Claude Code hook blocks destructive commands until a fresh proof exists. After a risky command, Kane rereads the checks on the live app. If data is missing, <code>ripcord rollback</code> restores the proven backup and Kane proves it matches again.</p></li>
     </ol>
   </section>
@@ -65,7 +65,7 @@
       <div><b>Kane says</b><span class="big bad">Photo missing</span></div>
     </div>
     <div class="prose">
-      <p>A full restore fixed it. Kane read "6 servings, 3 ingredients, plain orange image", the same as the live app. Existing restore testers count rows. Photos, attachments, saved logins and search indexes live outside the rows, and users report losing exactly those after restores. The full study is on the <a href="proof.html">proof page</a>.</p>
+      <p>A full restore fixed it. Kane read "photo of food, 6 servings, 3 ingredients", the same as the live app. Existing restore testers count rows. Photos, attachments, saved logins and search indexes live outside the rows, and users report losing exactly those after restores. The full study is on the <a href="proof.html">proof page</a>.</p>
     </div>
   </section>
 
@@ -82,7 +82,7 @@
     <span class="tag">Get started</span>
     <h2>Four commands</h2>
     <div class="cmds">
-      <pre>npm i -g ripcord-cli</pre>
+      <pre>git clone https://github.com/jenzylove/ripcord && cd ripcord && npm install && npm run build && npm link</pre>
       <pre>ripcord init</pre>
       <pre>ripcord prove</pre>
       <pre>ripcord hook install</pre>
@@ -102,7 +102,7 @@
   <details class="faq"><summary>What does Kane do that a script cannot?</summary>
     <p>A script counts rows. Kane logs into the app as a user and reads what is on screen: whether the photo loads, whether the saved login still works, whether search returns results. That is where restores quietly lose data.</p></details>
   <details class="faq"><summary>How many credits does a proof cost?</summary>
-    <p>About 20 to 50 Kane credits per check per side. A proof runs each check on the live app and on the copy, so keep the checks few and meaningful.</p></details>
+    <p>About 20 to 30 Kane credits per check per side in our runs, so a proof with two checks costs roughly 90 to 130 credits. A proof runs each check on the live app and on the copy, so keep the checks few and meaningful.</p></details>
   <details class="faq"><summary>Can the agent delete the vault?</summary>
     <p>The hook blocks every agent command that touches the vault path. The limit: the vault is on the same machine, so a person or a determined process with the same user rights can still delete it. Off machine copies are not part of this version.</p></details>
   <details class="faq"><summary>What happens on INCONCLUSIVE?</summary>
