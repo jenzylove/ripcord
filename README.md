@@ -1,10 +1,66 @@
-# Ripcord
+<p align="center"><img src="docs/media/brand/mark.svg" width="88" alt="Ripcord"></p>
 
-**Your AI coding agent can wipe your database, backups included, in seconds. Ripcord keeps a backup in a vault the agent is blocked from touching, restores it into a throwaway copy, and has [Kane CLI](https://www.testmuai.com/kane-cli/) log in as your user to prove the data is really there. Until that proof exists, risky agent commands are held.**
+<h1 align="center">Ripcord</h1>
 
-Built for the TestMu AI KaneCLI Online Hackathon with Claude Code and Kane CLI.
+<p align="center"><b>Your AI agent can't wipe data until the backup is proven.</b><br>
+Ripcord restores your backup into a throwaway copy, has <a href="https://www.testmuai.com/kane-cli/">Kane CLI</a> log in to the live app and the copy as your user, and holds every destructive Claude Code command until the two match.</p>
 
-**[Watch the 3 minute demo](https://ripcord-eight.vercel.app/demo.html)** · [Proof page](https://ripcord-eight.vercel.app/proof.html) · [Kane's screenshots, live vs restored](https://ripcord-eight.vercel.app/evidence.html)
+<p align="center">
+<a href="https://ripcord-eight.vercel.app"><img src="https://img.shields.io/badge/live-ripcord--eight.vercel.app-0c9a53?style=flat-square" alt="Live site"></a>
+<a href="https://ripcord-eight.vercel.app/demo.html"><img src="https://img.shields.io/badge/demo-3%20min%20video-111312?style=flat-square" alt="Demo video"></a>
+<a href="https://ripcord-eight.vercel.app/proof.html"><img src="https://img.shields.io/badge/proof-real%20Kane%20runs-111312?style=flat-square" alt="Proof"></a>
+<img src="https://img.shields.io/badge/tests-134%20passing-0c9a53?style=flat-square" alt="134 tests">
+<img src="https://img.shields.io/badge/built%20for-TestMu%20AI%20KaneCLI%20Hackathon-5b625e?style=flat-square" alt="Built for the TestMu AI KaneCLI Hackathon">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-5b625e?style=flat-square" alt="MIT"></a>
+</p>
+
+<p align="center"><a href="https://ripcord-eight.vercel.app"><img src="docs/media/hero.jpg" alt="Ripcord landing: the gate shows PROVEN, live app 3 recipes, restored copy 3 recipes" width="100%"></a></p>
+
+## Judges: start here
+
+No sign in, no install. Every link below is a real run, replayed from its log.
+
+| # | Open | What you see | Time |
+|---|---|---|---|
+| 1 | [Demo video](https://ripcord-eight.vercel.app/demo.html) | The incident, then three real proofs, then how it plugs in | 3 min |
+| 2 | [Gate replay](https://ripcord-eight.vercel.app/replay.html?run=gate) | A real Claude Code session: delete blocked, backup proven by Kane, delete runs, Kane sees 3 recipes become 0, rollback brings 3 back | 1 min |
+| 3 | [Fix loop replay](https://ripcord-eight.vercel.app/replay.html?run=fix) | Kane catches a missing photo in the restored copy, Claude Code fixes only `ripcord.yml`, Kane proves it | 1 min |
+| 4 | [Evidence](https://ripcord-eight.vercel.app/evidence.html) | Kane's own screenshots: every table restored, photo and attachment still gone (Mealie, Vikunja) | 1 min |
+| 5 | [Proof page](https://ripcord-eight.vercel.app/proof.html) | Every study case: backup method, row count verdict, Kane verdict | 2 min |
+| 6 | [Raw logs](site/logs/) and [results.json](site/data/results.json) | The unedited session transcript, verify and rollback logs, study data | any |
+
+To run it yourself, see [Quick start](#quick-start) (needs Docker and a Kane CLI login).
+
+## Where Kane does the work
+
+| Step | Kane's job | Code |
+|---|---|---|
+| Prove | Logs into the live app and the restored copy, runs the same plain English checks, returns assertion results and values | [src/kane.ts](src/kane.ts), [src/fingerprint.ts](src/fingerprint.ts), [src/prove.ts](src/prove.ts) |
+| Confirm | Any difference is read again on both sides; a loss counts only when seen twice | [src/prove.ts](src/prove.ts), [src/compare.ts](src/compare.ts) |
+| Verify | After a risky command, rereads the live app against the proven state | [src/cli.ts](src/cli.ts) |
+| Rollback | Restores the proven backup, then checks the live app again | [src/rollback.ts](src/rollback.ts) |
+| Fix loop | Kane's findings go to Claude Code, which may only change `ripcord.yml`, then Kane proves again | [src/cli.ts](src/cli.ts) |
+
+Without Kane, Ripcord could only count rows, and the study shows row counts called two real losses a match.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  A[Claude Code] -->|every Bash, Edit, MCP call| H{ripcord guard<br/>PreToolUse hook}
+  H -->|safe| R[runs]
+  H -->|destructive, no fresh PROVEN| B[blocked]
+  B --> P[ripcord prove]
+  P --> BK[backup: pg_dump + volume tars<br/>sha256 manifest, vault]
+  BK --> RS[restore: throwaway Compose copy]
+  RS --> K[Kane CLI logs in as the user<br/>on live and on copy]
+  K --> C{compare}
+  C -->|match| OK[PROVEN: gate opens]
+  C -->|loss seen twice| L[LOSS: screenshots, ripcord fix]
+  C -->|readings disagree| I[INCONCLUSIVE: nothing claimed]
+  OK --> V[ripcord verify after the command]
+  V -->|data gone| RB[ripcord rollback, Kane rechecks]
+```
 
 ## Why
 
@@ -74,7 +130,6 @@ Needs Docker, Node 20+, and Kane CLI logged in (`npm i -g @testmuai/kane-cli && 
 | Claude Code gate | real hook; tested with Claude Code's hook input; 58 classifier tests |
 | Fix loop | real run: LOSS, Claude Code fix, PROVEN (replay linked above) |
 | Verify and rollback | real runs: 3 recipes to 0 caught by Kane, rollback brought back 3 (replay linked above) |
-| Managed databases (Supabase, Neon, RDS) | not supported in this version |
 
 ## Limits
 
