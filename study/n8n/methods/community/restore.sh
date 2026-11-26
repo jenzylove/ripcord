@@ -4,7 +4,7 @@
 set -euo pipefail
 export MSYS_NO_PATHCONV=1
 BK="$1"; PROJECT="$2"; PORT="$3"
-HERE="$(cd "$(dirname "$0")" && pwd)"
+HERE="$(cd "$(dirname "$0")" && { pwd -W 2>/dev/null || pwd; })"
 export HOST_PORT="$PORT"
 COMPOSE="docker compose -p $PROJECT -f $HERE/../../docker-compose.yml"
 $COMPOSE up -d --wait postgres

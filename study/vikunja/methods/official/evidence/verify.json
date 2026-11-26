@@ -1,0 +1,6 @@
+{
+ "base": "http://localhost:9967",
+ "http_info": 200,
+ "login_status": 403,
+ "login_body": "{\"code\":1011,\"message\":\"Wrong username or password.\"}\n"
+}

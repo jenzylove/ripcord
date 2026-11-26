@@ -1,0 +1,11 @@
+{"data":{"kind":"person","createdAt":"2026-11-25T18:59:03.104Z","id":"dc1d93e9-0b72-49b5-a696-97898c3edf35","disabled":false,"settings":{"userActivated":false},"mfaEnabled":false,"email":"study@exampl
+healthz: 200
+{"data":{"kind":"person","createdAt":"2026-11-25T18:59:03.104Z","id":"dc1d93e9-0b72-49b5-a696-97898c3edf35","disabled":false,"settings":{"userActivated":false},"mfaEnabled":false,"email":"study@exampl
+login http 200
+--- workflows
+2 Invoice reminder | Weekly report digest
+--- credentials list
+1 [{"id":"mCNZtV13renuU5E2","name":"Acme Billing API key"}]
+--- credential with data (id=mCNZtV13renuU5E2)
+{"data":{"data":{},"updatedAt":"2026-11-25T18:41:36.992Z","createdAt":"2026-11-25T18:41:37.071Z","id":"mCNZtV13renuU5E2","name":"Acme Billing API key","type":"httpHeaderAuth","isManaged":false,"isGlobal":false,"isResolvable":false,"resolvableAllowFallback":false,"resolverId":null,"usageScope":"project","pendingAuthorizationExpiresAt":null,"scopes":["credential:connect","credential:create","credent
+http 200

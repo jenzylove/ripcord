@@ -1,0 +1,50 @@
+# Paperless-ngx with PostgreSQL, from the official compose file:
+# https://github.com/paperless-ngx/paperless-ngx/blob/main/docker/compose/docker-compose.postgres.yml
+# Changes: pinned image tag, host port 9963, named volumes for ./export and ./consume (so copies do not share
+# host folders), admin user and URL set through the documented PAPERLESS_ADMIN_* / PAPERLESS_URL variables
+# instead of docker-compose.env.
+services:
+  broker:
+    image: docker.io/valkey/valkey:9-alpine
+    restart: unless-stopped
+    volumes:
+      - redisdata:/data
+  db:
+    image: docker.io/library/postgres:18
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: paperless
+  webserver:
+    image: ghcr.io/paperless-ngx/paperless-ngx:3.5.1
+    restart: unless-stopped
+    depends_on:
+      - db
+      - broker
+    ports:
+      - "9963:8000"
+    volumes:
+      - data:/usr/src/paperless/data
+      - media:/usr/src/paperless/media
+      - export:/usr/src/paperless/export
+      - consume:/usr/src/paperless/consume
+    environment:
+      PAPERLESS_REDIS: redis://broker:6379
+      PAPERLESS_DBHOST: db
+      PAPERLESS_DBENGINE: postgresql
+      PAPERLESS_URL: http://localhost:9963
+      PAPERLESS_SECRET_KEY: study-secret-key-0123456789abcdef0123456789
+      PAPERLESS_ADMIN_USER: study
+      PAPERLESS_ADMIN_PASSWORD: StudyPass123!
+      PAPERLESS_ADMIN_MAIL: study@example.com
+      PAPERLESS_TIME_ZONE: Africa/Lagos
+volumes:
+  data:
+  media:
+  export:
+  consume:
+  pgdata:
+  redisdata:

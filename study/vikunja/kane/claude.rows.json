@@ -1,0 +1,13 @@
+{
+  "app": "vikunja",
+  "method": "claude",
+  "tables": 43,
+  "mismatched": [
+    {
+      "table": "sessions",
+      "live": 3,
+      "copy": 2
+    }
+  ],
+  "verdict": "MISMATCH"
+}

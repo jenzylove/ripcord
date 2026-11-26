@@ -1,0 +1,38 @@
+ Network study-n8n-community_default Creating 
+ Volume study-n8n-community_db_storage Creating 
+ Volume study-n8n-community_db_storage Creating 
+ Network study-n8n-community_default Creating 
+ Volume study-n8n-community_db_storage Created 
+ Volume study-n8n-community_db_storage Created 
+ Network study-n8n-community_default Created 
+ Network study-n8n-community_default Created 
+ Container study-n8n-community-postgres-1 Creating 
+ Container study-n8n-community-postgres-1 Created 
+ Container study-n8n-community-postgres-1 Starting 
+ Container study-n8n-community-postgres-1 Started 
+ Container study-n8n-community-postgres-1 Waiting 
+ Container study-n8n-community-postgres-1 Healthy 
+ Container study-n8n-community-postgres-1 Running 
+ Volume study-n8n-community_n8n_storage Creating 
+ Volume study-n8n-community_n8n_storage Creating 
+ Volume study-n8n-community_n8n_storage Created 
+ Volume study-n8n-community_n8n_storage Created 
+ Container study-n8n-community-n8n-1 Creating 
+ Container study-n8n-community-n8n-1 Created 
+ Container study-n8n-community-postgres-1 Waiting 
+ Container study-n8n-community-postgres-1 Healthy 
+ Container study-n8n-community-n8n-1 Starting 
+ Container study-n8n-community-n8n-1 Started 
+Acquiring database migration lock...
+[license SDK] Skipping renewal on init: renewOnInit is disabled in config
+[license SDK] Skipping renewal on init: license cert is not initialized
+Importing 2 workflows...
+Successfully imported 2 workflows.
+Acquiring database migration lock...
+[license SDK] Skipping renewal on init: renewOnInit is disabled in config
+[license SDK] Skipping renewal on init: license cert is not initialized
+Successfully imported 1 credential.
+ Container study-n8n-community-n8n-1 Restarting 
+ Container study-n8n-community-n8n-1 Started 
+restored into study-n8n-community on port 9945
+restore exit code: 0

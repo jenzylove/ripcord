@@ -1,0 +1,6 @@
+total 624
+-rw-r--r-- 1 LENOVO 197121 630877 Nov 26 05:04 n8n-db.sql
+-rw-r--r-- 1 LENOVO 197121   1166 Nov 26 05:04 n8n-folder.tar.gz
+BACKUP=C:/Users/LENOVO/ripcord/study/n8n/methods/official/backups/20261126-050420
+backup exit code: 0
+backup dir: C:/Users/LENOVO/ripcord/study/n8n/methods/official/backups/20261126-050420

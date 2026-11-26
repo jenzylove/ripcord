@@ -1,0 +1,15 @@
+==> Dumping Postgres database
+==> Archiving n8n storage volume (study-n8n_n8n_storage)
+==> Saving .env
+==> Verifying the dump is readable
+
+Backup complete: /c/Users/LENOVO/ripcord/study/n8n/methods/claude/backups/20261125-200055
+total 698K
+-rw------- 1 LENOVO 197121  356 Nov 25 20:01 MANIFEST.txt
+-rw------- 1 LENOVO 197121 692K Nov 25 20:00 db.dump
+-rw------- 1 LENOVO 197121  177 Nov 25 20:01 env.backup
+-rw------- 1 LENOVO 197121 1.6K Nov 25 20:01 n8n_storage.tgz
+
+Copy this directory off the machine too - it contains your encryption key and .env secrets.
+backup exit code: 0
+backup dir: C:/Users/LENOVO/ripcord/study/n8n/methods/claude/backups/20261125-200055

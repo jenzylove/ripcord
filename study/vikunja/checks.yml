@@ -1,0 +1,10 @@
+# Plain English checks for Kane. Login: {{username}} {{password}} (study / StudyPass123!)
+- id: task_attachment
+  ask: "Log in with username {{username}} and password {{password}}. Open the project 'Launch Plan', then open the task 'Book venue'. Report the name of the attached file and whether the attachment shows a preview image or an error."
+  read: [attachment_name, attachment_state]
+- id: project_tasks
+  ask: "Log in with username {{username}} and password {{password}}. Open the project 'Launch Plan'. Report how many tasks are listed."
+  read: [task_count]
+- id: task_description
+  ask: "Log in with username {{username}} and password {{password}}. Open the project 'Launch Plan' and open the task 'Invite beta users'. Report its description text."
+  read: [description]

@@ -1,0 +1,9 @@
+Acquiring database migration lock...
+Successfully exported 2 workflows.
+Acquiring database migration lock...
+Successfully exported 1 credentials.
+total 12
+-rw-r--r-- 1 LENOVO 197121 9216 Nov 26 05:05 n8n-export.tar
+BACKUP=C:/Users/LENOVO/ripcord/study/n8n/methods/community/backups/20261126-050522
+backup exit code: 0
+backup dir: C:/Users/LENOVO/ripcord/study/n8n/methods/community/backups/20261126-050522

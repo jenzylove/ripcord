@@ -1,0 +1,78 @@
+{
+  "app": "vikunja",
+  "method": "official",
+  "tables": 43,
+  "mismatched": [
+    {
+      "table": "buckets",
+      "live": 9,
+      "copy": 0
+    },
+    {
+      "table": "files",
+      "live": 1,
+      "copy": 0
+    },
+    {
+      "table": "license_status",
+      "live": 1,
+      "copy": 0
+    },
+    {
+      "table": "project_ancestors",
+      "live": 2,
+      "copy": 0
+    },
+    {
+      "table": "project_task_counters",
+      "live": 2,
+      "copy": 0
+    },
+    {
+      "table": "project_views",
+      "live": 12,
+      "copy": 0
+    },
+    {
+      "table": "projects",
+      "live": 2,
+      "copy": 0
+    },
+    {
+      "table": "saved_filters",
+      "live": 1,
+      "copy": 0
+    },
+    {
+      "table": "sessions",
+      "live": 3,
+      "copy": 1
+    },
+    {
+      "table": "subscriptions",
+      "live": 5,
+      "copy": 0
+    },
+    {
+      "table": "task_buckets",
+      "live": 5,
+      "copy": 0
+    },
+    {
+      "table": "task_positions",
+      "live": 20,
+      "copy": 0
+    },
+    {
+      "table": "tasks",
+      "live": 5,
+      "copy": 0
+    },
+    {
+      "table": "users",
+      "live": 1,
+      "copy": 0
+    }
+  ],
+  "verdict": "MISMATCH"
+}

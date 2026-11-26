@@ -1,0 +1,14 @@
+==> Stopping mealie briefly for a consistent snapshot
+ Container study-mealie-mealie-1 Stopping 
+ Container study-mealie-mealie-1 Stopped 
+==> Dumping the database
+==> Archiving the mealie-data volume
+==> Writing /c/Users/LENOVO/ripcord/study/mealie/methods/claude/backups/mealie-backup-20261125-194947.tar.gz
+
+Backup complete: /c/Users/LENOVO/ripcord/study/mealie/methods/claude/backups/mealie-backup-20261125-194947.tar.gz (232K)
+Copy it somewhere off this machine too - a backup on the same disk is not much protection.
+==> Starting mealie again
+ Container study-mealie-postgres-1 Waiting 
+ Container study-mealie-postgres-1 Healthy 
+ Container study-mealie-mealie-1 Starting 
+ Container study-mealie-mealie-1 Started 

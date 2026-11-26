@@ -1,0 +1,44 @@
+ Network study-vikunja-official_default Creating 
+ Network study-vikunja-official_default Creating 
+ Volume study-vikunja-official_vikunja-files Creating 
+ Volume study-vikunja-official_vikunja-files Creating 
+ Volume study-vikunja-official_vikunja-db Creating 
+ Volume study-vikunja-official_vikunja-db Creating 
+ Volume study-vikunja-official_vikunja-files Created 
+ Volume study-vikunja-official_vikunja-files Created 
+ Volume study-vikunja-official_vikunja-db Created 
+ Volume study-vikunja-official_vikunja-db Created 
+ Network study-vikunja-official_default Created 
+ Network study-vikunja-official_default Created 
+ Container study-vikunja-official-files-perms-1 Creating 
+ Container study-vikunja-official-db-1 Creating 
+ Container study-vikunja-official-db-1 Created 
+ Container study-vikunja-official-files-perms-1 Created 
+ Container study-vikunja-official-vikunja-1 Creating 
+ Container study-vikunja-official-vikunja-1 Created 
+ Container study-vikunja-official-files-perms-1 Starting 
+ Container study-vikunja-official-db-1 Starting 
+ Container study-vikunja-official-files-perms-1 Started 
+ Container study-vikunja-official-db-1 Started 
+ Container study-vikunja-official-db-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Exited 
+ Container study-vikunja-official-db-1 Healthy 
+ Container study-vikunja-official-vikunja-1 Starting 
+ Container study-vikunja-official-vikunja-1 Started 
+ Container study-vikunja-official-vikunja-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Waiting 
+ Container study-vikunja-official-db-1 Waiting 
+ Container study-vikunja-official-db-1 Healthy 
+ Container study-vikunja-official-files-perms-1 Exited 
+ Container study-vikunja-official-vikunja-1 Healthy 
+time=2026-11-25T19:18:35.340Z level=INFO msg="No config file found, using default or config from environment variables."
+time=2026-11-25T19:18:35.348Z level=INFO msg="Running migrations…"
+[xorm] [info]  2026/11/25 19:18:35.349090 PING DATABASE pgx
+time=2026-11-25T19:18:35.925Z level=INFO msg="Ran all migrations successfully."
+time=2026-11-25T19:18:35.931Z level=WARN msg="No license key configured. Pro features have been disabled."
+time=2026-11-25T19:18:35.993Z level=WARN msg="Restoring a dump will wipe your current installation!"
+time=2026-11-25T19:18:35.993Z level=WARN msg="To confirm, please type 'Yes, I understand' and confirm with enter:"
+time=2026-11-25T19:18:35.995Z level=ERROR msg="could not read confirmation message: EOF"
+restored into study-vikunja-official on http://localhost:9967
+exit=0

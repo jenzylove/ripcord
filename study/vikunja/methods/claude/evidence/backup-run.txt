@@ -1,0 +1,17 @@
+backup: dumping database...
+backup: archiving files volume...
+ Container study-vikunja-files-perms-run-4ffdd276a835 Creating 
+ Container study-vikunja-files-perms-run-4ffdd276a835 Created 
+backup: recording row counts...
+
+backup: done -> /c/Users/LENOVO/ripcord/study/vikunja/methods/claude/./backups/vikunja-20261125T192256Z.tar.gz (48K)
+  created_utc=20261125T192256Z
+  compose_project=study-vikunja
+  vikunja_image=vikunja/vikunja:2.8.0
+  format=1
+  users=1
+  projects=2
+  tasks=5
+  labels=0
+
+Copy this file somewhere off this machine too; a backup on the same disk won't survive losing the disk.

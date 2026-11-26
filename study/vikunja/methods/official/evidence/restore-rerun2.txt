@@ -1,0 +1,68 @@
+ Network study-vikunja-official_default Creating 
+ Volume study-vikunja-official_vikunja-files Creating 
+ Volume study-vikunja-official_vikunja-db Creating 
+ Volume study-vikunja-official_vikunja-files Creating 
+ Volume study-vikunja-official_vikunja-db Creating 
+ Network study-vikunja-official_default Creating 
+ Volume study-vikunja-official_vikunja-db Created 
+ Volume study-vikunja-official_vikunja-db Created 
+ Volume study-vikunja-official_vikunja-files Created 
+ Volume study-vikunja-official_vikunja-files Created 
+ Network study-vikunja-official_default Created 
+ Network study-vikunja-official_default Created 
+ Container study-vikunja-official-files-perms-1 Creating 
+ Container study-vikunja-official-db-1 Creating 
+ Container study-vikunja-official-db-1 Created 
+ Container study-vikunja-official-files-perms-1 Created 
+ Container study-vikunja-official-vikunja-1 Creating 
+ Container study-vikunja-official-vikunja-1 Created 
+ Container study-vikunja-official-db-1 Starting 
+ Container study-vikunja-official-files-perms-1 Starting 
+ Container study-vikunja-official-db-1 Started 
+ Container study-vikunja-official-files-perms-1 Started 
+ Container study-vikunja-official-db-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Exited 
+ Container study-vikunja-official-db-1 Healthy 
+ Container study-vikunja-official-vikunja-1 Starting 
+ Container study-vikunja-official-vikunja-1 Started 
+ Container study-vikunja-official-files-perms-1 Waiting 
+ Container study-vikunja-official-db-1 Waiting 
+ Container study-vikunja-official-vikunja-1 Waiting 
+ Container study-vikunja-official-db-1 Healthy 
+ Container study-vikunja-official-files-perms-1 Exited 
+ Container study-vikunja-official-vikunja-1 Healthy 
+time=2026-11-25T19:20:45.724Z level=INFO msg="No config file found, using default or config from environment variables."
+time=2026-11-25T19:20:45.725Z level=INFO msg="Running migrations…"
+[xorm] [info]  2026/11/25 19:20:45.725658 PING DATABASE pgx
+time=2026-11-25T19:20:45.793Z level=INFO msg="Ran all migrations successfully."
+time=2026-11-25T19:20:45.796Z level=WARN msg="No license key configured. Pro features have been disabled."
+time=2026-11-25T19:20:45.802Z level=WARN msg="Restoring a dump will wipe your current installation!"
+time=2026-11-25T19:20:45.802Z level=WARN msg="To confirm, please type 'Yes, I understand' and confirm with enter:"
+time=2026-11-25T19:20:45.802Z level=WARN msg="No config file found, not restoring one."
+time=2026-11-25T19:20:45.802Z level=WARN msg="You'll likely have had Vikunja configured through environment variables."
+time=2026-11-25T19:20:45.803Z level=WARN msg="Please make sure the following settings are properly configured in your instance:\nVIKUNJA_DATABASE_DATABASE\nVIKUNJA_DATABASE_TYPE\nVIKUNJA_DATABASE_PASSWORD\nVIKUNJA_DATABASE_USER\nVIKUNJA_DATABASE_HOST\nVIKUNJA_SERVICE_ENABLEREGISTRATION\nVIKUNJA_SERVICE_SECRET\nVIKUNJA_SERVICE_PUBLICURL\nVIKUNJA_SERVICE_ROOTPATH\nVIKUNJA_DATABASE_PATH"
+time=2026-11-25T19:20:45.803Z level=WARN msg="Their values are in the .env file inside the dump."
+time=2026-11-25T19:20:45.803Z level=WARN msg="Make sure your current config matches these env variables, confirm by pressing enter when done."
+time=2026-11-25T19:20:45.803Z level=WARN msg="If your config does not match, you'll have to make the changes and restart the restoring process afterwards."
+time=2026-11-25T19:20:45.803Z level=INFO msg=Restoring...
+time=2026-11-25T19:20:45.803Z level=INFO msg="No config file found, using default or config from environment variables."
+time=2026-11-25T19:20:45.950Z level=INFO msg="Wiped database."
+time=2026-11-25T19:20:46.613Z level=INFO msg="Restored table api_tokens"
+time=2026-11-25T19:20:46.661Z level=INFO msg="Restored table migration_status"
+time=2026-11-25T19:20:46.713Z level=INFO msg="Restored table webhooks"
+time=2026-11-25T19:20:46.761Z level=WARN msg="Could not reset id sequence for favorites_id_seq: ERROR: column \"id\" does not exist (SQLSTATE 42703)"
+time=2026-11-25T19:20:46.761Z level=INFO msg="Restored table favorites"
+time=2026-11-25T19:20:46.821Z level=INFO msg="Restored table task_relations"
+time=2026-11-25T19:20:46.872Z level=INFO msg="Restored table task_attachments"
+time=2026-11-25T19:20:46.921Z level=INFO msg="Restored table user_tokens"
+time=2026-11-25T19:20:46.971Z level=INFO msg="Restored table time_entries"
+time=2026-11-25T19:20:47.074Z level=WARN msg="Could not reset id sequence for task_positions_id_seq: ERROR: column \"id\" does not exist (SQLSTATE 42703)"
+time=2026-11-25T19:20:47.074Z level=INFO msg="Restored table task_positions"
+time=2026-11-25T19:20:47.122Z level=INFO msg="Restored table task_comments"
+time=2026-11-25T19:20:47.175Z level=WARN msg="Could not reset id sequence for project_ancestors_id_seq: ERROR: column \"id\" does not exist (SQLSTATE 42703)"
+time=2026-11-25T19:20:47.175Z level=INFO msg="Restored table project_ancestors"
+time=2026-11-25T19:20:47.225Z level=WARN msg="Could not reset id sequence for task_index_aliases_id_seq: ERROR: column \"id\" does not exist (SQLSTATE 42703)"
+time=2026-11-25T19:20:47.225Z level=INFO msg="Restored table task_index_aliases"
+time=2026-11-25T19:20:47.282Z level=ERROR msg="could not restore table data for table tasks: ERROR: invalid input syntax for type double precision: \"MA==\" (SQLSTATE 22P02)"
+restored into study-vikunja-official on http://localhost:9967

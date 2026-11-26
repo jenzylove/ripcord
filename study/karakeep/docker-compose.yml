@@ -1,0 +1,40 @@
+# Adapted from the official compose https://raw.githubusercontent.com/karakeep-app/karakeep/main/docker/docker-compose.yml
+# Changes: host port parameterised (HOST_PORT), image tags pinned via .env.
+services:
+  web:
+    image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
+    restart: unless-stopped
+    volumes:
+      - data:/data
+    ports:
+      - "${HOST_PORT:-9942}:3000"
+    env_file:
+      - .env
+    environment:
+      MEILI_ADDR: http://meilisearch:7700
+      BROWSER_WEB_URL: http://chrome:9222
+      NEXTAUTH_URL: http://localhost:${HOST_PORT:-9942}
+      DATA_DIR: /data # DON'T CHANGE THIS
+  chrome:
+    image: ghcr.io/karakeep-app/karakeep-chrome:release
+    restart: unless-stopped
+    init: true
+    command:
+      - --disable-gpu
+      - --disable-dev-shm-usage
+      - --hide-scrollbars
+      - --disable-blink-features=AutomationControlled
+      - --window-size=1440,900
+  meilisearch:
+    image: getmeili/meilisearch:v1.55.0
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - meilisearch:/meili_data
+
+volumes:
+  meilisearch:
+  data:

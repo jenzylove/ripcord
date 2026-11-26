@@ -2,7 +2,7 @@
 # Community method: export workflows and credentials with the n8n CLI (--backup), as in popular guides.
 set -euo pipefail
 export MSYS_NO_PATHCONV=1
-HERE="$(cd "$(dirname "$0")" && pwd)"
+HERE="$(cd "$(dirname "$0")" && { pwd -W 2>/dev/null || pwd; })"
 LIVE="${LIVE_PROJECT:-study-n8n}"
 COMPOSE="docker compose -p $LIVE -f $HERE/../../docker-compose.yml"
 OUT="$HERE/backups/$(date +%Y%m%d-%H%M%S)"

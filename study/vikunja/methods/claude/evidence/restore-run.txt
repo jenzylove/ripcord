@@ -1,0 +1,56 @@
+restore: backup contents:
+  created_utc=20261125T192256Z
+  compose_project=study-vikunja
+  vikunja_image=vikunja/vikunja:2.8.0
+  format=1
+  users=1
+  projects=2
+  tasks=5
+  labels=0
+restore: starting empty database for 'study-vikunja-claude'...
+ Network study-vikunja-claude_default Creating 
+ Volume study-vikunja-claude_vikunja-db Creating 
+ Network study-vikunja-claude_default Creating 
+ Volume study-vikunja-claude_vikunja-db Creating 
+ Volume study-vikunja-claude_vikunja-db Created 
+ Volume study-vikunja-claude_vikunja-db Created 
+ Network study-vikunja-claude_default Created 
+ Network study-vikunja-claude_default Created 
+ Container study-vikunja-claude-db-1 Creating 
+ Container study-vikunja-claude-db-1 Created 
+ Container study-vikunja-claude-db-1 Starting 
+ Container study-vikunja-claude-db-1 Started 
+restore: waiting for postgres...
+restore: loading database dump...
+restore: restoring attachments into the new files volume...
+ Volume study-vikunja-claude_vikunja-files Creating 
+ Volume study-vikunja-claude_vikunja-files Creating 
+ Volume study-vikunja-claude_vikunja-files Created 
+ Volume study-vikunja-claude_vikunja-files Created 
+ Container study-vikunja-claude-files-perms-run-419dbab6467a Creating 
+ Container study-vikunja-claude-files-perms-run-419dbab6467a Created 
+restore: starting Vikunja on port 9969...
+ Container study-vikunja-claude-db-1 Running 
+ Container study-vikunja-claude-files-perms-1 Creating 
+ Container study-vikunja-claude-files-perms-1 Created 
+ Container study-vikunja-claude-vikunja-1 Creating 
+ Container study-vikunja-claude-vikunja-1 Created 
+ Container study-vikunja-claude-files-perms-1 Starting 
+ Container study-vikunja-claude-files-perms-1 Started 
+ Container study-vikunja-claude-files-perms-1 Waiting 
+ Container study-vikunja-claude-db-1 Waiting 
+ Container study-vikunja-claude-db-1 Healthy 
+ Container study-vikunja-claude-files-perms-1 Exited 
+ Container study-vikunja-claude-vikunja-1 Starting 
+ Container study-vikunja-claude-vikunja-1 Started 
+
+restore: row counts now (compare with the MANIFEST above):
+  users=1
+  projects=2
+  tasks=5
+  labels=0
+
+restore: done. The copy is running at http://localhost:9969 (log in with your normal account).
+  Compose file : /c/Users/LENOVO/ripcord/study/vikunja/methods/claude/restored/study-vikunja-claude/docker-compose.yml
+  Remove copy  : docker compose -p study-vikunja-claude -f "/c/Users/LENOVO/ripcord/study/vikunja/methods/claude/restored/study-vikunja-claude/docker-compose.yml" down -v && rm -rf "/c/Users/LENOVO/ripcord/study/vikunja/methods/claude/restored/study-vikunja-claude"
+exit=0

@@ -1,0 +1,17 @@
+project: study-vikunja
+composeFile: docker-compose.yml
+appUrl: http://localhost:9962
+appService: vikunja
+loginVars:
+  username: STUDY_USERNAME
+  password: STUDY_PASSWORD
+databases: []
+volumes: []
+vault: C:/Users/LENOVO/ripcord/vault/study-vikunja
+checks:
+  - id: login_and_tasks
+    ask: "Log in with username {{username}} and password {{password}}. If the login is refused, save REJECTED for login_state and 0 for task_count. Otherwise save IN for login_state, open the project 'Launch Plan' and save the number of tasks listed (digits only) for task_count."
+    read: [login_state, task_count]
+  - id: attachment
+    ask: "Log in with username {{username}} and password {{password}}. If the login is refused, save NONE for attachment_state. Otherwise open the project 'Launch Plan', open the task 'Book venue' and look at its attachment venue-floorplan.png. Save PREVIEW if a preview image of it is displayed, or ERROR if it shows an error, a broken image or no preview."
+    read: [attachment_state]

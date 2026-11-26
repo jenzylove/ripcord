@@ -2,7 +2,7 @@
 # Official n8n full backup: external PostgreSQL via its own tool (pg_dump) + the .n8n folder (/home/node/.n8n, holds the encryption key).
 set -euo pipefail
 export MSYS_NO_PATHCONV=1
-HERE="$(cd "$(dirname "$0")" && pwd)"
+HERE="$(cd "$(dirname "$0")" && { pwd -W 2>/dev/null || pwd; })"
 LIVE="${LIVE_PROJECT:-study-n8n}"
 COMPOSE="docker compose -p $LIVE -f $HERE/../../docker-compose.yml"
 OUT="$HERE/backups/$(date +%Y%m%d-%H%M%S)"

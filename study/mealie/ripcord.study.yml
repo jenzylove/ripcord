@@ -1,0 +1,21 @@
+project: study-mealie
+composeFile: docker-compose.yml
+appUrl: http://localhost:9961
+appService: mealie
+loginVars:
+  email: STUDY_EMAIL
+  password: STUDY_PASSWORD
+databases:
+  - service: postgres
+    engine: postgres
+    user: mealie
+    db: mealie
+volumes: [mealie-data]
+vault: C:/Users/LENOVO/ripcord/vault/study-mealie
+checks:
+  - id: recipe_photo
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Party Jollof Rice' and look at the recipe photo at the top. Answer PICTURE if an image is displayed there, or PLACEHOLDER if the photo is missing, blank or broken."
+    read: [photo_state]
+  - id: recipe_details
+    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Party Jollof Rice'. Report the number of servings shown (digits only) and the number of ingredients listed (digits only)."
+    read: [servings, ingredient_count]

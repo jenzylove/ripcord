@@ -1,0 +1,45 @@
+{
+  "app": "vikunja",
+  "base": "http://localhost:9962",
+  "login": {
+    "username": "study",
+    "email": "study@example.com",
+    "password": "StudyPass123!"
+  },
+  "project": {
+    "id": 2,
+    "title": "Launch Plan"
+  },
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Write press release"
+    },
+    {
+      "id": 2,
+      "title": "Book venue"
+    },
+    {
+      "id": 3,
+      "title": "Order printed banners"
+    },
+    {
+      "id": 4,
+      "title": "Invite beta users"
+    },
+    {
+      "id": 5,
+      "title": "Prepare demo script"
+    }
+  ],
+  "attachment": {
+    "task": "Book venue",
+    "taskId": 2,
+    "result": [
+      {
+        "name": "venue-floorplan.png",
+        "size": 2846
+      }
+    ]
+  }
+}

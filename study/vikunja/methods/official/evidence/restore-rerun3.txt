@@ -1,0 +1,55 @@
+ Network study-vikunja-official_default Creating 
+ Volume study-vikunja-official_vikunja-files Creating 
+ Volume study-vikunja-official_vikunja-files Creating 
+ Network study-vikunja-official_default Creating 
+ Volume study-vikunja-official_vikunja-db Creating 
+ Volume study-vikunja-official_vikunja-db Creating 
+ Volume study-vikunja-official_vikunja-files Created 
+ Volume study-vikunja-official_vikunja-files Created 
+ Volume study-vikunja-official_vikunja-db Created 
+ Volume study-vikunja-official_vikunja-db Created 
+ Network study-vikunja-official_default Created 
+ Network study-vikunja-official_default Created 
+ Container study-vikunja-official-db-1 Creating 
+ Container study-vikunja-official-files-perms-1 Creating 
+ Container study-vikunja-official-files-perms-1 Created 
+ Container study-vikunja-official-db-1 Created 
+ Container study-vikunja-official-vikunja-1 Creating 
+ Container study-vikunja-official-vikunja-1 Created 
+ Container study-vikunja-official-files-perms-1 Starting 
+ Container study-vikunja-official-db-1 Starting 
+ Container study-vikunja-official-files-perms-1 Started 
+ Container study-vikunja-official-db-1 Started 
+ Container study-vikunja-official-db-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Exited 
+ Container study-vikunja-official-db-1 Healthy 
+ Container study-vikunja-official-vikunja-1 Starting 
+ Container study-vikunja-official-vikunja-1 Started 
+ Container study-vikunja-official-db-1 Waiting 
+ Container study-vikunja-official-vikunja-1 Waiting 
+ Container study-vikunja-official-files-perms-1 Waiting 
+ Container study-vikunja-official-vikunja-1 Healthy 
+ Container study-vikunja-official-files-perms-1 Exited 
+ Container study-vikunja-official-db-1 Healthy 
+time=2026-11-25T19:20:58.529Z level=INFO msg="No config file found, using default or config from environment variables."
+time=2026-11-25T19:20:58.529Z level=INFO msg="Running migrations…"
+[xorm] [info]  2026/11/25 19:20:58.530020 PING DATABASE pgx
+time=2026-11-25T19:20:58.636Z level=INFO msg="Ran all migrations successfully."
+time=2026-11-25T19:20:58.638Z level=WARN msg="No license key configured. Pro features have been disabled."
+time=2026-11-25T19:20:58.642Z level=WARN msg="Restoring a dump will wipe your current installation!"
+time=2026-11-25T19:20:58.643Z level=WARN msg="To confirm, please type 'Yes, I understand' and confirm with enter:"
+time=2026-11-25T19:20:58.643Z level=WARN msg="No config file found, not restoring one."
+time=2026-11-25T19:20:58.643Z level=WARN msg="You'll likely have had Vikunja configured through environment variables."
+time=2026-11-25T19:20:58.643Z level=WARN msg="Please make sure the following settings are properly configured in your instance:\nVIKUNJA_DATABASE_DATABASE\nVIKUNJA_DATABASE_TYPE\nVIKUNJA_DATABASE_PASSWORD\nVIKUNJA_DATABASE_USER\nVIKUNJA_DATABASE_HOST\nVIKUNJA_SERVICE_ENABLEREGISTRATION\nVIKUNJA_SERVICE_SECRET\nVIKUNJA_SERVICE_PUBLICURL\nVIKUNJA_SERVICE_ROOTPATH\nVIKUNJA_DATABASE_PATH"
+time=2026-11-25T19:20:58.643Z level=WARN msg="Their values are in the .env file inside the dump."
+time=2026-11-25T19:20:58.643Z level=WARN msg="Make sure your current config matches these env variables, confirm by pressing enter when done."
+time=2026-11-25T19:20:58.643Z level=WARN msg="If your config does not match, you'll have to make the changes and restart the restoring process afterwards."
+time=2026-11-25T19:20:58.643Z level=INFO msg=Restoring...
+time=2026-11-25T19:20:58.644Z level=INFO msg="No config file found, using default or config from environment variables."
+time=2026-11-25T19:20:58.891Z level=INFO msg="Wiped database."
+time=2026-11-25T19:20:59.991Z level=INFO msg="Restored table task_attachments"
+time=2026-11-25T19:21:00.113Z level=INFO msg="Restored table subscriptions"
+time=2026-11-25T19:21:00.221Z level=INFO msg="Restored table user_invite_links"
+time=2026-11-25T19:21:00.338Z level=ERROR msg="could not restore table data for table tasks: ERROR: invalid input syntax for type double precision: \"MA==\" (SQLSTATE 22P02)"
+restored into study-vikunja-official on http://localhost:9967

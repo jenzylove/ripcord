@@ -1,0 +1,33 @@
+==> Unpacking /c/Users/LENOVO/ripcord/study/mealie/methods/claude/backups/mealie-backup-20261125-194947.tar.gz
+==> Creating containers and volumes for project 'study-mealie-claude'
+ Network study-mealie-claude_default Creating 
+ Volume study-mealie-claude_mealie-pgdata Creating 
+ Network study-mealie-claude_default Creating 
+ Volume study-mealie-claude_mealie-pgdata Creating 
+ Volume study-mealie-claude_mealie-data Creating 
+ Volume study-mealie-claude_mealie-data Creating 
+ Volume study-mealie-claude_mealie-data Created 
+ Volume study-mealie-claude_mealie-data Created 
+ Volume study-mealie-claude_mealie-pgdata Created 
+ Volume study-mealie-claude_mealie-pgdata Created 
+ Network study-mealie-claude_default Created 
+ Network study-mealie-claude_default Created 
+ Container study-mealie-claude-postgres-1 Creating 
+ Container study-mealie-claude-postgres-1 Created 
+ Container study-mealie-claude-mealie-1 Creating 
+ Container study-mealie-claude-mealie-1 Created 
+==> Starting a fresh Postgres
+ Container study-mealie-claude-postgres-1 Starting 
+ Container study-mealie-claude-postgres-1 Started 
+ Container study-mealie-claude-postgres-1 Waiting 
+ Container study-mealie-claude-postgres-1 Healthy 
+==> Restoring the database
+==> Restoring the mealie-data volume
+==> Starting Mealie on port 9966
+ Container study-mealie-claude-postgres-1 Running 
+ Container study-mealie-claude-postgres-1 Waiting 
+ Container study-mealie-claude-postgres-1 Healthy 
+ Container study-mealie-claude-mealie-1 Starting 
+ Container study-mealie-claude-mealie-1 Started 
+==> Waiting for http://localhost:9966 (up to 3 minutes)
+ERROR: Mealie did not answer in time. Check: docker compose -p study-mealie-claude -f /c/Users/LENOVO/ripcord/study/mealie/methods/claude/restored/study-mealie-claude/docker-compose.yml logs mealie

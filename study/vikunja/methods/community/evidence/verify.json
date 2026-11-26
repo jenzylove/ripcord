@@ -1,0 +1,38 @@
+{
+ "base": "http://localhost:9968",
+ "http_info": 200,
+ "login_status": 200,
+ "projects": [
+  "Inbox",
+  "Launch Plan",
+  "My Open Tasks"
+ ],
+ "task_titles": [
+  "Book venue",
+  "Invite beta users",
+  "Order printed banners",
+  "Prepare demo script",
+  "Write press release"
+ ],
+ "task2_status": 200,
+ "task2_title": "Book venue",
+ "task2_attachments": [
+  {
+   "id": 1,
+   "name": "venue-floorplan.png",
+   "size": 2846
+  }
+ ],
+ "downloads": [
+  {
+   "name": "venue-floorplan.png",
+   "status": 404,
+   "type": "application/json",
+   "bytes": 51,
+   "sha256": "81e5a61c73fdb363",
+   "preview_status": 404,
+   "preview_bytes": 51,
+   "body_start": "{\"code\":4034,\"message\":\"The file does not exist.\"}\n"
+  }
+ ]
+}

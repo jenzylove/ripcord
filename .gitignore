@@ -20,3 +20,4 @@ study/**/backups/
 study/**/*.dump
 study/**/*.tar
 study/**/*.zip
+.vercel

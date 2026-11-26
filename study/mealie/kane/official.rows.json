@@ -1,0 +1,7 @@
+{
+  "app": "mealie",
+  "method": "official",
+  "tables": 70,
+  "mismatched": [],
+  "verdict": "MATCH"
+}

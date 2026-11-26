@@ -1,0 +1,3 @@
+couldn't find env file: C:\c\Users\LENOVO\ripcord\study\n8n\.env
+ERROR: postgres container of project 'study-n8n' is not running. Start it with: docker compose -p study-n8n up -d
+BACKUP FAILED - nothing kept.

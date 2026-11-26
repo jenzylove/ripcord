@@ -1,0 +1,49 @@
+# Vikunja with Postgres, from the official docs "Example without any proxy":
+# https://vikunja.io/docs/full-docker-example
+# Changes: pinned tag, host port 9968, named volumes instead of ./files and ./db bind mounts
+# (so a copy under another compose project gets its own storage).
+services:
+  vikunja:
+    image: vikunja/vikunja:2.8.0
+    environment:
+      VIKUNJA_SERVICE_PUBLICURL: http://localhost:9968
+      VIKUNJA_DATABASE_HOST: db
+      VIKUNJA_DATABASE_PASSWORD: changeme
+      VIKUNJA_DATABASE_TYPE: postgres
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_SERVICE_SECRET: study-secret-value-0123456789abcdef
+      VIKUNJA_SERVICE_ENABLEREGISTRATION: "true"
+    ports:
+      - 9968:3456
+    volumes:
+      - vikunja-files:/app/vikunja/files
+    depends_on:
+      db:
+        condition: service_healthy
+      files-perms:
+        condition: service_completed_successfully
+    restart: unless-stopped
+  # Docs tell you to `chown 1000:0` the ./files folder; with a named volume this one-shot does it.
+  files-perms:
+    image: postgres:18
+    user: "0:0"
+    entrypoint: ["chown", "-R", "1000:0", "/app/vikunja/files"]
+    volumes:
+      - vikunja-files:/app/vikunja/files
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_USER: vikunja
+    volumes:
+      - vikunja-db:/var/lib/postgresql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -U $$POSTGRES_USER"]
+      interval: 2s
+      start_period: 30s
+
+volumes:
+  vikunja-files:
+  vikunja-db:

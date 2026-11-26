@@ -1,0 +1,10 @@
+# Plain English checks for Kane. Login: {{email}} {{password}} (study@example.com / StudyPass123!)
+- id: jollof_photo
+  ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Party Jollof Rice'. Look at the recipe photo at the top. Report whether it shows a real picture or a broken image placeholder, and its main colour."
+  read: [photo_state, photo_main_colour]
+- id: jollof_details
+  ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Party Jollof Rice'. Report the number of servings shown and how many ingredients are listed."
+  read: [servings, ingredient_count]
+- id: egusi_photo
+  ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Egusi Soup'. Report whether its photo shows a real picture or a broken image placeholder."
+  read: [photo_state]
