@@ -23,6 +23,16 @@ const methods = {
     claude: { label: 'Script written by Claude Code (unsteered prompt)', source: 'https://github.com/jenzylove/ripcord/tree/master/study/vikunja/methods/claude' },
   },
 };
+const NOTES = {
+  'mealie/official': 'Kane did not see the photo on the live app in this run either, so the check could not decide. API check: all 3 photos load in the copy.',
+  'mealie/community': 'API check: every recipe photo returns 404 in the copy while all 70 tables match. The guide backs up the database only; photos live in a volume.',
+  'mealie/claude': 'Claude Code backed up the database and the data volume. Its restore script timed out under load, but the copy came up complete.',
+  'n8n/official': "Kane's login readings on the live app disagreed between runs, so nothing is claimed. API check: owner login and credential work in the copy.",
+  'n8n/community': "Kane's readings disagreed, so nothing is claimed. API check: the copy has no owner account, and n8n logs 'Credentials could not be decrypted' (a different encryption key).",
+  'vikunja/official': 'vikunja restore stopped with an error (could not restore table data for table tasks: invalid input syntax for type double precision) and left 0 users and 0 tasks. Kane could not log in to the copy. The row count catches this one.',
+  'vikunja/community': 'API check: the attachment download returns 404 (file does not exist) while all 43 tables match. The guide backs up the database only; files live in a volume.',
+  'vikunja/claude': 'Claude Code backed up the database and the files volume; everything came back.',
+};
 const NOISE = new Set(['sessions']); // rows created by our own API logins during checks
 
 const cases = [];
@@ -46,7 +56,7 @@ for (const [app, ms] of Object.entries(methods)) {
       differences: r.differences.map((d) => ({ check: d.id, key: d.key, live: d.live, copy: d.copy })),
       checks: r.checks.map((c) => ({ id: c.id, live: c.live, copy: c.copy, liveShare: c.liveRun?.shareUrl ?? null, copyShare: c.copyRun?.shareUrl ?? null })),
       creditsUsed: r.creditsUsed,
-      note: '',
+      note: NOTES[`${app}/${m}`] ?? '',
     });
   }
 }

@@ -1,2 +1,19 @@
 Kane reads 2 checks on the live app and on the copy (one run at a time)...
 [recipe_photo] live  http://localhost:9961
+[recipe_photo] live  passed {"recipe_photo_valid_image_check":"true"}
+[recipe_photo] copy  http://localhost:9965
+[recipe_photo] copy  failed {"recipe_photo_missing_placeholder":"false","recipe_photo_broken_placeholder":"false","recipe_photo_image_visible":"false","recipe_photo_blank_placeholder":"true"}
+[recipe_details] live  http://localhost:9961
+[recipe_details] live  passed {"servings":"6","ingredient_count":"4"}
+[recipe_details] copy  http://localhost:9965
+[recipe_details] copy  passed {"servings":"6","ingredient_count":"4","servings_2":"6","ingredient_count_2":"4"}
+Confirming 1 disagreeing check(s) with a second reading on both sides...
+[recipe_photo] live  http://localhost:9961
+[recipe_photo] live  passed {"recipe_photo_image_present":"true","recipe_photo_missing_placeholder_absent":"false","recipe_photo_blank_placeholder_absent":"false","recipe_photo_broken_placeholder_absent":"false"}
+[recipe_photo] copy  http://localhost:9965
+[recipe_photo] copy  failed {"recipe_photo_image_visible":"false","recipe_photo_placeholder_absent":"true"}
+
+LOSS: recipe_photo.assert live="PASS" copy="FAIL"
+Row counts: UNAVAILABLE
+Report: C:\Users\LENOVO\ripcord\study\mealie\.ripcord\reports\proof-20261126T090032Z.html
+exit 1

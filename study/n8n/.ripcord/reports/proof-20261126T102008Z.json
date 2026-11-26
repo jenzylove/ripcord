@@ -1,0 +1,95 @@
+{
+  "id": "proof-20261126T102008Z",
+  "project": "study-n8n",
+  "backupId": "n8n-official",
+  "createdAt": "2026-11-26T10:20:08.980Z",
+  "verdict": "INCONCLUSIVE",
+  "differences": [],
+  "checks": [
+    {
+      "id": "login",
+      "live": {
+        "assert": "FAIL"
+      },
+      "copy": {
+        "assert": "FAIL"
+      },
+      "liveOk": false,
+      "copyOk": false,
+      "liveRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.final_verification",
+        "summary": "The sign-in request succeeded and the browser moved from the sign-in page to /assistant. The final check incorrectly treated that valid authenticated workspace page as a failure.\nUpdate the final verification to recognize /assistant and its authenticated navigation as a successful n8n workspace, in addition to Overview and Workflows.",
+        "values": {
+          "login_succeeds": "true",
+          "sign_in_page_not_shown": "false",
+          "error_not_shown": "false",
+          "n8n_workspace_page_shown": "false"
+        },
+        "credits": 11.76218,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BNJSWRA1YK5AFKWWNXPMF2/dashboard/share/US_GO53BQFUSORWHKHM8SPJ2QELE3DJX2JOKHR2X025BZOI7SQUX495UI46CCVH5C5O?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\4fb3e3f8-0c6c-4976-b57b-d3d331e57d72",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\4fb3e3f8-0c6c-4976-b57b-d3d331e57d72\\evidence\\9e08115f-f9d1-469f-ac03-b6a88e7b4685.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.final_verification",
+        "summary": "After signing in, n8n opened its Assistant page. This is an authenticated workspace page, not the sign-in page or an error, but the final check only allowed Overview or Workflows.\nUpdate the final check to accept the authenticated Assistant page as a valid workspace, or add a navigation step to open Overview or Workflows before asserting the final page.",
+        "values": {
+          "login_succeeds_check": "true",
+          "sign_in_page_shown_check": "false",
+          "error_shown_check": "false",
+          "n8n_workspace_shown_check": "false"
+        },
+        "credits": 12.706769999999999,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BNR4QGYP9T711RM9HJG2VG/dashboard/share/US_G5SDI1ERQYKPVVL5BW7B23T99776D4PCNIDYW6NXG9MY1UGQIM8EXHOK44TM0961?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\bc3b2121-1541-4801-b050-5078d1522a53",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\bc3b2121-1541-4801-b050-5078d1522a53\\evidence\\2d4c3ef9-3989-4390-bf9d-e31b640a73a8.evidence"
+      }
+    },
+    {
+      "id": "credential",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": "PASS"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the Credentials page and selected the credential named “Acme Billing API key.”\nThe credential opened successfully, its form fields were visible, and no error message or red banner was shown.",
+        "values": {
+          "error_message_absent": "false",
+          "red_banner_absent": "false",
+          "credential_open_check": "true",
+          "credential_form_fields_visible": "true"
+        },
+        "credits": 26.554682500000002,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BN88ZAWAAQA3HGVVZ1C24P/dashboard/share/US_WC42R3XBGSTJ2JGH08DBQU0TN9049CPL9LB7CWNQAPV63XK14TYO1GYO5WZJEYSL?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\674c40a6-5c08-40ff-92b8-73c382c7db07",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\674c40a6-5c08-40ff-92b8-73c382c7db07\\evidence\\25546aa2-584a-488f-aadf-b3801654ddd9.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in using the provided account credentials.\nOpened the Credentials page and selected “Acme Billing API key.”\nThe credential opened successfully with its form fields visible and no error message or red warning banner.",
+        "values": {
+          "acme_billing_api_key_open": "true",
+          "credential_form_fields_visible": "true",
+          "error_message_absent": "false",
+          "red_banner_absent": "false"
+        },
+        "credits": 27.906320000000004,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BNDFTE2X2D4VYJJ2NDK6XN/dashboard/share/US_XJ4Q8FHCMK34W9I821W2DOYK82LB1LJ240U8Q3ND0P8HFM3O408ZZSEQADMX0DB4?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\63461c88-f230-427e-9534-4dc0d33ed796",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\63461c88-f230-427e-9534-4dc0d33ed796\\evidence\\a4a2a573-544a-4e39-85b6-f818fd6fa470.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 78.92995250000001
+}

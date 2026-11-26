@@ -1,0 +1,183 @@
+{
+  "title": "ripcord fix: Kane finds the loss, Claude Code fixes the backup, Kane proves it",
+  "recordedAt": "Nov 26 2026, 10:00 UTC",
+  "fullLog": "logs/fix-1-fix3.log",
+  "lines": [
+    {
+      "text": "$ ripcord fix",
+      "wait": 700
+    },
+    {
+      "text": "Backing up the live stack...",
+      "wait": 350
+    },
+    {
+      "text": "Backup 20261126T102009Z: 1 files in vault/mealie-fix",
+      "wait": 350
+    },
+    {
+      "text": "Restoring a throwaway copy...",
+      "wait": 350
+    },
+    {
+      "text": "Copy rc-copy-20261126t102009z answering at http://localhost:9930",
+      "wait": 350
+    },
+    {
+      "text": "Kane reads 2 checks on the live app and on the copy (one run at a time)...",
+      "wait": 350
+    },
+    {
+      "text": "[recipe_photo] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] live  passed {\"large_recipe_photo_food_check\":\"true\",\"large_recipe_photo_placeholder_check\":\"false\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_photo] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] copy  failed {}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_servings] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_servings] live  passed {\"servings\":\"6\",\"ingredient_count\":\"3\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_servings] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_servings] copy  passed {\"servings\":\"6\",\"ingredient_count\":\"3\",\"servings_2\":\"6\",\"ingredient_count_2\":\"3\"}",
+      "wait": 500
+    },
+    {
+      "text": "Confirming 1 disagreeing check(s) with a second reading on both sides...",
+      "wait": 350
+    },
+    {
+      "text": "[recipe_photo] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] live  passed {\"large_recipe_photo_food\":\"true\",\"large_recipe_photo_placeholder\":\"false\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_photo] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] copy  failed {\"large_recipe_photo_food_check\":\"false\",\"large_recipe_photo_placeholder_check\":\"true\"}",
+      "wait": 500
+    },
+    {
+      "text": "Removing copy rc-copy-20261126t102009z",
+      "wait": 350
+    },
+    {
+      "text": "LOSS: recipe_photo.assert live=\"PASS\" copy=\"FAIL\"",
+      "wait": 900
+    },
+    {
+      "text": "Row counts: MATCH",
+      "wait": 350
+    },
+    {
+      "text": "Report: demo\\mealie-fix\\.ripcord\\reports\\proof-20261126T103135Z.html",
+      "wait": 350
+    },
+    {
+      "text": "Fix round 1: asking Claude Code to fix ripcord.yml...",
+      "wait": 350
+    },
+    {
+      "text": "I changed `ripcord.yml` so the backup now includes the `mealie-data` named volume, which is mounted at `/app/data/` in the `mealie` service. That volume is where Mealie keeps uploaded recipe images, so a restore that only covered the Postgres database lost the Jollof Rice photo (the `original.webp` request failed) even though the row counts matched.",
+      "wait": 500
+    },
+    {
+      "text": "The edit replaces `volumes: []` with a list containing `mealie-data`, in the same format as `demo/mealie/ripcord.yml`. I haven't re-run Ripcord, so the `recipe_photo` check hasn't been re-tested yet.",
+      "wait": 350
+    },
+    {
+      "text": "Backing up the live stack...",
+      "wait": 350
+    },
+    {
+      "text": "Backup 20261126T103150Z: 2 files in vault/mealie-fix",
+      "wait": 350
+    },
+    {
+      "text": "Restoring a throwaway copy...",
+      "wait": 350
+    },
+    {
+      "text": "Copy rc-copy-20261126t103150z answering at http://localhost:9930",
+      "wait": 350
+    },
+    {
+      "text": "Kane reads 2 checks on the live app and on the copy (one run at a time)...",
+      "wait": 350
+    },
+    {
+      "text": "[recipe_photo] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] live  passed {\"large_recipe_photo_food_check\":\"true\",\"large_recipe_photo_placeholder_check\":\"false\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_photo] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_photo] copy  passed {\"large_recipe_photo_food_check\":\"true\",\"large_recipe_photo_missing_placeholder_check\":\"false\",\"large_recipe_photo_blank_placeholder_check\":\"false\",\"large_recipe_photo_broken_placeholder_check\":\"false\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_servings] live  http://localhost:9925",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_servings] live  passed {\"servings\":\"6\",\"ingredient_count\":\"3\"}",
+      "wait": 500
+    },
+    {
+      "text": "[recipe_servings] copy  http://localhost:9930",
+      "wait": 1100
+    },
+    {
+      "text": "[recipe_servings] copy  passed {\"servings\":\"6\",\"ingredient_count\":\"3\"}",
+      "wait": 500
+    },
+    {
+      "text": "Removing copy rc-copy-20261126t103150z",
+      "wait": 350
+    },
+    {
+      "text": "PROVEN",
+      "wait": 900
+    },
+    {
+      "text": "Row counts: MATCH",
+      "wait": 350
+    },
+    {
+      "text": "Report: demo\\mealie-fix\\.ripcord\\reports\\proof-20261126T104044Z.html",
+      "wait": 350
+    },
+    {
+      "text": "PROVEN after 1 fix round(s).",
+      "wait": 900
+    }
+  ]
+}

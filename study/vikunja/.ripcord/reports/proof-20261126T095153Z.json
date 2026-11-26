@@ -1,0 +1,91 @@
+{
+  "id": "proof-20261126T095153Z",
+  "project": "study-vikunja",
+  "backupId": "vikunja-claude",
+  "createdAt": "2026-11-26T09:51:53.562Z",
+  "verdict": "PROVEN",
+  "differences": [],
+  "checks": [
+    {
+      "id": "login_and_tasks",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": "PASS"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account credentials.\nOpened the “Launch Plan” project.\nConfirmed that the project displays 5 tasks.",
+        "values": {
+          "login_success_check": "true",
+          "launch_plan_task_count_check": "5"
+        },
+        "credits": 8.558019999999999,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKT9FG2P55QPQ4W9B3XTA7/dashboard/share/US_GF7IP2KYHUOC404ID40H4SQLZ8NLZOA2IV52T6ORG1BDH6CQ7PA33Q1D1OB0M69B?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\dc05aee1-e39d-4896-aba7-4a78775e1efb",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\dc05aee1-e39d-4896-aba7-4a78775e1efb\\evidence\\c3833e9d-9176-47ef-ab10-5c0e522bcd5e.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account.\nOpened the “Launch Plan” project.\nConfirmed that the project displays 5 tasks.",
+        "values": {
+          "login_success_check": "true",
+          "launch_plan_task_count_check": "5"
+        },
+        "credits": 7.583709999999999,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKXW39HGXPB8MFW1EBPKN3/dashboard/share/US_T33ZN66PO4DRQ146FI90HKSGYQ6UR606Q3IAMERTVJRHLSQO9WYUPN8KV44I9912?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\8fc401f5-eb9d-4518-9f19-2bd2ff58f48b",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\8fc401f5-eb9d-4518-9f19-2bd2ff58f48b\\evidence\\b0897f37-e1a9-4952-95e8-481c984293d1.evidence"
+      }
+    },
+    {
+      "id": "attachment",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": "PASS"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account.\nOpened the “Launch Plan” project and the “Book venue” task.\nViewed the task attachments and confirmed that venue-floorplan.png is listed with a loaded preview image and no error or broken image.",
+        "values": {
+          "venue_floorplan_png_listed": "true",
+          "venue_floorplan_png_preview_image": "true",
+          "venue_floorplan_png_error": "false",
+          "venue_floorplan_png_broken_image": "false"
+        },
+        "credits": 16.787465,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BM18FQP89GAB95RBF6J478/dashboard/share/US_B3SECKT6WNMPMR4NIG8L3J5BPAVLOBHT5RE3IQDT4DTW2ODEFIYLZYQOPAZ2LW6H?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\ac3e2992-a277-422b-9437-004ac5801fa1",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\ac3e2992-a277-422b-9437-004ac5801fa1\\evidence\\aa222979-a16d-40c2-bd3f-f945918081dd.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account credentials.\nOpened the “Launch Plan” project and the “Book venue” task.\nViewed the task attachments and confirmed that “venue-floorplan.png” was listed with a working preview image, with no error or broken image shown.",
+        "values": {
+          "venue_floorplan_png_listed": "true",
+          "venue_floorplan_png_preview_image": "true",
+          "venue_floorplan_png_error": "false",
+          "venue_floorplan_png_broken_image": "false"
+        },
+        "credits": 20.564545000000003,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BM5KXEVR09ZAJVT4Z12160/dashboard/share/US_2DGAQL9DG314HHXWC3M66C2UCCOD5E2CJQJGXKZYY2F8UNLYYYZ81HRVHAVBX66C?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\0a931258-ed6e-4c4c-92b6-ca17b457b627",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\0a931258-ed6e-4c4c-92b6-ca17b457b627\\evidence\\3b3a61d1-ba8b-4541-a6c9-e7c9a8d18e0d.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 53.49374
+}

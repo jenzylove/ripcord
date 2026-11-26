@@ -1,0 +1,94 @@
+{
+  "id": "proof-20261126T094323Z",
+  "project": "study-vikunja",
+  "backupId": "vikunja-community",
+  "createdAt": "2026-11-26T09:43:23.669Z",
+  "verdict": "LOSS",
+  "differences": [
+    {
+      "id": "attachment",
+      "key": "assert",
+      "live": "PASS",
+      "copy": "FAIL"
+    }
+  ],
+  "checks": [
+    {
+      "id": "login_and_tasks",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": "PASS"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided username and password.\nOpened the “Launch Plan” project.\nConfirmed that the project displays 5 tasks.",
+        "values": {
+          "login_succeeds_check": "true",
+          "launch_plan_task_count_check": "5"
+        },
+        "credits": 7.2283599999999995,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJVWE29SDT3E04DCMAZFSM/dashboard/share/US_W9QF6SLOJ9Q4ARB5J68XETDPSRT16AKEE8L7OP26ZYVVXD0QGDTK5F7AQHHWGEWW?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\5e20a849-f5a8-487e-8e57-1b76f3b6397e",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\5e20a849-f5a8-487e-8e57-1b76f3b6397e\\evidence\\65cfecac-7c0a-47d4-95b1-9b7b00fd00c8.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account credentials.\nOpened the “Launch Plan” project.\nConfirmed that the project displays 5 tasks.",
+        "values": {
+          "login_success_check": "true",
+          "launch_plan_task_count": "5"
+        },
+        "credits": 7.41435,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BK36757Q9DCNJ7GZSAN1MC/dashboard/share/US_HTVI45OEJ2VAU8KZHF8I0QQH784JA4LFCPITUPFDKUYHHF71OEXIPUAA5W4VBCMM?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\c8db4ef8-9e92-40e0-89c5-cfb386154282",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\c8db4ef8-9e92-40e0-89c5-cfb386154282\\evidence\\02954f74-188b-4ed5-9db3-51ce0b22143e.evidence"
+      }
+    },
+    {
+      "id": "attachment",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": "FAIL"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "confirmedBy": 2,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account.\nOpened the “Launch Plan” project and the “Book venue” task.\nViewed the task attachments and confirmed that “venue-floorplan.png” is listed with a visible preview and no error or broken image.",
+        "values": {
+          "venue_floorplan_png_listed": "true",
+          "venue_floorplan_png_preview_image": "true",
+          "venue_floorplan_png_error": "false",
+          "venue_floorplan_png_broken_image": "false"
+        },
+        "credits": 17.099886000000005,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKHGJHV9CD9FY7JAE49SKK/dashboard/share/US_7HJH13OCKI3WDR1SDEAFKH1IIL7M5BBWVRUDG9TIBTCZY5BA5M82K3JT3UXWSQ1N?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\b33132be-dcb7-4a0a-a39d-03136b370368",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\b33132be-dcb7-4a0a-a39d-03136b370368\\evidence\\bec22051-8246-4bd9-a862-1a2aeef467c3.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.confirmed_product_bug",
+        "summary": "The task still shows an attachment entry even though the file behind that entry is missing.\nRestore or re-upload venue-floorplan.png, or remove the stale attachment entry from Book venue. Ensure listed attachments only appear when their stored files can be retrieved.\nevidence: http_error_response: GET http://localhost:9968/api/v2/tasks/2/attachments/1/preview?size=md -> 404 body: {\"$schema\":\"http://localhost:9968/ap\nevidence: http_error_response: GET http://localhost:9968/api/v2/tasks/2/attachments/1 -> 404 body: {\"$schema\":\"http://localhost:9968/api/v2/schemas/Vik",
+        "values": {},
+        "credits": 15.752761000000001,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKPFCZYQY6N0P2SVFSE7EN/dashboard/share/US_531JU1JG50RW2264YWPXHP4HHUOL4VKI6FI6UFPAZ838V25S3U8JYX2225BPVBKG?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\971ff758-fb89-41e0-8ae4-923a91360d69",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\971ff758-fb89-41e0-8ae4-923a91360d69\\evidence\\703a8a32-7432-422c-992d-4a8737f9a1bc.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 47.495357000000006
+}

@@ -1,0 +1,20 @@
+Kane reads 2 checks on the live app and on the copy (one run at a time)...
+[login] live  http://localhost:9941
+[login] live  passed {"login_succeeds_check":"true","n8n_workspace_page_shown_check":"true","sign_in_page_not_shown_check":"false","error_not_shown_check":"false"}
+[login] copy  http://localhost:9944
+[login] copy  failed {"login_success_check":"true","sign_in_page_absent":"false","error_absent":"false","n8n_workspace_shown":"false"}
+[credential] live  http://localhost:9941
+[credential] live  passed {"error_message_absent":"false","red_banner_absent":"false","credential_open_check":"true","credential_form_fields_visible":"true"}
+[credential] copy  http://localhost:9944
+[credential] copy  passed {"acme_billing_api_key_open":"true","credential_form_fields_visible":"true","error_message_absent":"false","red_banner_absent":"false"}
+Confirming 1 disagreeing check(s) with a second reading on both sides...
+[login] live  http://localhost:9941
+[login] live  failed {"login_succeeds":"true","sign_in_page_not_shown":"false","error_not_shown":"false","n8n_workspace_page_shown":"false"}
+[login] copy  http://localhost:9944
+[login] copy  failed {"login_succeeds_check":"true","sign_in_page_shown_check":"false","error_shown_check":"false","n8n_workspace_shown_check":"false"}
+[login] the two readings disagree with each other: marked inconclusive, never proven
+
+INCONCLUSIVE
+Row counts: UNAVAILABLE
+Report: C:\Users\LENOVO\ripcord\study\n8n\.ripcord\reports\proof-20261126T102008Z.html
+exit 3

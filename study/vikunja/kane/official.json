@@ -1,0 +1,96 @@
+{
+  "id": "proof-20261126T092636Z",
+  "project": "study-vikunja",
+  "backupId": "vikunja-official",
+  "createdAt": "2026-11-26T09:26:36.946Z",
+  "verdict": "INCONCLUSIVE",
+  "differences": [
+    {
+      "id": "login_and_tasks",
+      "key": "assert",
+      "live": "PASS",
+      "copy": null
+    },
+    {
+      "id": "attachment",
+      "key": "assert",
+      "live": "PASS",
+      "copy": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "login_and_tasks",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": null
+      },
+      "liveOk": true,
+      "copyOk": false,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account.\nOpened the “Launch Plan” project.\nConfirmed that the project displays 5 tasks.",
+        "values": {
+          "login_success_check": "true",
+          "launch_plan_task_count": "5"
+        },
+        "credits": 22.329854999999995,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJ2FZP451FWDTBMT6VQVK7/dashboard/share/US_IQP7T3WK7F2IFRM6TDZQWG6LQWXREPCL3PCQSPJR89TL1AC93J5RW1P6UHYNI5XD?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\12042d54-e2d9-4296-b3c9-6544163e2f4e",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\12042d54-e2d9-4296-b3c9-6544163e2f4e\\evidence\\dc42eff5-2e40-4092-823e-927511c1be2f.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.step_not_achievable",
+        "summary": "The test account username or password is invalid, stale, or does not belong to an available account in this environment.\nCheck and refresh the username and password stored in the test configuration, confirm the account exists in this local Vikunja instance, then rerun the test.\nevidence: http_error_response: POST http://localhost:9967/api/v2/login -> 403 body: {\"$schema\":\"http://localhost:9967/api/v2/schemas/VikunjaErrorModel.",
+        "values": {},
+        "credits": 20.740724999999994,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJ6WZ4BGY6DGGBAXZYT6VM/dashboard/share/US_QWU158WRJ87HEQ3NN85NQJIF0UEOXAF00N7F0C19AWCBBKTEILT12TT9YZFFL7UF?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\ad63ebcb-8e8c-4492-befa-c38c915a6fc5",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\ad63ebcb-8e8c-4492-befa-c38c915a6fc5\\evidence\\4adeb785-808a-4883-af4a-ec5876fec135.evidence"
+      }
+    },
+    {
+      "id": "attachment",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": null
+      },
+      "liveOk": true,
+      "copyOk": false,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account credentials.\nOpened the “Launch Plan” project and selected the “Book venue” task.\nViewed the task attachments and confirmed that venue-floorplan.png was listed with a visible preview image and no error or broken image.",
+        "values": {
+          "venue_floorplan_listed": "true",
+          "venue_floorplan_preview_image": "true",
+          "venue_floorplan_error": "false",
+          "venue_floorplan_broken_image": "false"
+        },
+        "credits": 23.212495000000004,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJF6SPC04E9FSNN2RR3PEX/dashboard/share/US_6O1IK3VEP7QL0HSCAVB3JOAXYXOVNGYCF74S4HAD3WDLD2TR0MRHUU4RMP5IPA2U?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\2c2da2a3-e1ed-45e7-a62b-325bb49ab9d9",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\2c2da2a3-e1ed-45e7-a62b-325bb49ab9d9\\evidence\\8f18985d-f135-4bbe-8fb7-d5d45a514db2.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.step_not_achievable",
+        "summary": "The login account details provided to the test are invalid, stale, or unavailable in this environment.\nRefresh or recreate the test account credentials and verify that the account exists and can access this environment before rerunning the attachment check.\nevidence: http_error_response: POST http://localhost:9967/api/v2/login -> 403 body: {\"$schema\":\"http://localhost:9967/api/v2/schemas/VikunjaErrorModel.",
+        "values": {},
+        "credits": 13.443027500000001,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJPNZD5HD3RRN4MASWQJDS/dashboard/share/US_I783O16ZR7P36ZJQ9GGR5I0YDCZLZ2X5F7ZZAD2UF5L6AO3HQMX4DXHQUBIOLKRJ?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\7a6637c2-1ac6-47df-bd45-3c8fa9af9de5",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\7a6637c2-1ac6-47df-bd45-3c8fa9af9de5\\evidence\\dacc4023-4464-4e7c-8461-316c10d197c2.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 79.7261025
+}

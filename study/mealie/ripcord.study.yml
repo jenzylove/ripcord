@@ -16,6 +16,3 @@ checks:
   - id: recipe_photo
     ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Party Jollof Rice' and look at the recipe photo at the top."
     assert: "the recipe photo at the top shows an image, not a missing, blank or broken image placeholder"
-  - id: recipe_details
-    ask: "Log in with email {{email}} and password {{password}}. Open the recipe named 'Party Jollof Rice'. Report the number of servings shown (digits only) and the number of ingredients listed (digits only)."
-    read: [servings, ingredient_count]

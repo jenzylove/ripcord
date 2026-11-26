@@ -1,0 +1,101 @@
+{
+  "id": "proof-20261126T090032Z",
+  "project": "study-mealie",
+  "backupId": "mealie-community",
+  "createdAt": "2026-11-26T09:00:32.293Z",
+  "verdict": "LOSS",
+  "differences": [
+    {
+      "id": "recipe_photo",
+      "key": "assert",
+      "live": "PASS",
+      "copy": "FAIL"
+    }
+  ],
+  "checks": [
+    {
+      "id": "recipe_photo",
+      "live": {
+        "assert": "PASS"
+      },
+      "copy": {
+        "assert": "FAIL"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "confirmedBy": 2,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in using the provided email and password.\nOpened the recipe named “Party Jollof Rice.”\nViewed the photo at the top of the recipe page; it loaded correctly and was not blank, missing, or broken.",
+        "values": {
+          "recipe_photo_image_present": "true",
+          "recipe_photo_missing_placeholder_absent": "false",
+          "recipe_photo_blank_placeholder_absent": "false",
+          "recipe_photo_broken_placeholder_absent": "false"
+        },
+        "credits": 9.178309999999998,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BH27K5FBFNN0Z55FB0Z2Y8/dashboard/share/US_S1C1Y5O2ZUP1SZV34VP5B10GJEZXQ45EHH0M2RZ6239OWMYG3PP8GLH6FWTL5IV5?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\04dbe1d0-1a39-4839-b9dd-bcffd57e5ea1",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\04dbe1d0-1a39-4839-b9dd-bcffd57e5ea1\\evidence\\9ab1f14b-ed14-45ef-834a-d59ac746931a.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.confirmed_product_bug",
+        "summary": "The recipe page requests its photo, but the server says that file cannot be found. The page therefore shows an empty or broken photo area instead of the recipe image.\nRestore the Party Jollof Rice original photo file at the saved media path, or update the recipe to reference an available image, then retest the recipe page.\nevidence: network_failure: GET http://localhost:9965/api/media/recipes/0ed038e9-46d5-4fb9-a895-02f5beef52ed/images/original.webp?rnd=1&version=NKZv\nevidence: objective_contradiction: check FAILED: the recipe photo at the top shows an image — expected: true | observed: {{recipe_photo_image_visible}}\nevidence: objective_contradiction: check FAILED: the recipe photo at the top is not a missing, blank or broken image placeholder — expected: false | observ",
+        "values": {
+          "recipe_photo_image_visible": "false",
+          "recipe_photo_placeholder_absent": "true"
+        },
+        "credits": 23.950689999999998,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BH7YT7TM9EB4R79S5Y6ZPZ/dashboard/share/US_ODIZFU392NEUN231FTIZXJSTHTHEABY3V4W40HMPNE8LWW7UH2722NG8GUP498XL?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\b7df152a-31ed-409d-833d-b615b39ce9f1",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\b7df152a-31ed-409d-833d-b615b39ce9f1\\evidence\\cc5030c7-36f5-4501-b341-28586da2afd7.evidence"
+      }
+    },
+    {
+      "id": "recipe_details",
+      "live": {
+        "servings": "6",
+        "ingredient_count": "4"
+      },
+      "copy": {
+        "servings": "6",
+        "ingredient_count": "4"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the recipe “Party Jollof Rice.”\nRecorded 6 servings and 4 listed ingredients.",
+        "values": {
+          "servings": "6",
+          "ingredient_count": "4"
+        },
+        "credits": 29.266720000000003,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BGRV8VF8Y6ZVJQZQHMYAC9/dashboard/share/US_SE5YAYGFRP774796V4TCKWUYUUMQA99WSYMVQ2C6MXKZQ3U50XIVMCJUBGAC6MCO?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\0b519966-f9f8-46fa-bf17-339e06f04a91",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\0b519966-f9f8-46fa-bf17-339e06f04a91\\evidence\\170c1767-12c6-4ec5-ad10-9b1b072886ce.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in and opened the recipe “Party Jollof Rice.”\nRead the recipe details: it shows 6 servings and lists 4 ingredients.\nCompleted the requested report using digits only: 6 and 4.",
+        "values": {
+          "servings": "6",
+          "ingredient_count": "4",
+          "servings_2": "6",
+          "ingredient_count_2": "4"
+        },
+        "credits": 26.239320000000003,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BGXH0P1601X7EXAFC87D85/dashboard/share/US_35L94SLKF6M090C1N0Z7NKBHWHJ62L1GYG15ACGGBPLI0YBNAQ2FBRJBH1NNYPHV?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\499281a7-b4fe-4a0a-ba1e-342dd4fab948",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\499281a7-b4fe-4a0a-ba1e-342dd4fab948\\evidence\\8892ff05-2580-403d-ba03-23ccf0f5c02e.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 88.63504
+}

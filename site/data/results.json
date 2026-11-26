@@ -1,1 +1,374 @@
-{"generatedAt": "", "cases": []}
+{
+  "generatedAt": "2026-11-26T11:22:21.715Z",
+  "cases": [
+    {
+      "app": "Mealie",
+      "appVersion": "v3.31.0 (Postgres 17)",
+      "method": "Official: built in backup and restore",
+      "methodSource": "https://mealie.io/documentation/getting-started/usage/backups-and-restoring/",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 70,
+      "rowMismatches": [],
+      "kaneVerdict": "INCONCLUSIVE",
+      "differences": [],
+      "checks": [
+        {
+          "id": "recipe_photo",
+          "live": {
+            "assert": "FAIL"
+          },
+          "copy": {
+            "assert": "FAIL"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BHBY3XSP7WKG2QXH1GHDC2/dashboard/share/US_5SNBBIZC20I6HRV4CCD6JYFD0PVPA16JMTK7C6OWLJ7NZNDZE80Y57H8LUDCOWOS?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BHKYY44M8HZRTB67FY5995/dashboard/share/US_PAE284JYG6VFYBRNKORQ4ABNM6PHLNP5RS3WUVJU3WB56MX2H3F7UU22KJHYNUZM?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 34.52767,
+      "note": "Kane did not see the photo on the live app in this run either, so the check could not decide. API check: all 3 photos load in the copy."
+    },
+    {
+      "app": "Mealie",
+      "appVersion": "v3.31.0 (Postgres 17)",
+      "method": "Common guide: pg_dump of the database",
+      "methodSource": "https://dev.to/dmdboi/automated-postgresql-backups-in-docker-complete-guide-with-pgdump-52a",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 70,
+      "rowMismatches": [],
+      "kaneVerdict": "LOSS",
+      "differences": [
+        {
+          "check": "recipe_photo",
+          "key": "assert",
+          "live": "PASS",
+          "copy": "FAIL"
+        }
+      ],
+      "checks": [
+        {
+          "id": "recipe_photo",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "FAIL"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BH27K5FBFNN0Z55FB0Z2Y8/dashboard/share/US_S1C1Y5O2ZUP1SZV34VP5B10GJEZXQ45EHH0M2RZ6239OWMYG3PP8GLH6FWTL5IV5?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BH7YT7TM9EB4R79S5Y6ZPZ/dashboard/share/US_ODIZFU392NEUN231FTIZXJSTHTHEABY3V4W40HMPNE8LWW7UH2722NG8GUP498XL?type=summary&agentView=true&fqdn=summary-page"
+        },
+        {
+          "id": "recipe_details",
+          "live": {
+            "servings": "6",
+            "ingredient_count": "4"
+          },
+          "copy": {
+            "servings": "6",
+            "ingredient_count": "4"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BGRV8VF8Y6ZVJQZQHMYAC9/dashboard/share/US_SE5YAYGFRP774796V4TCKWUYUUMQA99WSYMVQ2C6MXKZQ3U50XIVMCJUBGAC6MCO?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BGXH0P1601X7EXAFC87D85/dashboard/share/US_35L94SLKF6M090C1N0Z7NKBHWHJ62L1GYG15ACGGBPLI0YBNAQ2FBRJBH1NNYPHV?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 88.63504,
+      "note": "API check: every recipe photo returns 404 in the copy while all 70 tables match. The guide backs up the database only; photos live in a volume."
+    },
+    {
+      "app": "Mealie",
+      "appVersion": "v3.31.0 (Postgres 17)",
+      "method": "Script written by Claude Code (unsteered prompt)",
+      "methodSource": "https://github.com/jenzylove/ripcord/tree/master/study/mealie/methods/claude",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 70,
+      "rowMismatches": [],
+      "kaneVerdict": "PROVEN",
+      "differences": [],
+      "checks": [
+        {
+          "id": "recipe_photo",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BHSM6ED99AWGXKFZ5F4099/dashboard/share/US_2V9QJ9GEKNX0VRQ6VDCT02F3C3VJXQP0MLKXDXGBH7X31IT8BJ4RG47GL1HXLG43?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BHYAEAH9Z0YDMJCXZT3QGD/dashboard/share/US_XF0J6PQW7O7R7TG111ZQWN63A4VSF5WZNTFWYUTGEGYFMXDGY4WNT3KZZGTQSID7?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 29.492949999999997,
+      "note": "Claude Code backed up the database and the data volume. Its restore script timed out under load, but the copy came up complete."
+    },
+    {
+      "app": "n8n",
+      "appVersion": "2.49.6 (Postgres 18)",
+      "method": "Official: database dump plus the .n8n folder",
+      "methodSource": "https://docs.n8n.io/deploy/host-n8n/keep-n8n-running/backup-and-restore",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 180,
+      "rowMismatches": [],
+      "kaneVerdict": "INCONCLUSIVE",
+      "differences": [],
+      "checks": [
+        {
+          "id": "login",
+          "live": {
+            "assert": "FAIL"
+          },
+          "copy": {
+            "assert": "FAIL"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BNJSWRA1YK5AFKWWNXPMF2/dashboard/share/US_GO53BQFUSORWHKHM8SPJ2QELE3DJX2JOKHR2X025BZOI7SQUX495UI46CCVH5C5O?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BNR4QGYP9T711RM9HJG2VG/dashboard/share/US_G5SDI1ERQYKPVVL5BW7B23T99776D4PCNIDYW6NXG9MY1UGQIM8EXHOK44TM0961?type=summary&agentView=true&fqdn=summary-page"
+        },
+        {
+          "id": "credential",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BN88ZAWAAQA3HGVVZ1C24P/dashboard/share/US_WC42R3XBGSTJ2JGH08DBQU0TN9049CPL9LB7CWNQAPV63XK14TYO1GYO5WZJEYSL?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BNDFTE2X2D4VYJJ2NDK6XN/dashboard/share/US_XJ4Q8FHCMK34W9I821W2DOYK82LB1LJ240U8Q3ND0P8HFM3O408ZZSEQADMX0DB4?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 78.92995250000001,
+      "note": "Kane's login readings on the live app disagreed between runs, so nothing is claimed. API check: owner login and credential work in the copy."
+    },
+    {
+      "app": "n8n",
+      "appVersion": "2.49.6 (Postgres 18)",
+      "method": "n8n CLI export and import (CLI docs, popular guides)",
+      "methodSource": "https://docs.n8n.io/hosting/cli-commands/",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 180,
+      "rowMismatches": [],
+      "kaneVerdict": "INCONCLUSIVE",
+      "differences": [],
+      "checks": [
+        {
+          "id": "login",
+          "live": {
+            "assert": "FAIL"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BM9WSTV14M6605HZA52YGD/dashboard/share/US_Z6NUJGK6OORHRGQUBFF30EQMYQ45B3PJ6KRS0ZAN87HESI66YTS32B42PZHIQ8TI?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BMFV13Q3A35Q6EZP450ZSS/dashboard/share/US_S6B8NSNOYIRERVQVS2BF2FCOCN14Q1SWEZHPQ1BJDQCA5L0B5P8VWLFSJNDIFE2E?type=summary&agentView=true&fqdn=summary-page"
+        },
+        {
+          "id": "credential",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BMN6DQBM8RMHT4HEK6QKMT/dashboard/share/US_8D2E60BLVIERTW1IEDUQJ2EBIXJWXR5X0BVE1M5O228K2R7SZGYGJDGK3MJS8B9J?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BMVC5YVB43B7RHM3HXVQE2/dashboard/share/US_KEPNWVSFNTYX66SIN5SEKDR3O1JIB07LBNG9NG1VFICKUV9MYKOARG3X9ZE4B219?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 95.23240999999999,
+      "note": "Kane's readings disagreed, so nothing is claimed. API check: the copy has no owner account, and n8n logs 'Credentials could not be decrypted' (a different encryption key)."
+    },
+    {
+      "app": "Vikunja",
+      "appVersion": "2.8.0 (Postgres 18)",
+      "method": "Official: vikunja dump and vikunja restore",
+      "methodSource": "https://vikunja.io/docs/cli",
+      "rowCountVerdict": "MISMATCH",
+      "rowTables": 43,
+      "rowMismatches": [
+        {
+          "table": "buckets",
+          "live": 9,
+          "copy": 0
+        },
+        {
+          "table": "files",
+          "live": 1,
+          "copy": 0
+        },
+        {
+          "table": "license_status",
+          "live": 1,
+          "copy": 0
+        },
+        {
+          "table": "project_ancestors",
+          "live": 2,
+          "copy": 0
+        },
+        {
+          "table": "project_task_counters",
+          "live": 2,
+          "copy": 0
+        },
+        {
+          "table": "project_views",
+          "live": 12,
+          "copy": 0
+        },
+        {
+          "table": "projects",
+          "live": 2,
+          "copy": 0
+        },
+        {
+          "table": "saved_filters",
+          "live": 1,
+          "copy": 0
+        },
+        {
+          "table": "subscriptions",
+          "live": 5,
+          "copy": 0
+        },
+        {
+          "table": "task_buckets",
+          "live": 5,
+          "copy": 0
+        },
+        {
+          "table": "task_positions",
+          "live": 20,
+          "copy": 0
+        },
+        {
+          "table": "tasks",
+          "live": 5,
+          "copy": 0
+        },
+        {
+          "table": "users",
+          "live": 1,
+          "copy": 0
+        }
+      ],
+      "kaneVerdict": "INCONCLUSIVE",
+      "differences": [
+        {
+          "check": "login_and_tasks",
+          "key": "assert",
+          "live": "PASS",
+          "copy": null
+        },
+        {
+          "check": "attachment",
+          "key": "assert",
+          "live": "PASS",
+          "copy": null
+        }
+      ],
+      "checks": [
+        {
+          "id": "login_and_tasks",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": null
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJ2FZP451FWDTBMT6VQVK7/dashboard/share/US_IQP7T3WK7F2IFRM6TDZQWG6LQWXREPCL3PCQSPJR89TL1AC93J5RW1P6UHYNI5XD?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJ6WZ4BGY6DGGBAXZYT6VM/dashboard/share/US_QWU158WRJ87HEQ3NN85NQJIF0UEOXAF00N7F0C19AWCBBKTEILT12TT9YZFFL7UF?type=summary&agentView=true&fqdn=summary-page"
+        },
+        {
+          "id": "attachment",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": null
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJF6SPC04E9FSNN2RR3PEX/dashboard/share/US_6O1IK3VEP7QL0HSCAVB3JOAXYXOVNGYCF74S4HAD3WDLD2TR0MRHUU4RMP5IPA2U?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJPNZD5HD3RRN4MASWQJDS/dashboard/share/US_I783O16ZR7P36ZJQ9GGR5I0YDCZLZ2X5F7ZZAD2UF5L6AO3HQMX4DXHQUBIOLKRJ?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 79.7261025,
+      "note": "vikunja restore stopped with an error (could not restore table data for table tasks: invalid input syntax for type double precision) and left 0 users and 0 tasks. Kane could not log in to the copy. The row count catches this one."
+    },
+    {
+      "app": "Vikunja",
+      "appVersion": "2.8.0 (Postgres 18)",
+      "method": "Common guide: pg_dump of the database",
+      "methodSource": "https://dev.to/piteradyson/postgresql-docker-backup-strategies-how-to-backup-postgresql-running-in-docker-containers-1bla",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 43,
+      "rowMismatches": [],
+      "kaneVerdict": "LOSS",
+      "differences": [
+        {
+          "check": "attachment",
+          "key": "assert",
+          "live": "PASS",
+          "copy": "FAIL"
+        }
+      ],
+      "checks": [
+        {
+          "id": "login_and_tasks",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BJVWE29SDT3E04DCMAZFSM/dashboard/share/US_W9QF6SLOJ9Q4ARB5J68XETDPSRT16AKEE8L7OP26ZYVVXD0QGDTK5F7AQHHWGEWW?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BK36757Q9DCNJ7GZSAN1MC/dashboard/share/US_HTVI45OEJ2VAU8KZHF8I0QQH784JA4LFCPITUPFDKUYHHF71OEXIPUAA5W4VBCMM?type=summary&agentView=true&fqdn=summary-page"
+        },
+        {
+          "id": "attachment",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "FAIL"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKHGJHV9CD9FY7JAE49SKK/dashboard/share/US_7HJH13OCKI3WDR1SDEAFKH1IIL7M5BBWVRUDG9TIBTCZY5BA5M82K3JT3UXWSQ1N?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKPFCZYQY6N0P2SVFSE7EN/dashboard/share/US_531JU1JG50RW2264YWPXHP4HHUOL4VKI6FI6UFPAZ838V25S3U8JYX2225BPVBKG?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 47.495357000000006,
+      "note": "API check: the attachment download returns 404 (file does not exist) while all 43 tables match. The guide backs up the database only; files live in a volume."
+    },
+    {
+      "app": "Vikunja",
+      "appVersion": "2.8.0 (Postgres 18)",
+      "method": "Script written by Claude Code (unsteered prompt)",
+      "methodSource": "https://github.com/jenzylove/ripcord/tree/master/study/vikunja/methods/claude",
+      "rowCountVerdict": "MATCH",
+      "rowTables": 43,
+      "rowMismatches": [],
+      "kaneVerdict": "PROVEN",
+      "differences": [],
+      "checks": [
+        {
+          "id": "login_and_tasks",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKT9FG2P55QPQ4W9B3XTA7/dashboard/share/US_GF7IP2KYHUOC404ID40H4SQLZ8NLZOA2IV52T6ORG1BDH6CQ7PA33Q1D1OB0M69B?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BKXW39HGXPB8MFW1EBPKN3/dashboard/share/US_T33ZN66PO4DRQ146FI90HKSGYQ6UR606Q3IAMERTVJRHLSQO9WYUPN8KV44I9912?type=summary&agentView=true&fqdn=summary-page"
+        },
+        {
+          "id": "attachment",
+          "live": {
+            "assert": "PASS"
+          },
+          "copy": {
+            "assert": "PASS"
+          },
+          "liveShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BM18FQP89GAB95RBF6J478/dashboard/share/US_B3SECKT6WNMPMR4NIG8L3J5BPAVLOBHT5RE3IQDT4DTW2ODEFIYLZYQOPAZ2LW6H?type=summary&agentView=true&fqdn=summary-page",
+          "copyShare": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BM5KXEVR09ZAJVT4Z12160/dashboard/share/US_2DGAQL9DG314HHXWC3M66C2UCCOD5E2CJQJGXKZYY2F8UNLYYYZ81HRVHAVBX66C?type=summary&agentView=true&fqdn=summary-page"
+        }
+      ],
+      "creditsUsed": 53.49374,
+      "note": "Claude Code backed up the database and the files volume; everything came back."
+    }
+  ]
+}

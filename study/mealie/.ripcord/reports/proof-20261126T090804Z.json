@@ -1,0 +1,54 @@
+{
+  "id": "proof-20261126T090804Z",
+  "project": "study-mealie",
+  "backupId": "mealie-official",
+  "createdAt": "2026-11-26T09:08:04.714Z",
+  "verdict": "INCONCLUSIVE",
+  "differences": [],
+  "checks": [
+    {
+      "id": "recipe_photo",
+      "live": {
+        "assert": "FAIL"
+      },
+      "copy": {
+        "assert": "FAIL"
+      },
+      "liveOk": false,
+      "copyOk": true,
+      "liveRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.final_verification",
+        "summary": "The Party Jollof Rice record appears to have been supplied without a usable image. Its recipe card visibly shows a striped placeholder rather than a food photo, and there is no evidence that the app failed while loading a valid image.\nRestore or reseed the Party Jollof Rice test recipe with a valid accessible image, then rerun the check.",
+        "values": {
+          "recipe_photo_image_visible": "true",
+          "recipe_photo_broken_placeholder": "false",
+          "recipe_photo_missing_placeholder": "true",
+          "recipe_photo_blank_placeholder": "true"
+        },
+        "credits": 13.410689999999997,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BHBY3XSP7WKG2QXH1GHDC2/dashboard/share/US_5SNBBIZC20I6HRV4CCD6JYFD0PVPA16JMTK7C6OWLJ7NZNDZE80Y57H8LUDCOWOS?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\d9b85730-181a-47fc-891f-b5b54e3460b3",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\d9b85730-181a-47fc-891f-b5b54e3460b3\\evidence\\20f6d3ec-0359-456d-97dc-6a4b02ad8eb1.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.confirmed_product_bug",
+        "summary": "The Party Jollof Rice record does not have a usable photo available, so the page renders its placeholder instead of an image.\nRestore or attach a valid photo to the Party Jollof Rice recipe, then verify that both its card and detail page display that image rather than the striped placeholder.\nevidence: objective_contradiction: check FAILED: the recipe photo at the top shows an image — expected: true | observed: {{recipe_photo_image_present}}\nevidence: objective_contradiction: check FAILED: the recipe photo at the top does not show a missing image placeholder — expected: false | observed: {{reci",
+        "values": {
+          "recipe_photo_missing_placeholder": "false",
+          "recipe_photo_broken_placeholder": "false",
+          "recipe_photo_blank_placeholder": "true",
+          "recipe_photo_image_present": "false"
+        },
+        "credits": 21.11698,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8BHKYY44M8HZRTB67FY5995/dashboard/share/US_PAE284JYG6VFYBRNKORQ4ABNM6PHLNP5RS3WUVJU3WB56MX2H3F7UU22KJHYNUZM?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\f4c710a5-1e9d-400c-a1f1-db734d191ba6",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\f4c710a5-1e9d-400c-a1f1-db734d191ba6\\evidence\\28f999f8-8192-4dab-8139-e7efb8249232.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 34.52767
+}

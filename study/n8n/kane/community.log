@@ -1,0 +1,14 @@
+Kane reads 2 checks on the live app and on the copy (one run at a time)...
+[login] live  http://localhost:9941
+[login] live  failed {"login_succeeds_check":"true","sign_in_page_not_shown_check":"false","error_not_shown_check":"false","n8n_workspace_shown_check":"false"}
+[login] copy  http://localhost:9945
+[login] copy  passed {"login_succeeds_check":"true","n8n_workspace_shown_check":"true","sign_in_page_shown_check":"false","error_shown_check":"false"}
+[credential] live  http://localhost:9941
+[credential] live  passed {"error_message_absent":"false","red_banner_absent":"false","credential_opened_check":"true","credential_form_fields_visible":"true"}
+[credential] copy  http://localhost:9945
+[credential] copy  passed {"credential_open_check":"true","credential_form_fields_visible":"true","credential_error_message_absent":"false","credential_red_banner_absent":"false"}
+
+INCONCLUSIVE
+Row counts: UNAVAILABLE
+Report: C:\Users\LENOVO\ripcord\study\n8n\.ripcord\reports\proof-20261126T100409Z.html
+exit 3
