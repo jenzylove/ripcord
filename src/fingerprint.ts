@@ -62,7 +62,8 @@ export async function runChecks(checks: Check[], o: FingerprintOptions): Promise
       id: check.id,
       live: pick(check, liveRun),
       copy: pick(check, copyRun),
-      liveOk: ok(check, liveRun),
+      // an assertion only counts if it holds on the live app; a FAIL on live means the check itself is not trustworthy
+      liveOk: ok(check, liveRun) && (!check.assert || assertValue(liveRun) === 'PASS'),
       copyOk: ok(check, copyRun),
       liveRun,
       copyRun,

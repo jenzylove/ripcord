@@ -1,13 +1,2 @@
 Kane reads 2 checks on the live app and on the copy (one run at a time)...
 [recipe_photo] live  http://localhost:9961
-[recipe_photo] live  passed {"photo_state":"loaded","recipe_photo_image_displayed":"true","recipe_photo_missing_blank_or_broken":"true"}
-[recipe_photo] copy  http://localhost:9965
-[recipe_photo] copy  passed {"photo_state":"broken","recipe_photo_missing_blank_or_broken":"false","recipe_top_image_displayed":"false"}
-[recipe_details] live  http://localhost:9961
-[recipe_details] live  passed {"servings":"6","ingredient_count":"4","servings_2":"6","ingredient_count_2":"4"}
-[recipe_details] copy  http://localhost:9965
-[recipe_details] copy  passed {"servings":"6","ingredient_count":"5","servings_2":"6","ingredient_count_2":"5"}
-Confirming 2 disagreeing check(s) with a second reading on both sides...
-[recipe_photo] live  http://localhost:9961
-[recipe_photo] live  passed {"photo_state":"loaded","recipe_photo_image_displayed":"true","recipe_photo_missing_blank_or_broken":"true"}
-[recipe_photo] copy  http://localhost:9965

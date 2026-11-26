@@ -1,0 +1,93 @@
+{
+  "id": "proof-20261126T055829Z",
+  "project": "study-mealie",
+  "backupId": "mealie-claude",
+  "createdAt": "2026-11-26T05:58:29.195Z",
+  "verdict": "PROVEN",
+  "differences": [],
+  "checks": [
+    {
+      "id": "recipe_photo",
+      "live": {
+        "photo_state": "true"
+      },
+      "copy": {
+        "photo_state": "true"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account credentials.\nOpened the “Party Jollof Rice” recipe and checked the photo at the top of the page.\nThe recipe photo was displayed successfully, and its displayed state was saved as true.",
+        "values": {
+          "photo_state": "true",
+          "recipe_photo_image_displayed": "true"
+        },
+        "credits": 24.015344999999996,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B6FMZPDBXJ5TSHSMAWGND3/dashboard/share/US_NYQZ70LY5S17ER99N0H1ML70OVGDG1WGNRE7FWH5L8GPUZ1A970L286J1UWHTZJE?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\e01b2b41-5cd9-4cb9-8ac4-b5b5cd57c0b7",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\e01b2b41-5cd9-4cb9-8ac4-b5b5cd57c0b7\\evidence\\7d981574-753f-44aa-a573-15bfc564f3b8.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in using the provided email and password.\nOpened the recipe “Party Jollof Rice” and checked the photo at the top.\nThe recipe photo was displayed successfully, and its display state was saved as true.",
+        "values": {
+          "photo_state": "true",
+          "recipe_photo_image_displayed": "true"
+        },
+        "credits": 29.124150000000004,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B6K9GGT98JAFHBE3J3M8MT/dashboard/share/US_DKGM0LH75IIZBPI64CIGPTXBTRY67W5RL9R2F1OQK2SYT12UZ2KX6VA693MZJSHU?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\51b3380f-2048-4680-9717-abe7c206769c",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\51b3380f-2048-4680-9717-abe7c206769c\\evidence\\bf856267-e58e-4fe7-a015-714fb419e511.evidence"
+      }
+    },
+    {
+      "id": "recipe_details",
+      "live": {
+        "servings": "6",
+        "ingredient_count": "4"
+      },
+      "copy": {
+        "servings": "6",
+        "ingredient_count": "4"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the recipe “Party Jollof Rice.”\nThe recipe shows 6 servings and 4 ingredients.",
+        "values": {
+          "servings": "6",
+          "ingredient_count": "4",
+          "servings_2": "6",
+          "ingredient_count_2": "4"
+        },
+        "credits": 24.665439999999997,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B6PW55D25K53VK62TZ223S/dashboard/share/US_OZON8R1ON2WN2XVF9UNZSHXNAHT8WG6RLZHJ5NYI80BPR2W9SN312I4M09NDJ40D?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\ae19e0de-e889-42b9-b0b4-597045d4f40a",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\ae19e0de-e889-42b9-b0b4-597045d4f40a\\evidence\\baae5e4d-de04-4117-94c0-16217a924669.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in and opened the recipe “Party Jollof Rice.”\nThe recipe shows 6 servings and lists 4 ingredients.",
+        "values": {
+          "servings": "6",
+          "ingredient_count": "4",
+          "servings_2": "6",
+          "ingredient_count_2": "4"
+        },
+        "credits": 15.3520925,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B6TNQ50VZVMA1D2QRJWBE9/dashboard/share/US_ZZCSC79X7QKNOKU6WWJHACK4S1NLTFEHE6G6G4PC94B7C2B0WFF0Z5BP0VB7IJPN?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\685d1a03-2473-43ea-8cab-1e89cbd3f1a3",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\685d1a03-2473-43ea-8cab-1e89cbd3f1a3\\evidence\\7bdefa13-68b4-43fb-a822-d11003413f21.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 93.1570275
+}

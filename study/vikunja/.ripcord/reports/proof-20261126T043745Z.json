@@ -1,0 +1,106 @@
+{
+  "id": "proof-20261126T043745Z",
+  "project": "study-vikunja",
+  "backupId": "vikunja-official",
+  "createdAt": "2026-11-26T04:37:45.860Z",
+  "verdict": "LOSS",
+  "differences": [
+    {
+      "id": "login_and_tasks",
+      "key": "login_state",
+      "live": "IN",
+      "copy": "REJECTED"
+    },
+    {
+      "id": "login_and_tasks",
+      "key": "task_count",
+      "live": "5",
+      "copy": "0"
+    }
+  ],
+  "checks": [
+    {
+      "id": "login_and_tasks",
+      "live": {
+        "login_state": "IN",
+        "task_count": "5"
+      },
+      "copy": {
+        "login_state": "REJECTED",
+        "task_count": "0"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "confirmedBy": 2,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided username and password.\nOpened the “Launch Plan” project.\nFound 5 tasks listed in the project.",
+        "values": {
+          "task_count": "5",
+          "login_refused": "false",
+          "login_state": "IN"
+        },
+        "credits": 43.860960000000006,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B20MP2W5T3B49YXZRD6DH9/dashboard/share/US_L8W63JU8A4UHGVVP80A86UK3J1XPYDEM133AL6W6YTIIMZJ6IIOTN9EEV8F0S00H?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\30f4ebaf-e2d6-4864-bcda-e869d4206a9a",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\30f4ebaf-e2d6-4864-bcda-e869d4206a9a\\evidence\\e9f016d5-6c90-44d7-bcf6-73d171a82d05.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Attempted to log in using the provided username and password.\nThe login was refused, so the Launch Plan project could not be opened.\nRecorded the outcome as rejected with 0 tasks.",
+        "values": {
+          "login_refused": "true",
+          "login_state": "REJECTED",
+          "task_count": "0"
+        },
+        "credits": 25.6665425,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B26NFP5EH5F4HZX65KD0MP/dashboard/share/US_2P33FLSDXCHJLH6169IFNJ4OBJSQDCV05KOVS6LIZRZVBP4UFYAN1W5NK156JDFN?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\73ae9626-9533-497e-9cea-d9ca1a8c366c",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\73ae9626-9533-497e-9cea-d9ca1a8c366c\\evidence\\91c3df3a-4cba-4350-aabd-8bc01be06284.evidence"
+      }
+    },
+    {
+      "id": "attachment",
+      "live": {
+        "attachment_state": "PREVIEW"
+      },
+      "copy": {
+        "attachment_state": null
+      },
+      "liveOk": true,
+      "copyOk": false,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided username and password.\nOpened the “Launch Plan” project and the “Book venue” task.\nOpened the venue-floorplan.png attachment and confirmed that its image preview displayed successfully.",
+        "values": {
+          "login_refused": "false",
+          "attachment_preview_displayed": "true",
+          "attachment_error_displayed": "false",
+          "attachment_broken_image_displayed": "false",
+          "attachment_preview_displayed_absent": "true",
+          "attachment_state": "PREVIEW"
+        },
+        "credits": 49.688320000000004,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B1S7QPQHEH3RX96ACBN9ET/dashboard/share/US_JJFXQQQOY7MSFKZ08YOV4C5TM03SND2ZH1RHHDRQASE4VINTZ47GX70015U45KRE?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\af35fa55-9877-4bef-a430-dde3c46a875a",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\af35fa55-9877-4bef-a430-dde3c46a875a\\evidence\\43d1310f-c66a-41d9-adb0-f21b1c7a29a5.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "assertion_error.step_not_achievable",
+        "summary": "The agent reached the objective's expected login-refused branch and did not complete the required fallback answer.\nUpdate the login-refused handling to detect the wrong-credentials response and save attachment_state as NONE before ending the run.",
+        "values": {},
+        "credits": 16.413974999999997,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B1XRF8NHZCGG6EBFADGER3/dashboard/share/US_SG0L1YTONT2I0GNMNF2JULBYAKE8XR9WVQZHE04XMCVV04G9RGE60YQMWSVK33Z8?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\fa2b1a71-5f97-4ba2-9d38-27439bd2fbad",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\fa2b1a71-5f97-4ba2-9d38-27439bd2fbad\\evidence\\94d0960a-8aaa-4599-b6ed-d1cf0088381c.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 135.6297975
+}

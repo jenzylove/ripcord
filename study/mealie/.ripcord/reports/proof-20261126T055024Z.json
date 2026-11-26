@@ -1,0 +1,99 @@
+{
+  "id": "proof-20261126T055024Z",
+  "project": "study-mealie",
+  "backupId": "mealie-official",
+  "createdAt": "2026-11-26T05:50:24.273Z",
+  "verdict": "INCONCLUSIVE",
+  "differences": [
+    {
+      "id": "recipe_photo",
+      "key": "photo_state",
+      "live": "placeholder",
+      "copy": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "recipe_photo",
+      "live": {
+        "photo_state": "placeholder"
+      },
+      "copy": {
+        "photo_state": null
+      },
+      "liveOk": true,
+      "copyOk": false,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided email and password.\nOpened the “Party Jollof Rice” recipe and checked the photo at the top.\nThe recipe photo was displayed successfully (PICTURE).",
+        "values": {
+          "photo_state": "placeholder",
+          "recipe_photo_image_displayed": "true",
+          "recipe_photo_missing_blank_or_broken": "true"
+        },
+        "credits": 37.181526999999996,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B656F5BJ238Z6BG1NATRQX/dashboard/share/US_Z6BHNTNCRM8DCBROTMTMYCGIQAU7ZKZVL8UDI15XX79MGKYCXQWFX4NU59JZI4K6?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\07d190f6-31b9-4a37-a2a0-9631ef0398fd",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\07d190f6-31b9-4a37-a2a0-9631ef0398fd\\evidence\\e0929838-3e5c-47f9-8269-9cebe0e784f6.evidence"
+      },
+      "copyRun": {
+        "status": "failed",
+        "reasonCode": "agent_error.child_failed",
+        "summary": "The agent spent its remaining turn on analysis instead of recording the required answer. The recipe page was open and showed a placeholder-style image area, so the run could have completed by saving PLACEHOLDER.\nUpdate the agent flow to save photo_state immediately after the visual determination; here it should save PLACEHOLDER, then end the task.",
+        "values": {
+          "recipe_photo_image_displayed": "true",
+          "recipe_photo_missing_blank_or_broken": "true"
+        },
+        "credits": 33.336659999999995,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B69SRWMFT3V12X8H03F4QC/dashboard/share/US_REX59RL4IGMADZ8C96S0Y3CXZX4VDPJQGZE82EDGPA0IX8PYR1KEVUSDRLYMA0H5?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\12b25952-5cfa-448c-89bb-2f46b380b50b",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\12b25952-5cfa-448c-89bb-2f46b380b50b\\evidence\\d0e3eea1-97dc-4c42-9c28-74ce058399c7.evidence"
+      }
+    },
+    {
+      "id": "recipe_details",
+      "live": {
+        "servings": "6",
+        "ingredient_count": "4"
+      },
+      "copy": {
+        "servings": "6",
+        "ingredient_count": "4"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided account details.\nOpened the recipe “Party Jollof Rice.”\nRead and saved the servings count as 6 and the ingredient count as 4.",
+        "values": {
+          "servings": "6",
+          "ingredient_count": "4"
+        },
+        "credits": 26.376939999999998,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B5WWX0JYS8YF1V790WR0Y1/dashboard/share/US_5O3ZDY3PZJYBOXZQ9NFUV3E1IJP2F7GH370SFJRDDSJRNXQW68ZHP3M667GZPKUO?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\5adf82c8-d3d4-4acb-8cb1-9e5c8d7c93e3",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\5adf82c8-d3d4-4acb-8cb1-9e5c8d7c93e3\\evidence\\2c92bd23-b280-4b2c-91f1-1d9454dddc9c.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in using the provided email and password.\nOpened the recipe named “Party Jollof Rice.”\nRecorded the recipe yield as 6 servings and counted 4 listed ingredients.",
+        "values": {
+          "servings": "6",
+          "ingredient_count": "4",
+          "ingredient_count_2": "4",
+          "servings_2": "6"
+        },
+        "credits": 24.0380425,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B60MBXN0HK3QEEXTN07AAK/dashboard/share/US_VBHSJKVJ6XNY4VDAT4VD7QS2K1EY49GS175PLG5HEE6AT5T0IRCT7EZTWL6SSOBW?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\711439cb-38be-4878-a8ee-f1e720fabc1e",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\711439cb-38be-4878-a8ee-f1e720fabc1e\\evidence\\e320c389-8e3a-45cf-b4e6-f60eb7a7117f.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 120.93316949999998
+}

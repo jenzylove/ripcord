@@ -1,0 +1,14 @@
+Kane reads 2 checks on the live app and on the copy (one run at a time)...
+[login_and_credential] live  http://localhost:9941
+[login_and_credential] live  passed {"login_refused":"false","sign_in_page_blocked":"false","login_state":"REJECTED","credential_state":"NONE"}
+[login_and_credential] copy  http://localhost:9945
+[login_and_credential] copy  passed {"login_refused":"true","cannot_pass_sign_in_page":"true","login_state":"REJECTED","credential_state":"NONE"}
+[workflows] live  http://localhost:9941
+[workflows] live  passed {"workflow_count":"2","login_refused":"false"}
+[workflows] copy  http://localhost:9945
+[workflows] copy  passed {"workflow_count":"2","login_refused_check":"false"}
+
+PROVEN
+Row counts: UNAVAILABLE
+Report: C:\Users\LENOVO\ripcord\study\n8n\.ripcord\reports\proof-20261126T050346Z.html
+exit 0

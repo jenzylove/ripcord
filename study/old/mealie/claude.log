@@ -1,0 +1,14 @@
+Kane reads 2 checks on the live app and on the copy (one run at a time)...
+[recipe_photo] live  http://localhost:9961
+[recipe_photo] live  passed {"photo_state":"true","recipe_photo_image_displayed":"true"}
+[recipe_photo] copy  http://localhost:9966
+[recipe_photo] copy  passed {"photo_state":"true","recipe_photo_image_displayed":"true"}
+[recipe_details] live  http://localhost:9961
+[recipe_details] live  passed {"servings":"6","ingredient_count":"4","servings_2":"6","ingredient_count_2":"4"}
+[recipe_details] copy  http://localhost:9966
+[recipe_details] copy  passed {"servings":"6","ingredient_count":"4","servings_2":"6","ingredient_count_2":"4"}
+
+PROVEN
+Row counts: UNAVAILABLE
+Report: C:\Users\LENOVO\ripcord\study\mealie\.ripcord\reports\proof-20261126T055829Z.html
+exit 0

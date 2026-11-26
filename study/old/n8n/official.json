@@ -1,0 +1,104 @@
+{
+  "id": "proof-20261126T053547Z",
+  "project": "study-n8n",
+  "backupId": "n8n-official",
+  "createdAt": "2026-11-26T05:35:47.260Z",
+  "verdict": "INCONCLUSIVE",
+  "differences": [
+    {
+      "id": "login_and_credential",
+      "key": "credential_state",
+      "live": null,
+      "copy": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "login_and_credential",
+      "live": {
+        "login_state": "IN",
+        "credential_state": null
+      },
+      "copy": {
+        "login_state": "IN",
+        "credential_state": null
+      },
+      "liveOk": false,
+      "copyOk": false,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested sign-in was completed using the provided account details.\nAfter signing in, the Credentials page was opened and the credential named “Acme Billing API key” was selected.\nThe credential opened normally, with no error message or red warning banner shown.",
+        "values": {
+          "login_refused_check": "false",
+          "sign_in_page_block_check": "false",
+          "login_state": "IN",
+          "credential_form_fields_normal": "true",
+          "error_message_appears": "false",
+          "red_banner_appears": "false"
+        },
+        "credits": 66.25931250000001,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B4XNBKTRKNHH55FSXDQVY5/dashboard/share/US_Z5V6JWPRCLZVRWFHWXVGLUHCZO8W7L98QLP79KTOUQYZTL07UVDCUSRNUTHK6J0C?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\8ab7481b-cab4-40b7-98c3-ea2cd8093914",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\8ab7481b-cab4-40b7-98c3-ea2cd8093914\\evidence\\15d618ca-8c33-4f20-bb19-b706c256425b.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested sign-in was completed with the provided email and password.\nThe account was able to proceed beyond the sign-in page, and no login refusal was shown.\nThe run finished on the n8n Assistant page.",
+        "values": {
+          "login_refused": "false",
+          "can_get_past_sign_in_page": "true",
+          "login_state": "IN",
+          "credential_form_fields_normal": "true",
+          "error_message_appears": "false",
+          "red_banner_appears": "false"
+        },
+        "credits": 59.04513750000001,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B54P1HZWTANA2KJG7KD6C7/dashboard/share/US_NDQP8EZM58W6536NR5ZPVSZ207FT3C8LU75C6V6SGWVD4C4CKUESGCXMQLGUX74H?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\e9fdd1bc-9b71-41ef-a0dd-e35b67403b85",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\e9fdd1bc-9b71-41ef-a0dd-e35b67403b85\\evidence\\a9ffc625-4781-4ac5-aa24-fb12991beda0.evidence"
+      }
+    },
+    {
+      "id": "workflows",
+      "live": {
+        "workflow_count": "2"
+      },
+      "copy": {
+        "workflow_count": "2"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in using the provided email and password.\nThe login was accepted, and the Workflows page was opened.\nThe run completed successfully on the Workflows page.",
+        "values": {
+          "workflow_count": "2",
+          "login_refused": "false"
+        },
+        "credits": 32.89894749999999,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B5B62ZJ7NGS81SRADW95VW/dashboard/share/US_HNM4T8MHU0GD1YHWDRLBLIK4NG7ANGX6AR3EI2OH5QC330N1FJLZYVNUPUV7N8X6?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\0caa46b4-5377-4c3e-8db4-dc969a34fe6d",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\0caa46b4-5377-4c3e-8db4-dc969a34fe6d\\evidence\\db3e4f45-b108-4644-a4b4-29200ac42fa1.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Attempted to log in using the provided email address and password.\nThe login was accepted, with no refusal message shown.\nOpened the Workflows page after signing in.",
+        "values": {
+          "workflow_count": "2",
+          "login_refused": "false"
+        },
+        "credits": 33.965185,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B5FMK6F5JHTP9H609R0H2V/dashboard/share/US_UI1QQ65P5Y7MCCSF1APEMP17NJUJCBCXK92C43KA2UC7BOFRDO59IK0TYTGFH9MM?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\7a68f2e9-5fbf-4306-bef8-e4df9dc11d25",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\7a68f2e9-5fbf-4306-bef8-e4df9dc11d25\\evidence\\99ae1bb2-e283-44e0-b8de-26c360ac7207.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 192.16858249999999
+}

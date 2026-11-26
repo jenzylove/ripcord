@@ -9,9 +9,9 @@ databases: []
 volumes: []
 vault: C:/Users/LENOVO/ripcord/vault/study-n8n
 checks:
-  - id: login_and_credential
-    ask: "Log in with email {{email}} and password {{password}}. If the login is refused or you cannot get past the sign in page, save REJECTED for login_state and NONE for credential_state. Otherwise save IN for login_state, open the Credentials page, open the credential named 'Acme Billing API key', and save OPENS for credential_state if its form shows its fields normally, or ERROR if an error message or red banner appears."
-    read: [login_state, credential_state]
-  - id: workflows
-    ask: "Log in with email {{email}} and password {{password}}. If the login is refused, save 0 for workflow_count. Otherwise open the Workflows page and save the number of workflows listed (digits only) for workflow_count."
-    read: [workflow_count]
+  - id: login
+    ask: "Go to the sign in page and log in with email {{email}} and password {{password}}."
+    assert: "the login succeeds and the n8n workspace (Overview or Workflows page) is shown, not the sign in page or an error"
+  - id: credential
+    ask: "Log in with email {{email}} and password {{password}}. Open the Credentials page and open the credential named 'Acme Billing API key'."
+    assert: "the credential opens and its form shows its fields without any error message or red banner"

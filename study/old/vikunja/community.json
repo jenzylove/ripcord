@@ -1,0 +1,104 @@
+{
+  "id": "proof-20261126T051401Z",
+  "project": "study-vikunja",
+  "backupId": "vikunja-community",
+  "createdAt": "2026-11-26T05:14:01.302Z",
+  "verdict": "INCONCLUSIVE",
+  "differences": [
+    {
+      "id": "attachment",
+      "key": "attachment_state",
+      "live": null,
+      "copy": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "login_and_tasks",
+      "live": {
+        "login_state": "IN",
+        "task_count": "5"
+      },
+      "copy": {
+        "login_state": "IN",
+        "task_count": "5"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in with the provided username and password.\nOpened the “Launch Plan” project after signing in.\nLogin was accepted and the requested project was reached successfully.",
+        "values": {
+          "task_count": "5",
+          "login_refused": "false",
+          "login_state": "IN"
+        },
+        "credits": 36.224827499999996,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B3T838WDMGHXCZEGHPHNQW/dashboard/share/US_61EZJKK4K3HV89GCX56ZA3R1ZTO27FKKLH327QO2CNWL1F5NIMA0F2MMMOMQG30M?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\a9647c77-9ee8-4b2b-8bf8-1541e9f61dd8",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\a9647c77-9ee8-4b2b-8bf8-1541e9f61dd8\\evidence\\e0881e99-34a9-4875-b288-67ccf104eb77.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested account was logged in with the provided username and password.\nThe login was accepted, and the Launch Plan project was opened.\nThe run finished on the Launch Plan project page.",
+        "values": {
+          "task_count": "5",
+          "login_refused": "false",
+          "login_state": "IN"
+        },
+        "credits": 29.94537499999999,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B3Y3YPA2Q0XF1EZ23DXKSX/dashboard/share/US_HX0UHBXV4YBZ7ZKF7KFMXTTW9P771GRA3YAYQURREQGE6HZO564JRE2BYH61BQIL?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\903b12f7-deb3-447d-b37a-e96510da9468",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\903b12f7-deb3-447d-b37a-e96510da9468\\evidence\\0927203e-f193-4343-936d-34c9e2e96fa8.evidence"
+      }
+    },
+    {
+      "id": "attachment",
+      "live": {
+        "attachment_state": null
+      },
+      "copy": {
+        "attachment_state": null
+      },
+      "liveOk": false,
+      "copyOk": false,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested login was completed successfully; the login was not refused.\nOpened the “Launch Plan” project and selected the “Book venue” task.\nViewed the attachment “venue-floorplan.png” in the task, with its preview displayed.",
+        "values": {
+          "login_refused": "false",
+          "venue_floorplan_preview_displayed": "true",
+          "venue_floorplan_error_shown": "false",
+          "venue_floorplan_broken_image": "false",
+          "venue_floorplan_no_preview": "true"
+        },
+        "credits": 45.11438750000001,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B41QBTWSS6W3K12SQQYVWT/dashboard/share/US_T7KP1DNKJTM0DYOWJDTF5E83KIKDA1UWUV1H6PA192ZTS7E8R8O1RECTS28B4ABG?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\d010cc8b-2e4e-4d70-bc94-9e7354f642e8",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\d010cc8b-2e4e-4d70-bc94-9e7354f642e8\\evidence\\9e5437f6-8d51-4eb3-aa7e-0e86a2024ba3.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested login was completed successfully; no login refusal message was shown.\nAfter signing in, the project “Launch Plan” and its “Book venue” task were opened.\nThe task’s venue-floorplan.png attachment was checked, and its preview was displayed.\nThe run finished on the Book venue task page.",
+        "values": {
+          "login_refused": "false",
+          "venue_floorplan_no_preview": "false",
+          "venue_floorplan_preview_displayed": "false",
+          "venue_floorplan_broken_image": "false",
+          "venue_floorplan_error": "true"
+        },
+        "credits": 53.86805,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B46BDVZMVBSWYZQM80850B/dashboard/share/US_4U2HJ0CPPV9AZZH65A7UJ8NP6MX0TFDHQ0XN7D07AHZHIGMXQNOHO4GQCP2MAX4K?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\d25d0dd0-7588-4585-acf5-df2d64d19eab",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\d25d0dd0-7588-4585-acf5-df2d64d19eab\\evidence\\83439392-3fa0-4e49-a45b-7b7dac8d61e7.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 165.15264
+}

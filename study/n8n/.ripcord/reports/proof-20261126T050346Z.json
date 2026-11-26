@@ -1,0 +1,93 @@
+{
+  "id": "proof-20261126T050346Z",
+  "project": "study-n8n",
+  "backupId": "n8n-community",
+  "createdAt": "2026-11-26T05:03:46.574Z",
+  "verdict": "PROVEN",
+  "differences": [],
+  "checks": [
+    {
+      "id": "login_and_credential",
+      "live": {
+        "login_state": "REJECTED",
+        "credential_state": "NONE"
+      },
+      "copy": {
+        "login_state": "REJECTED",
+        "credential_state": "NONE"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested sign-in was completed using the provided email and password.\nThe sign-in was not refused, and the session proceeded beyond the sign-in page.\nThe run finished on the assistant page.",
+        "values": {
+          "login_refused": "false",
+          "sign_in_page_blocked": "false",
+          "login_state": "REJECTED",
+          "credential_state": "NONE"
+        },
+        "credits": 35.715755,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B396H7N5THS9RQA8EBYXBM/dashboard/share/US_P03LD9FJP4J5AIXY3VF4GZV7VVGL3Z4VN5P27B5Y3AAFVAMLZBZL0L4SCGKEBY8Z?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\8598ba8b-91f0-4086-9089-5eaead6e6e96",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\8598ba8b-91f0-4086-9089-5eaead6e6e96\\evidence\\4eef2581-051d-48c6-947a-898882d7e29b.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Attempted to log in using the provided email address and password.\nThe sign-in was refused, so access could not proceed beyond the sign-in page.\nThe requested credential could not be opened because the account was not signed in.",
+        "values": {
+          "login_refused": "true",
+          "cannot_pass_sign_in_page": "true",
+          "login_state": "REJECTED",
+          "credential_state": "NONE"
+        },
+        "credits": 26.542649999999995,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B3DV45K5F3DS6002G6WVY2/dashboard/share/US_FUV8AB3TAKPFKE3GI9ECH7R960EMUO35PY3EHZ39L9AUTCZBIC8QT92QQ0F9MY0M?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\47d34bf3-7377-4c4b-a3ee-11feadb19fa3",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\47d34bf3-7377-4c4b-a3ee-11feadb19fa3\\evidence\\401d695f-a8ac-4e82-88a5-857381a7dfe4.evidence"
+      }
+    },
+    {
+      "id": "workflows",
+      "live": {
+        "workflow_count": "2"
+      },
+      "copy": {
+        "workflow_count": "2"
+      },
+      "liveOk": true,
+      "copyOk": true,
+      "liveRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "Logged in using the provided email and password.\nOpened the Workflows page after login.\nFound 2 workflows listed and saved that count.",
+        "values": {
+          "workflow_count": "2",
+          "login_refused": "false"
+        },
+        "credits": 45.8744175,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B3HJPBBZNF4BVJZKBCWSWQ/dashboard/share/US_85V157WVRLX1RXC9MCNM7V6RS8IJE9OXOQ3NQOTF6DBGQQPWWVNT2MLW23RG9811?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\449a1335-dd3a-455c-a1c7-33feb205319c",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\449a1335-dd3a-455c-a1c7-33feb205319c\\evidence\\6c27730d-c3ee-495c-9444-a823c8a5d976.evidence"
+      },
+      "copyRun": {
+        "status": "passed",
+        "reasonCode": "success.complete",
+        "summary": "The requested login was completed using the provided account credentials.\nLogin was accepted, and the Workflows page was opened.\nThe run finished on the Workflows page.",
+        "values": {
+          "workflow_count": "2",
+          "login_refused_check": "false"
+        },
+        "credits": 31.2823,
+        "shareUrl": "https://test-manager.lambdatest.com/projects/01M7ZRWNQTHGYRXAZQTZVKZTYS/test-cases/01M8B3PHCF0Z5Y84B2KG54VTSZ/dashboard/share/US_GY8GNG6I299GATIDYXB52WJKWI5154PPIXOXJS4VMSH91XEWGBAKCI712KOVTI4G?type=summary&agentView=true&fqdn=summary-page",
+        "sessionDir": "C:\\Users\\LENOVO/.testmuai/kaneai/sessions\\40c8b117-35c1-46de-a8f1-2b19d49d91d7",
+        "evidencePack": "C:\\Users\\LENOVO\\.testmuai\\kaneai\\sessions\\40c8b117-35c1-46de-a8f1-2b19d49d91d7\\evidence\\04bed309-2eec-4a2a-90ad-b93fc3cb15bf.evidence"
+      }
+    }
+  ],
+  "rowCounts": [],
+  "rowCountVerdict": "UNAVAILABLE",
+  "creditsUsed": 139.4151225
+}

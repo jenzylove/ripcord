@@ -1,0 +1,14 @@
+Kane reads 2 checks on the live app and on the copy (one run at a time)...
+[login_and_tasks] live  http://localhost:9962
+[login_and_tasks] live  passed {"task_count":"5","login_refused":"false","login_state":"IN"}
+[login_and_tasks] copy  http://localhost:9969
+[login_and_tasks] copy  passed {"login_refused":"false","login_state":"IN","task_count":"5"}
+[attachment] live  http://localhost:9962
+[attachment] live  passed {"login_refused":"false","attachment_preview_displayed":"true","attachment_error_shown":"false","attachment_broken_image":"false","attachment_no_preview":"true","attachment_state":"PREVIEW"}
+[attachment] copy  http://localhost:9969
+[attachment] copy  passed {"login_refused":"false","venue_floorplan_preview_displayed":"true","venue_floorplan_error":"false","venue_floorplan_broken_image":"false","venue_floorplan_no_preview":"true"}
+
+INCONCLUSIVE: attachment.attachment_state live="PREVIEW" copy="null"
+Row counts: UNAVAILABLE
+Report: C:\Users\LENOVO\ripcord\study\vikunja\.ripcord\reports\proof-20261126T052305Z.html
+exit 3
