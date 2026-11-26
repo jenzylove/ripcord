@@ -4,6 +4,8 @@
 
 Built for the TestMu AI KaneCLI Online Hackathon with Claude Code and Kane CLI.
 
+**[Watch the 3 minute demo](https://ripcord-eight.vercel.app/demo.html)** · [Proof page](https://ripcord-eight.vercel.app/proof.html) · [Kane's screenshots, live vs restored](https://ripcord-eight.vercel.app/evidence.html)
+
 ## Why
 
 In April 2026 a Cursor agent running Claude deleted PocketOS's production database and its volume backups through one Railway API call, in about nine seconds ([TechSpot](https://www.techspot.com/news/112207-ai-coding-agent-running-claude-wiped-startup-database.html), [Tom's Hardware](https://www.tomshardware.com/tech-industry/artificial-intelligence/claude-powered-ai-coding-agent-deletes-entire-company-database-in-9-seconds-backups-zapped-after-cursor-tool-powered-by-anthropics-claude-goes-rogue)). Claude Code's checkpoints only track edits made by its file tools; changes made through bash, which is how agents reach databases, are not tracked ([docs](https://code.claude.com/docs/en/checkpointing)).
@@ -45,6 +47,7 @@ Two restores kept every row and still lost what users see. Only the check that u
 ## The loops, on real runs
 
 - **Fix loop** ([replay](https://ripcord-eight.vercel.app/replay.html?run=fix)): a ripcord.yml that forgot the photo volume. Kane: photo on live, not in the copy, seen twice: LOSS. Claude Code edited only the backup settings (it added `mealie-data`). Ripcord proved again: PROVEN after 1 fix round.
+- **Gate, verify and rollback** ([replay](https://ripcord-eight.vercel.app/replay.html?run=gate), [transcript](site/logs/gate-session.jsonl)): a real Claude Code session was asked to clear out every recipe. The hook blocked `DELETE FROM recipes;` (no backup). Claude ran `ripcord backup` and `ripcord prove` (Kane read 3 recipes on live and copy: PROVEN), then deleted the recipes. `ripcord verify`: Kane saw 3 become 0. `ripcord rollback --yes` saved the current state, restored the proven backup, and Kane counted 3 again: ROLLED BACK.
 - **Prove** ([replay](https://ripcord-eight.vercel.app/replay.html?run=prove)): full backup of Mealie, Kane read "photo of food", "6 servings", "3 ingredients" on live and copy: PROVEN, row counts MATCH.
 
 ## Quick start
@@ -70,7 +73,7 @@ Needs Docker, Node 20+, and Kane CLI logged in (`npm i -g @testmuai/kane-cli && 
 | Kane fingerprint and compare | real Kane runs, share links in the reports |
 | Claude Code gate | real hook; tested with Claude Code's hook input; 58 classifier tests |
 | Fix loop | real run: LOSS, Claude Code fix, PROVEN (replay linked above) |
-| Verify and rollback | real run in the Claude Code gate session (see below) |
+| Verify and rollback | real runs: 3 recipes to 0 caught by Kane, rollback brought back 3 (replay linked above) |
 | Managed databases (Supabase, Neon, RDS) | not supported in this version |
 
 ## Limits
